@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -14,22 +15,27 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-const connection = require('./connection');
 require('dotenv').config();
+const  my = require('mysql2');
 
-const deleteMessages = async (collection) => {
-  const db = await connection();
-  await db.collection(collection).deleteMany({});
-};
+function queryTestDb(query, config) {
+  const connection = my.createConnection({host: process.env.HOSTNAME, user: process.env.MYSQL_USER, password: process.env.MYSQL_PASSWORD})
+  connection.connect()
+  return new Promise((resolve, reject) => {
+    connection.query(query, (error, results) => {
+      if (error) reject(error)
+      else {
+        connection.end()
+        return resolve(results)
+      }
+    })
+  })
+}
 
 module.exports = (on, config) => {
   on('task', {
-    deleteCollection(collection) {
-       return new Promise((resolve) => {
-        deleteMessages(collection);
-        resolve('');
-        close();
-      });
+    queryDb: query => {
+      return queryTestDb(query, config)
     }
   });
 
@@ -40,7 +46,4 @@ module.exports = (on, config) => {
     }
     return launchOptions;
   });
-
-  config.env.gitHubUser = process.env.GITHUB_USER;
-  return config; 
 }

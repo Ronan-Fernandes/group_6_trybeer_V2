@@ -1,30 +1,18 @@
-# Boas vindas ao repositório do projeto TryBeer v2!
+# Boas vindas ao repositório do projeto TryBeer!
 
-Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
+Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por Slack! #vqv 🚀
 
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir desse repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
+Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um Pull Request para colocar seus códigos.
 
-
-### Habilidades
-
-- Organização do seu código e a arquitetura geral da aplicação (tanto da API quando do front-end);
-
-- Usar sockets através do socket.io;
-
-- Aderência aos princípios SOLID;
-
-- Cobertura de testes no back-end e no front-end.
-
-- Aprender a usar dois bancos de dados paralelamente na mesma aplicação.
-
+---
 ## Instruções para entregar seu projeto:
 
 ### ANTES DE COMEÇAR A DESENVOLVER:
 
 1. Clone o repositório
-  * `git clone https://github.com/betrybe/sd-04-project-trybeer-v2.git`.
+  * `git clone https://github.com/betrybe/sd-04-trybeer.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-04-project-trybeer-v2`
+    * `cd sd-04-trybeer`
 
 2. Instale as dependências [**Caso existam**]
   * `npm install`
@@ -36,7 +24,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     * Exemplo: `git checkout master`
   * Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
     * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    * Exemplo: `git checkout -b joaozinho-sd-04-project-trybeer-v2`
+    * Exemplo: `git checkout -b joaozinho-sd-04-trybeer`
 
 4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
@@ -51,16 +39,16 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
 5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-04-project-trybeer-v2`
+  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-04-trybeer`
 
 6. Crie um novo `Pull Request` _(PR)_
-  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-04-project-trybeer-v2/pulls)
+  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-04-trybeer/pulls)
   * Clique no botão verde _"New pull request"_
   * Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
   * Clique no botão verde _"Create pull request"_
   * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
   * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-04-project-trybeer-v2/pulls) e confira que o seu _Pull Request_ está criado
+  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-04-trybeer/pulls) e confira que o seu _Pull Request_ está criado
 
 ---
 
@@ -72,38 +60,25 @@ Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://
 
 ---
 
-### Análise Estática 
-
-Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu código.
-
-Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
-
-- `sd-04-project-trybeer-v2/back-end/package.json`
-- `sd-04-project-trybeer-v2/front-end/package.json`
-
-Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
-
-Devido ao fato de as configurações das regras do `ESLint` dos projetos de front e back **serem diferentes**, **é preciso executar o `ESLint` em cada projeto**.
-
-Você pode também instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
-
----
-
 ## O que deverá ser desenvolvido
 
-Esse projeto é uma continuação do projeto `Trybeer`! Ou seja, o _commit_ inicial nesse repositório será todo o projeto que foi desenvolvido por vocês anteriormente. Logo, esse será o ponto de partida de vocês para esse projeto.
+Esse será o projeto mais desafiador até agora! Você será responsável por criar uma aplicação de ponta a ponta!
 
-O grupo continua sendo o mesmo que foi quando vocês desenvolveram o `Trybeer v1`.
+Isso significa que a API, o banco de dados e o front-end serão escritos por você. 😁
 
-Nesse projeto vocês irão desenvolver novas funcionalidades a partir dos conhecimentos adquiridos nos últimos blocos. Além de desenvolver novas funcionalidades, vocês terão também novos desafios, pois algumas demandas farão com que vocês refatorem a arquitetura do projeto.
+O projeto em si é super divertido! Você vai criar uma plataforma de delivery de cerveja. 🍻
 
-No projeto `Trybeer v1` vocês utilizaram apenas o banco de dados _MySQL_. Já nesse projeto além do _MySQL_, vocês terão que utilizar o _MongoDB_. Vocês verão com mais detalhes nos requisitos do projeto.
+Para facilitar o entendimento, dá para dividirmos a aplicação em três partes:
 
-O principal intuito desse projeto é que vocês refatorem alguns pontos do que já foi desenvolvido por vocês. A intenção é refatorar o projeto para, por exemplo, utilizar o _ORM Sequelize_, dentre outras coisas. Novas features deverão ser adicionadas como, por exemplo, a implementação de um chat para estabelecer uma conversa entre o estabelecimento e a pessoa usuária, dentre outras implementações.
+- Front-end do **cliente**, onde nossos clientes vão comprar cerveja;
 
-Dito tudo isso, vamos para os requisitos para que vocês tenham maiores detalhes do que deve ser desenvolvido nesse projeto!
+- Front-end do **admin**, onde o estabelecimento controlará os pedidos feitos;
 
-Você pode acessar um protótipo do front-end [aqui](https://www.figma.com/file/dRYG01MdRnxQr6nlp1wT2o/Trybeer-v2?node-id=0%3A1).
+- API, que será compartilhada entre cliente e admin.
+
+O banco de dados utilizado será o `MySQL`!
+
+Você pode acessar um protótipo do front-end [aqui](https://www.figma.com/file/tzP4txu6Uy0qCxVZWdWMBO/TryBeer?node-id=0%3A1).
 
 Para servir arquivos estáticos como imagens no back-end, utilize o seguinte path:
 `/back-end/public/`
@@ -118,466 +93,969 @@ Você pode ler mais sobre os atributos que serão utilizados para testes [neste 
 
 ---
 
-### Data de Entrega
+### Análise Estática 
 
-O projeto tem até a seguinte data: `13/01/2021 - 14:00h`. Para ser entregue a avaliação final.
+Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu código.
 
----
+Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
 
-## Requisitos do projeto
+- `sd-04-trybeer/back-end/package.json`
+- `sd-04-trybeer/front-end/package.json`
 
-Esse repositório deve conter, como dito anteriormente, o código desenvolvido por vocês no primeiro projeto `Trybeer`. Após clonar o projeto, faça o _commit_ inicial com todo o código do projeto e comece o desenvolvimento dos requisitos a partir dele.
+Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
 
-Para o banco de dados, você deverá utilizar o `MySQL` e o `MongoDB`. Modele-os e utilize, para o `MySQL`, as funcionalidades do _Sequelize_ para que o seu projeto seja corrigido utilizando o banco de dados arquitetado por você!
+Devido ao fato de as configurações das regras do `ESLint` dos projetos de front e back **serem diferentes**, **é preciso executar o `ESLint` em cada projeto**.
+
+Você pode também instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+ 
+## Desenvolvimento
+
+Esse repositório contém duas pastas, `back-end` e `front-end`, onde você deve desenvolver o front-end e o back-end da aplicação. Ambas as pastas contêm um projeto iniciado com as configurações básicas necessárias. Após clonar o projeto e instalar as dependências, sinta-se livre para escolher usar Redux ou ContextAPI + React Hooks. Saiba avaliar as vantagens/desvantagens de cada um na hora da escolha.
+
+Para o banco de dados, você deverá utilizar o `MySQL`. Já existe um script, na raiz do seu app. O nome do script é `script.sql`.
 
 ##### Você também deve **escrever testes unitários que devem cobrir pelo menos 90% do projeto**. Na [documentação do Jest CLI](https://jestjs.io/docs/en/cli) é possível ver como essa cobertura é coletada.
 
-⚠️ Lembre-se de que o seu projeto só será avaliado se estiver passando pelos _checks_ do **ESLint** e se estiver, também, seguindo corretamente os padrões REST. Além disso, você deve utilizar das `migrations` e dos `seeders` para a criação do seu banco de dados, das tabelas e inserção de dados iniciais.
+Para que seu projeto seja corretamente avaliado, siga as orientações a seguir:
+
+- Sua aplicação deve ter um admin padrão com o nome de usuário `Tryber Admin` e senha `123456`.
+
+- Sua aplicação deve ter, no mínimo, os produtos abaixo cadastrados. O arquivo `images.tar.gz`, na raiz do projeto, contém imagens para estes produtos.
+
+  - Skol Lata 250ml, R$ 2.20;
+  - Heineken 600ml, R$ 7.50;
+  - Antarctica Pilsen 300ml, R$ 2.49;
+  - Brahma 600ml, R$ 7.50;
+  - Skol 269ml, R$ 2.19;
+  - Skol Beats Senses 313ml, R$ 4.49;
+  - Becks 330ml, R$ 4.99;
+  - Brahma Duplo Malte 350ml, R$ 2.79;
+  - Becks 600ml, R$ 8.89;
+  - Skol Beats Senses 269ml, R$ 3.57;
+  - Stella Artois 275ml, R$ 3.49.
+
+- O front-end deve ser iniciado com `npm start` na pasta `front-end` e escutar a porta `3000`. A API deve ser iniciada com `npm start` dentro da pasta `back-end` e escutar a porta `3001`.
+
+- O uso de `localStorage` é necessário para que as informações não se percam caso o usuário atualize a página.
+
+- No `localStorage` do navegador:
+
+  - A chave `user` deve conter a seguinte estrutura:
+
+    ```json
+    {
+      "name": "Taylor Swift",
+      "email": "taylorswift@email.com",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4(...)",
+      "role": "client"
+    }
+    ```
+
+  - Ao deslogar, remova completamente a chave `user` do `localStorage`.
+
+## Requisitos Obrigatórios:
+
+### 💡Veja o exemplo a seguir de como o projeto pode se parecer depois de pronto. Lembre-se que você pode ~~e deve~~ ir além para deixar o projeto com a sua cara e impressionar à todos!
+
+## ⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️
+
+Vamos pedir que você adicione `data-testid` em alguns elementos, além de algumas tags e textos especificos, Siga à risca o que iremos pedir nos requisitos, para que o corretor automatizado possa avaliar o seu projeto corretamente.
+
+O não cumprimento de um requisito, total ou parcialmente, impactará em sua avaliação.
+
+⚠️ Lembre-se de que o seu projeto só será avaliado se estiver passando pelos _checks_ do **ESLint** e se estiver, também, seguindo corretamente os padrões REST para rotas e MSC para o back-end. Além disso, você deve também disponibilizar um script contendo a criação do seu banco de dados, das tabelas e inserção de dados iniciais.
+
+⚠️ A criação dos endpoints da API, a modelagem do banco e a estrutura geral do projeto é livre, desde que os requisitos especificados na seção `Requisitos Gerais` sejam cumpridos.
 
 O intuito desse app é que uma pessoa possa pedir uma cerveja no aplicativo e outra pessoa possa aceitar esse pedido no **admin**.
 
-⚠️ **Dica**: Ao refatorar e adicionar funcionalidades, não se esqueça de que está respeitando os princípios do SOLID. Atente-se a implementação dos princípios sempre que tiver fazendo alguma alteração no código.
-
-### Sequelize
-
-- A lógica da regra de negócio da aplicação deve estar centralizada no back-end, ou seja, na API `Node.js`. Com isso, o único lugar que deve conter a lógica será o back-end: o banco de dados e front-end **não devem** conter lógicas de regra de negócio. Ou seja, muito cuidado ao utilizar _triggers_, _procedures_, dentre outras, e muito cuidado com regras de negócio no front-end.
-
-- O projeto deve passar a utilizar o _ORM Sequelize_ ao invés do driver do _MySQL_.
-
-- Crie quantos `seeders` e quantas `migrations` quiser. Porém, lembre-se de criar todas as `migrations` necessárias para que o projeto seja gerado 100% funcional utilizando o banco de dados arquitetado por você. O arquivo `.sql`, contendo as _queries_ de criação/configuração do banco, não será mais necessário, visto que o projeto passará a utilizar `migrations` e `seeders`. Estes devem, portanto, ser removidos.
+##### O projeto sera composto por duas entregas, cada uma especificada abaixo com seus respectivos requisitos e o prazo decidido com a facilitação.
 
 ### 👀Observações importantes:
 
-Haverá uma pasta chamada `seeders` onde já contém a população do banco MYSQL(não remova, pois a automação ê baseada nela).
+Haverá um arquivo chamado `script.sql` onde já contém a criação de do banco e alguns inserts.
 
-Para rodar os arquivos basta rodar esse comando:
+Para rodar o arquivo basta rodar o comando:
 
-`npm run seed` - para popular o banco.
+`mysql -u root -p`
 
-Assim o banco e terá alguns dados inseridos. 
+Isso fará com que abra o terminal do MySQL se abra. Depois, basta executar o comando:
 
-**É essencial seguir esses passos!**
+`source pasta_do_projeto/script.sql`
 
-**Faça essas configurações para as variáveis de ambiente usadas nesses arquivos:**
+Assim já irá criar o banco e terá alguns dados inseridos. **É essencial seguir esses passos!**
 
-1 - Passo
+Haverá um arquivo no caminho: `sd-04-trybeer/cypress/plugins/index.js`. Neste arquivo, na linha 17, Haverá a seguinte comando:
 
-Haverá um arquivo no caminho: `sd-04-project-trybeer-v2/back-end/config/config.js`
+`const connection = my.createConnection({host: process.env.HOSTNAME, user: process.env.MYSQL_USER, password: process.env.MYSQL_PASSWORD});`
 
-```javascript
+**Você irá precisar configurar as variáveis globais do MySQL.** Você pode usar esse [Conteúdo de variáveis de ambiente com NodeJS](https://blog.rocketseat.com.br/variaveis-ambiente-nodejs/) como referência.
+
+**Faça essas configurações também para as variáveis de ambiente usadas nesses arquivos:**
+
+`sd-0x-cookmaster/config/config.js`
+
+```
 module.exports = {
   "development": {
     "username": process.env.MYSQL_USER,
     "password": process.env.MYSQL_PASSWORD, 
-    "database": process.env.SCHEMA, 
+    "database": 'Trybeer', 
     "host": process.env.HOSTNAME,
     "dialect": 'mysql',
   },
   "test": {
     "username": process.env.MYSQL_USER,
     "password": process.env.MYSQL_PASSWORD,
-    "database": process.env.SCHEMA,
+    "database": 'Trybeer',
     "host": process.env.HOSTNAME,
     "dialect": "mysql",
   },
   "production": {
     "username": process.env.MYSQL_USER,
     "password": process.env.MYSQL_PASSWORD,
-    "database": process.env.SCHEMA,
+    "database": 'Trybeer',
     "host": process.env.HOSTNAME,
     "dialect": 'mysql',
   },
 };
 ```
 
-**A variável SCHEMA obrigatoriamente deve ser 'Trybeer'**
+**(Neste arquivo e obrigatório deixar o nome do database como `"database": 'Trybeer'`)**
 
-2 - Passo
+`sd-04-trybeer/back-end/models/connection.js`
 
-Haverá um arquivo no caminho: `sd-0x-project-trybeer-v2/cypress/plugins/index.js`. Neste arquivo, na linha 44, Haverá a seguinte comando:
-
-`config.env.gitHubUser = process.env.GITHUB_USER;`
-
-OBS: O valor da variável `GITHUB_USER` deverá ser o mesmo nome do seu usuário do github. O grupo deve escolher o nome de usuário de uma pessoa integrante.
-
-3 - Passo
-
-No arquivo `sd-0x-project-trybeer-v2/.github/workflows/main.yml` altere a linha 45 para incluir o nome de usuário utilizado no passo anterior.
-
-antes:
 ```
-GITHUB_USER: ${{ github.actor }} 
+const config = {
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  host: process.env.HOSTNAME,
+  port: 33060,
+  socketPath: '/var/run/mysqld/mysqld.sock',
+};
 ```
 
-depois:
-```
-GITHUB_USER: 'fulan_de_tal'
-```
+(esse arquivo você irá criar e configurar quando programar a conexão com banco, e essencial estar na porta 33060).
 
-4 - Passo
+**É essencial usar essas 3 variávies nos três arquivos acima:**
 
-Quando for criar a conexão com o `MONGODB` crie duas variáveis de ambiente `process.env.DB_URL` e `process.env.DB_NAME` e configure o banco conforme exemplo abaixo:
+Variáveis:
 
-```javascript
-const mongoClient = require('mongodb').MongoClient;
-require('dotenv').config();
+`host: process.env.HOSTNAME`
+`user: process.env.MYSQL_USER`
+`password: process.env.MYSQL_PASSWORD`
 
-let schema = null;
+**Com elas que iremos conseguir conectar ao banco do avaliador automático**
 
-const connection = async () => {
-  if (schema) return Promise.resolve(schema);
+## Requisitos Entrega 1
 
-  return mongoClient
-  .connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then((conn) => conn.db(process.env.DB_NAME))
-  .then((dbSchema) => {
-    schema = dbSchema;
-    return schema;
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
-}
-module.exports = connection; 
-```
+##### Requisitos Gerais
 
-Onde a variável `process.env.DB_URL` será a url do banco exemplo abaixo:
+- Os `endpoints` da API devem ser criados utilizando o padrão REST;
 
-`DB_URL=mongodb://localhost:27017`
+- O back-end deve utilizar o banco de dados `MySQL`;
 
-E a variável `process.env.DB_NAME` e o nome do banco com exemplo abaixo:
+- O back-end deve ser construído seguindo o padrão arquitetural `MSC`;
 
-`DB_NAME=Trybeer`
+- Rode um script SQL na raiz do projeto com comandos para a criação do banco de dados, das tabelas, inserção dos dados iniciais e criação do admin padrão. O script é `script.sql`.
 
-5 - Passo
+### 1 - Crie uma página de login
 
-OBS: Haverá um arquivo de conexão com o mongodb já pronto no caminho `sd-04-project-trybeer-v2/cypress/plugins/connection.js`, ele é usado para o avaliador, então não se esqueça de adicionar essas variáveis na pasta raiz tambem para poder rodar local.
+Esta tela possui o nome `Login` no protótipo.
 
-**Você irá precisar configurar as variáveis globais do MySQL.** Você pode usar esse [Conteúdo de variáveis de ambiente com NodeJS](https://blog.rocketseat.com.br/variaveis-ambiente-nodejs/) como referência.
+- Todos os elementos da tela devem respeitar os atributos descritos no protótipo;
 
-## Requisitos do projeto
+- A rota da tela deve ser `/login`;
 
-### 1 - Desenvolver os status para o pedido da tela de `Detalhe pedido` do Administrador
+- A pessoa deve conseguir escrever seu email no input de email;
 
-- Todo pedido realizado deve ter um status referente ao seu progresso atual.
+- A pessoa deve conseguir escrever sua senha no input de senha;
 
-- Os `status` do pedido devem ser os seguintes:
+- O formulário só fica válido após um email válido e uma senha de, no mínimo, 6 números serem preenchidos. Um email válido possui a forma `<nome>@<domínio>`. Caso o formulário esteja inválido, o botão de submeter deve estar desativado. Caso contrário, deve estar ativado;
 
-   - `Pendente` logo quando o pedido for criado;
+- Após a submissão bem sucedida do formulário, o token que identifica o usuário recebido na resposta deve ser salvo no `localStorage`. Esse token deve ser utilizado para futuras requisições à API;
 
-   - `Preparando` quando o pedido for iniciado pelo usuário admin;
+- Após a submissão bem sucedida do formulário, se o usuário for do tipo `administrador`, a pessoa deve ser redirecionada para a página **Admin - Home**;
 
-   - `Entregue` quando o pedido for finalizado pelo usuário admin;.
+- Após a submissão bem sucedida do formulário, se o usuário for do tipo `cliente`, a pessoa deve ser redirecionada para a página **Cliente - Produtos**;
 
-- O usuário admin deve ter o controle de alterar o status do pedido. Lembre-se de seguir princípio `Open/Closed` de _SOLID_ para está implementação de forma que possam ser acrescentados novos comportamentos e `status` sem impactar os status já existentes.
+- Deve existir um botão para o usuário se registrar com o texto `"Ainda não tenho conta"`. Ao ser clicado, a pessoa deve ser redirecionada para a página **Registro**.
 
-- Qualquer atualização feita no pedido pelo usuário admin deve se refletir em tempo real para o cliente.
+### Página de Login:
 
-### Tela de `Detalhe pedido` Administrador
+- O campo input 'Email' deverá conter a tag `data-testid="email-input"`
 
-- O botão 'Preparar pedido' deverá conter a tag `data-testid="mark-as-prepared-btn"`
+- O campo input 'Senha' deverá conter a tag `data-testid="password-input"`
 
-![Tela de detalhes pedidos Administrador](./public/detalhepedidoadmin.png)
+- O botão 'Entrar' deverá conter a tag `data-testid="signin-btn"`
 
-### Além disso,as seguintes verificações serão feitas:
+- O campo link/botão 'Ainda nao tenho conta' deverá conter a tag `data-testid="no-account-btn"`
 
-**[Dado que é feito uma compra, será validado que ela está com status `Pendente` na tela de `Detalhes do pedido` do admin]**
+![Tela de login](./public/login.png)
 
-**[Será validado que o administrador ao acessar um determinado pedido ele deve visualizar o botão `Preparar Pedido`]**
+**[Será validado que é possível acessar a home]**
 
-**[Será validado que o administrador ao acessar um determinado pedido ele deve visualizar o botão `Marcar como entregue`]**
+**[Será validado que a tela login contém os atributos descritos no protótipo]**
 
-**[Quando clicar no botão `Preparar pedido` deve alterar o status do detalhe do pedido para `Preparando`]**
+**[Será validado que não é possível fazer login com um email inválido]**
 
-**[Quando clicar no botão `Marcar como entregue` deve alterar o status do detalhe do pedido para `Entregue`]**
+**[Será validado que não é possível fazer login com uma senha em branco]**
 
-**[Quando clicar no botão `Marcar como entregue` os botões `Preparar pedido` e `Marcar como entregue` devem sumir da tela]**
+**[Será validado que não é possível fazer login com uma senha com menos de 6 caracteres]**
 
-### 2 - Desenvolver os status para o pedido da tela `Pedidos` do Administrador
+**[Será validado que é possível fazer login com um cliente e ser redirecionado para tela de cliente]**
 
-- Todo pedido realizado deve ter um status referente ao seu progresso atual.
+**[Será validado que é possível fazer login com um admin e ser redirecionado para tela de admin]**
 
-- Os `status` do pedido devem ser os seguintes:
+**[Será validado que é possível clicar no botão "Ainda não tenho conta" e ser redirecionado para tela de registro]**
 
-   - `Pendente` logo quando o pedido for criado;
+### 2 - Crie uma página de registro de usuários
 
-   - `Preparando` quando o pedido for iniciado pelo usuário admin;
+Esta tela possui o nome `Registro` no protótipo.
 
-   - `Entregue` quando o pedido for finalizado pelo usuário admin;
+- Todos os elementos devem respeitar os atributos descritos no protótipo;
 
-### Tela de `Pedido` do Administrador
+- A rota da tela deve ser `/register`;
 
-![Tela de pedido Administrador](./public/pedidosadmin.png)
+- A tela deve mostrar um formulário com os seguintes campos:
 
-### Além disso,as seguintes verificações serão feitas:
+    - **nome** - deve conter, no mínimo, 12 letras, sem números ou caracteres especiais;
 
-**[Dado que é feito uma compra, será validado que ela está com status `Pendente` na tela de `Pedidos` do admin]**
+    - **email** - deve conter um email válido. Um email válido possui o formato `<nome>@<domínio>`;
 
-**[Dado que o pedido foi marcado como entregue será validado que na tela de `Pedidos` do admin, o status estará como `Entregue`]**
+    - **senha** - composta por, no mínimo, 6 números;
 
-**[Dado que o pedido foi marcado como preparando será validado que na tela de `Pedidos` do admin, o status estará como `Preparando`]**
+    - **quero vender** - um checkbox opcional, desmarcado por padrão.
 
-### 3 - Desenvolver os status para o pedido da tela Pedidos do Cliente
+- Caso a opção `Quero vender` esteja marcada, o usuário deve ser cadastrado com um papel de **admin**. Caso contrário, será um **client**;
 
-- Todo pedido realizado deve ter um status referente ao seu progresso atual.
+- Caso os dados inseridos no formulário sejam inválidos, o botão de submeter deve estar desativado. Caso contrário, deve estar ativado;
 
-- Os `status` do pedido devem ser os seguintes:
+- Caso a opção `Quero vender` esteja marcada, ao clicar no botão `"Cadastrar"`, a pessoa deve ser redirecionada para a página **Admin - Home**. Caso contrario, deve ser redirecionada para a página de **Cliente - Produtos**.
 
-   - `Pendente` logo quando o pedido for criado;
+### Página de Registro 
 
-   - `Preparando` quando o pedido for iniciado pelo usuário admin;
+- O campo input 'name' deverá conter a tag `data-testid="signup-name"`
 
-   - `Entregue` quando o pedido for finalizado pelo usuário admin;.
+- O campo input 'email' deverá conter a tag `data-testid="signup-email"`
 
-### Tela de `Pedidos` do Cliente
+- O campo input 'password' deverá conter a tag `data-testid="signup-password"`
 
-![Tela pedidos de cliente](./public/pedidoscliente.png)
+- O campo checkbox 'Quero vender' deverá conter a tag `data-testid="signup-seller"`
 
-### Além disso,as seguintes verificações serão feitas:
+- O botão 'Cadastrar' deverá conter a tag `data-testid="signup-btn"`
 
-**[Dado que é feito uma compra, será validado que ela está com status `Pendente` na tela de `Meus pedidos` do cliente]**
+![Tela de cadastro](./public/cadastro.png)
 
-**[Dado que o admin marcou o pedido como `Preparando` é verificado que na tela de `Pedidos` do cliente o status mudou para `Preparando`]**
+**[Será validado que é possível acessar a tela de registro]**
 
-**[Dado que o admin marcou o pedido como `Entregue` é verificado que na tela de `Pedidos` do cliente o status mudou para `Entregue`]**
+**[Será validado que contém os atributos descritos no protótipo]**
 
-### 4 - Desenvolver os status para o pedido da tela de Detalhe pedido Cliente
+**[Será validado que não é possível fazer o registro com um nome com caracteres especiais]**
 
-- Todo pedido realizado deve ter um status referente ao seu progresso atual.
+**[Será validado que não é possível fazer o registro com um nome com menos de 12 letras]**
 
-- Os `status` do pedido devem ser os seguintes:
+**[Será validado que não é possível fazer o registro com um nome com números]**
 
-   - `Pendente` logo quando o pedido for criado;
+**[Será validado que não é possível fazer login com um email inválido]**
 
-   - `Preparando` quando o pedido for iniciado pelo usuário admin;
+**[Será validado que não é possível fazer login com um email já existente]**
 
-   - `Entregue` quando o pedido for finalizado pelo usuário admin;.
+**[Será validado que não é possível fazer login com uma senha em branco]**
 
-### Tela de `Detalhes de Pedido` do Cliente
+**[Será validado que não é possível fazer login com uma senha com menos de 6 caracteres]**
 
-![Detalhe pedido Administrador](./public/detalhespedidocliente.png)
+**[Será validado que é possível fazer cadastro de um admin com sucesso e ser redirecionado para tela do admin]**
 
-### Além disso,as seguintes verificações serão feitas:
+**[Será validado que é possível fazer cadastro de um cliente com sucesso e ser redirecionado para tela do cliente]**
 
-**[Dado que é feito uma compra, será validado que ela está com status `Pendente` na tela de `Detalhes do pedido` do cliente]**
+## Cliente 
 
-**[Dado que o admin marcou o pedido como `Preparando` é verificado que na tela de `detalhe do pedido` do cliente o status mudou para `Preparando`]**
+### Menu superior 
 
-**[Dado que o admin marcou o pedido como `Entregue` é verificado que na tela de `detalhe do pedido` do cliente o status mudou para `Entregue`]**
+### 3 - Crie o menu top e o menu side bar
 
-### 5 - Criar um botão no sidebar para acessar o chat do cliente
+- Todos os elementos devem respeitar os atributos descritos no protótipo para o menu superior;
 
-- Essa funcionalidade só deve existir na **visão de cliente**
+- O menu superior deve sempre ser exibido em todas as telas;
 
-- Adicionar ao menu lateral, uma botão de chat denominada `Conversar com a loja`.
+- O título correspondente à tela em que o usuário se encontra deve ser mostrado, confome protótipos;
 
-    - Um clique no item descrito como `Conversar com a loja` deve levar para uma página de chat.
+- Deve haver um ícone do tipo "hambúrguer" no canto superior esquerdo do menu superior. Quando clicado, caso o menu lateral esteja oculto, deve ser mostrado. Caso contrário, o menu lateral deve ser escondido.
 
-    - A rota da tela deve ser `/chat`;
+- Todos os elementos devem respeitar os atributos descritos no protótipo para o menu lateral;
 
-### Sidebar do Cliente
+- Deve conter quatro itens: `"Produtos"`, `"Meus pedidos"`, `"Meu Perfil"` e `"Sair"`;
 
-- O botão 'Conversar com a loja' deverá conter a tag `data-testid="side-menu-chat"`
+- Ao clicar no item `"Produtos"`, a pessoa deve ser redirecionada para a tela **Cliente - Produtos**;
 
-![Detalhe pedido Administrador](./public/sidebarCliente.png)
+- Ao clicar no item `"Meus pedidos"`, a pessoa deve ser redirecionada para a tela **Cliente - Meus Pedidos**;
 
-### Além disso,as seguintes verificações serão feitas:
+- Ao clicar no item `"Meu Perfil"`, a pessoa deve ser redirecionada para tela **Cliente - Meu Perfil**;
 
-**[Será validado que o botão `Conversar com a loja` existe no sidebar do cliente]**
+- Ao clicar no item `"Sair"`, a pessoa deve ser redirecionada para a tela **Login** e ser deslogada.
 
-**[Será validado que ao clicar no menu `Conversar com a loja` será redirecionado para página na url `/chat`]**
+### Menu superior 
 
-### 6 - Desenvolver funcionalidade de chat na visão de cliente
+- O título do top 'Trybeer' deverá conter a tag `data-testid="top-title"`
 
-- Essa funcionalidade só deve existir na **visão de cliente**
+- O botão 'Hamburguer' deverá conter a tag `data-testid="top-hamburguer"`
 
-- Na página de chat, as mensagens devem aparecer ordenadas com as mais recentes embaixo.
+![Menu Superior](./public/menusuperior.png)
 
-    - A página deve mostrar as mensagens enviadas e recebidas, com as mensagens mais recentes mais embaixo.
+### Menu lateral
 
-    - A página deve ter um input para digitar o texto e um botão para envio de nova mensagem ao chat.
+- O componente sidebar deverá conter a seguinte classe `class="side-menu-container"`
 
-- O nickname do cliente deve ser o email cadastrado.
+- O botão 'Produtos' deverá conter a tag `data-testid="side-menu-item-products"`
 
-- O chat deve conter tambem a hora que a mensagem foi enviada.
+- O botão 'Meus Pedidos' deverá conter a tag `data-testid="side-menu-item-my-orders"`
 
-- A hora deve ter o formato `15:30`.
+- O botão 'Meu Perfil' deverá conter a tag `data-testid="side-menu-item-my-profile"`
 
-- O histórico da conversa deve ser salvo no banco de dados `MondoDB` e aparecer quando a pessoa abre a página.
+- O botão 'Sair' deverá conter a tag `data-testid="side-menu-item-logout"`
 
-### Tela do Detalhe de chat do cliente
+![Menu Lateral](./public/menulateral.png)
 
-- O elemento com o nickname do cliente deverá conter a tag `data-testid="nickname"`
+**[Será validado que os atributos do top menu devem ser mostrados confome protótipos]**
 
-- O elemento com a data da mensagem deverá conter a tag `data-testid="message-time"`
+**[Será validado que ao clicar no componente hamburguer o sidebar deve ficar visível]**
 
-- O elemento com a mensagem do cliente deverá conter a tag `data-testid="text-message"`
+**[Será validado que os atributos do side menu devem ser mostrados confome protótipos]**
 
-- O input de escrever a mensagem deverá conter a tag `data-testid="message-input"`
+**[Será validado que ao clicar no botão "produtos" será redirecionado para tela de produtos]**
 
-- O botão para enviar a mensagem deverá conter a tag `data-testid="send-message"`
+**[Será validado que ao clicar no botão "meus pedidos" será redirecionado para tela de meus pedidos]**
 
-![Chat do cliente](./public/telachatcliente.png)
+**[Será validado que ao clicar no botão "meu perfil" será redirecionado para tela de meu perfil]**
 
-### Além disso,as seguintes verificações serão feitas:
+**[Será validado que ao clicar no botão "sair" será redirecionado para tela home]**
 
-**[Será validado que existe o campo input e o botão de enviar mensagem]**
+### 4 - Criar tela de perfil do cliente
 
-**[Será validado que ao enviar mensagem o `nickname` do cliente é o seu email]**
+Esta tela possui o nome `Cliente - Meu Perfil` no protótipo.
 
-**[Será validado que ao enviar mensagem a data fica visível na tela]**
+- Todos os elementos devem respeitar os atributos descritos no protótipo;
 
-**[Será validado que ao enviar mensagem a mensagem fica visível na tela]**
+- A rota da tela deve ser `/profile`;
 
-**[Será validado que ê possivel enviar várias mensagens]**
+- Deve ter dois campos de texto: um para o `email` e o outro para o `name`. Apenas o `name` pode ser alterado. Dessa forma, o campo `email` deve ser `read-only`;
 
-### 7 - Criar botão no sidebar para acessar a lista de chats do admin
+- Deve ter um botão `"Salvar"`". Caso o usuário tenha editado o nome, o botão deve ser habilitado. Caso contrário, o botão deve estar desabilitado;
 
-- Essa funcionalidade só deve existir na **visão de admin**
+- Ao clicar no botão `"Salvar"`, uma requisição deve ser feita à API e o nome da pessoa deve ser atualizado no banco de dados;
 
-- A plataforma deve ter acessível, no menu lateral, uma funcionalidade de chats denominada `Conversas`.
+- Ao entrar na tela, se o usuário não estiver logado, deve ser redirecionado para a tela **Login**.
 
-    - Um clique no item descrito como `Conversas` deve levar para uma página de listas de chats.
+### Tela de perfil
 
-    - A rota da tela deve ser `/admin/chats`;
+- O título do top 'Meu perfil' deverá conter a tag `data-testid="top-title"`
 
-### Sidebar Administrador
+- O campo input 'Name' deverá conter a tag `data-testid="profile-name-input"`
 
-- O botão 'Conversas' deverá conter a tag `data-testid="side-menu-item-chat"`
- 
-![Chat do cliente](./public/sidebarAdmin.png)
+- O campo input 'Email' deverá conter a tag `data-testid="profile-email-input"`
 
-### Além disso,as seguintes verificações serão feitas:
+- O botão 'Salvar' deverá conter a tag `data-testid="profile-save-btn"`
 
-**[Será validado que no meu sidebar contém o botão `Conversas`]**
+![Tela do perfil do cliente](./public/perfilcliente.png)
 
-**[Será validado que ao clicar no menu `Conversas` será redirecionado para página na url `/admin/chats`]**
+**[Será validado que é possível acessar a tela de perfil do cliente]**
 
-### 8 - Criar funcionalidade de lista de conversas de chat na visão de administrador
+**[Será validado que contém os atributos descritos no protótipo]**
 
-- Essa funcionalidade só deve existir na **visão de admin**
+**[Será validado que campo email está como readonly]**
 
-- A paginá deverá conter uma lista de conversas lista com todas as conversas da loja.
+**[Será validado que o botão salvar fique desabilitado caso não altere o nome]**
 
-    - As conversas devem aparecer numa lista. Cada conversa deve ser identificada pelo email da pessoa cliente em questão.
+**[Será validado que o botão salvar fique habilitado caso altere o nome]**
 
-        - Um clique no email do cliente deve redirecioanar para a janela com o chat daquela conversa.
+**[Será validado que é possível alterar o nome com sucesso]**
 
-    - A lista de conversas deve ser ordenada pela data da última mensagem.
+### 5 - Criar Tela de Produtos
 
-    - Caso não tenham conversas, deve ser exibido o texto "Nenhuma conversa por aqui".
+Esta tela possui o nome `Cliente - Produtos` no protótipo.
 
-### Tela de listas de conversas
+- Todos os elementos devem respeitar os atributos descritos no protótipo para a tela de produtos;
 
-  - O texto `Nenhuma conversa por aqui` deverá conter o data-testid="text-for-no-conversation" 
+- A rota da tela deve ser `/products`;
 
-  - O texto com email do cliente deverá conter o `data-testid="profile-name"`
+- Nessa tela, os produtos devem ser organizados em "cards", e deve haver um card para cada produto;
 
-  - O texto com a última mensagem deverá conter o `data-testid="last-message"`
+- Os cards devem conter os seguintes dados do produto:
 
-  - Os cards do chat devem conter o `data-testid="containerChat"`
+    - Foto;
 
-  ![Chat do cliente](./public/listadeconversas.png)
+    - Nome do produto;
 
-### Além disso,as seguintes verificações serão feitas:
+    - Preço unitário;
 
-**[Será validado que ao entrar na tela de `admin/chats` e não houver conversas e validado se contém o texto `Nenhuma conversa por aqui`]**
+    - Quantidade atual inserida no carrinho;
 
-**[Será validado que ao entrar na tela de `admin/chats` e existir uma conversa verifico se contém o card]**
+    - Botão de adicionar (`+`) e de remover (`-`) uma unidade do produto no carrinho.
 
-**[Será validado que ao entrar na tela de `admin/chats` e existir uma conversa verifico se dentro do card contem o email do cliente]**
+- Ao clicar no botão `+`, a quantidade do produto deve aumentar em 1;
 
-**[Será validado que ao entrar na tela de `admin/chats` e existir uma conversa verifico se dentro do card contem data da ultima mensagem]**
+- Ao clicar no botão `-`, a quantidade do produto deve diminuir em 1, limitado a 0;
 
-**[Será validado que ao clicar no card da conversa e redirecionado pra conversa]**
+- Caso a pessoa atualize o browser, o carrinho deve ser mantido;
 
-### 9 - Desenvolver funcionalidade de chat na visão de administrador
+- O preço unitário deve seguir o padrão `R$ 00,00`;
 
-- Um clique num item da lista de conversas deve exibir na tela o respectivo chat.
+- Quando a quantidade mostrada no card do produto chegar a 0, o produto deve ser removido do carrinho;
 
-    - Um clique em um item da lista deve exibir na tela a janela com o chat daquela conversa.
+- Deve ter um botão `"Ver carrinho"`. Esse botão também deve exibir o **valor total** dos produtos no carrinho;
 
-    - O _nickname_ da loja na conversa deve ser "Loja".
+- O **valor total** mostrado no botão `"Ver carrinho"` deve ser alterado dinamicamente, ou seja, ao adicionar ou remover um produto no carrinho, o valor total deve ser atualizado;
 
-    - A página da conversa deve mostrar, no topo da tela, o email do usuário que a Loja está conversando.
+- Ao clicar no botão `"Ver carrinho"`, a pessoa deve ser redirecionada para a página **Cliente - Checkout**.
 
-    - A página da conversa deve ter um botão de voltar que ao ser clicado redireciona a pessoa a página de listagem de conversas novamente.
+- Ao entrar na tela, se o usuário não estiver logado, deve ser redirecionado para a tela **Login**.
 
-- O histórico de cada conversa deve ser salvo no banco de dados e aparecer quando a pessoa abre a página.
+### Tela de produtos
 
-- A lista de conversas deve ser ordenada pela data da última mensagem.
+- O valor do produto 'R$ 2,20' deverá conter a tag `data-testid="0-product-price"`
 
-    - A lista de conversas deve ser ordenada pela data da última mensagem (recebida ou enviada), as mais recentes no topo da lista.
+- A imagem do produto deverá conter a tag `data-testid="0-product-img"`
 
-### Tela de chat do admin
+- O nome do produto 'Skoll..' deverá conter a tag `data-testid="0-product-name"`
 
-![Chat do cliente](./public/chatAdmin.png)
+- O botão 'Mais' deverá conter a tag `data-testid="0-product-plus"`
 
-  - O campo input de mensagem deverá conter a tag `data-testid="chat-message"`
+- O botão 'Menos' deverá conter a tag `data-testid="0-product-minus"`
 
-  - O botão de enviar mensagem deverá conter a tag `data-testid="send-message-btn"`
+- A quantidade de produtos deverá conter a tag `data-testid="0-product-qtd"`
 
-- O email da mensagem deverá conter a tag `data-testid="nickname"`
+- O botão 'Ver Carrinho' deverá conter a tag `data-testid="checkout-bottom-btn"`
 
-- A hora da mensagem deverá conter a tag `data-testid="message-time"`
+- O valor total do carrinho deverá conter a tag `data-testid="checkout-bottom-btn-value"`
 
-- O texto da mensagem deverá conter a tag `data-testid="text-message"`
+**[OBS: os campos data-testid deverão ser implementado um index para cada produto sempre comecando pelo index 0, para cada um dessas tags veja os exemplo abaixo:]**
 
-- O botão voltar deverá conter a tag `data-testid="back-button"`
+Produto 1:
 
-### Além disso,as seguintes verificações serão feitas:
+data-testid="0-product-price"
 
-**[Será validado que ao clicar no card da conversa poderá ser visualizado as mensagem do cliente]**
+Produto 2:
 
-**[Será validado que é possivel enviar mensagem]**
+data-testid="1-product-price"
 
-**[Será validado que ao enviar mensagem o nickname do admin e `Loja`]**
+Produto 3:
 
-**[Será validado que ao enviar mensagem e listado a hora do envio da mensagem]**
+data-testid="2-product-price"
 
-**[Será validado que é possivel voltar pra tela de `admin/chat` através do botão voltar]**
+Deverá ser alterado para os seguintes data-testid listados abaixo:
 
-**[Será validado que é possivel enviar mensagem para o cliente e a mensagem poderá ser visualizada pelo cliente]**
+data-testid="0-product-price"
 
-### 10 - Desenvolva a cobertura de testes unitários do back-end
+data-testid="0-product-img"
 
-- A cobertura de testes unitários do back-end deve ser de, no mínimo, 90%.
+data-testid="0-product-name"
 
-## Bônus
+data-testid="0-product-plus"
 
-### 11 - Realizar o deploy do projeto back-end e front-end
+data-testid="0-product-minus"
 
-### Deploy Heroku
+data-testid="0-product-qtd"
 
-IMPORTANTE: Crie uma variável de ambiente com o nome `GITHUB_USER` deverá ser criada com o seu usuário do github.
+![Tela do perfil do cliente](./public/produtos.png)
 
-### Faça o deploy do front-end:
+**[Será validado que existe um produto na tela de produtos]**
 
-Crie um app do Heroku com o front-end. Não é necessário a criação do Procfile aqui. Vamos deixar o Heroku utilizar as configurações padrões. No momento de criar o app do Heroku, utilize o buildpack descrito abaixo, em Dicas.
+**[Será validado que existe todos os produtos na tela de produtos]**
 
-O nome do seu app no heroku deve ser seu nome de usuário do github seguido de "-front". Por exemplo, se o seu usuário do github for "joao", o nome do seu app será "joao-front" e a url precisar ser https://joao-front.herokuapp.com/.
+**[Será validado que é possíve clicar no botão "+" e atualizar o produto para 1]**
 
- ### Faça o deploy do back-end:
+**[Será validado que é possível clicar no botão "-"e atualizar o produto para 0]**
 
-Crie um app do Heroku com o back-end. Não é necessário a criação do Procfile aqui. Vamos deixar o Heroku utilizar as configurações padrões. No momento de criar o app do Heroku, utilize o buildpack descrito abaixo, em Dicas.
+**[Será validado que não é possível clicar no botão "-" e atualizar o produto para menor que zero]**
 
-O nome do seu app no heroku deve ser seu nome de usuário do github seguido de "-back". Por exemplo, se o seu usuário do github for "joao", o nome do seu app será "joao-back" e a url precisar ser https://joao-back.herokuapp.com/.
+**[Será validado que é possível visualizar o botão "Ver Carrinho"]**
 
-Configure as variáveis de ambiente do app para apontar para as API's publicadas.
+**[Será validado que é possível atualizar o valor do carrinho ao adicionar um produto]**
 
-Faça o deploy com o git.
+**[Será validado que é possível atualizar o valor do carrinho ao remover um produto]**
 
-**[Sera validado se é possivel acessar a aplicação e verificar se estou na tela url de login]**
+**[Será validado que ao atualizar a tela continuará na tela de produtos e carrinho com o mesmo valor]**
 
-**[Será validado que é possível fazer cadastro de um cliente com sucesso e ser redirecionado para tela de produtos]**
+**[Será validado que é possível adicionar um produto e clicar no botão "Ver Carrinho" e ser redirecionado para tela de carrinho]**
 
-### 12 - Desenvolva a cobertura de testes unitários do front-end
+**[Será validado que o botão "Ver Carrinho" fique desabilitado caso não adicione nenhum produto]**
 
-- A cobertura de testes unitários do front-end deve ser de, no mínimo, 90%.
+**[Será validado que não é possível acessar a tela de produtos sem estar logado e será redirecionado para tela de login]**
+
+---
+
+## Requisitos Entrega 2
+
+##### Requisitos Gerais
+
+### 6 - Criar Tela de Checkout
+
+Esta tela possui o nome `Cliente - Checkout` no protótipo.
+
+- Todos os elementos devem respeitar os atributos descritos no protótipo para a tela;
+
+- A rota da tela deve ser `/checkout`;
+
+- Caso a pessoa atualize o browser, o carrinho deve ser mantido;
+
+- Deve ter uma lista dos produtos selecionados com a seguinte estrutura: `quantidade do produto -- nome do produto -- valor total do produto`, sendo o valor total calculado por **quantidade * preço unitário**;
+
+- Ao lado de cada produto deve haver um botão que, quando clicado, exclui este produto do carrinho;
+
+- Abaixo da lista, mostre o **valor total do pedido**, no seguinte formato: `Total: R$ 0,00`. O valor total do pedido é calculado a partir da **soma de todos os valores totais dos produtos**;
+
+- Deve existir um formulário para a pessoa digitar o endereço de entrega dos produtos. O formulário deve conter dois campos de texto: um para a **rua** e o outro para o **número da casa**;
+
+- Deve ter um botão `"Finalizar Pedido"`. O botão deve estar habilitado **apenas** se o valor total do pedido for **maior que zero** e o endereço de entrega estiver preenchido;
+
+- Ao clicar em "`Finalizar pedido`", caso a operação dê certo, uma mensagem de sucesso deve ser exibida e a pessoa deve ser redirecionada para a página **Cliente - Produtos**. Caso contrário, deve ser exibido uma mensagem de erro;
+
+- Quando um pedido for finalizado, o carrinho deve ser esvaziado;
+
+- Ao entrar na tela, se o usuário não estiver logado, deve ser redirecionado para a tela **Login**.
+
+### Tela de Checkout
+
+- O título do top 'Finalizar Pedido' deverá conter a tag `data-testid="top-title"`
+
+- A quantidade do produto deverá conter a tag `data-testid="0-product-qtd-input"`
+
+- O nome do produto deverá conter a tag `data-testid="0-product-name"`
+
+- O valor do produto deverá conter a tag `data-testid="0-product-total-value"`
+
+- O preço unitário do produto deverá conter a tag `data-testid="0-product-unit-price"`
+
+- O botão de remover um produto deverá conter a tag `data-testid="0-removal-button"`
+
+- O valor total do carrinho  deverá conter a tag `data-testid="order-total-value"`
+
+- O campo input 'Rua' deverá conter a tag `data-testid="checkout-street-input"`
+
+- O campo input 'Número da casa' deverá conter a tag `data-testid="checkout-house-number-input"`
+
+- O botão 'Finalizar Pedido' deverá conter a tag `data-testid="checkout-finish-btn"`
+
+**[OBS: os campos data-testid deverão ser implementado um index para cada produto sempre comecando pelo index 0, para cada um dessas tags veja os exemplo abaixo:]**
+
+Produto 1:
+
+data-testid="0-product-price"
+
+Produto 2:
+
+data-testid="1-product-price"
+
+Produto 3:
+
+data-testid="2-product-price"
+
+Deverá ser alterado para os seguintes data-testid listados abaixo:
+
+data-testid="0-product-qtd-input"
+
+data-testid="0-product-name"
+
+data-testid="0-product-total-value"
+
+data-testid="0-product-unit-price"
+
+data-testid="0-removal-button"
+
+![Tela do checkout](./public/checkout.png)
+
+**[Será validado que é possível acessar a tela de checkout]**
+
+**[Será validado que contém atributos descritos no protótipo]**
+
+**[Será validado que é possível ver que o produto tem quantidade, nome e valor total do produto]**
+
+**[Será validado que é possível a lista mostrar o valor total do carrinho]**
+
+**[Será validado que é possível fazer refresh da tela e os dados continuarem na tela]**
+
+**[Será validado que é possível excluir um produto no checkout]**
+
+- Será validado que ao excluir os produtos aparecerá uma mensagem na tela de:
+`Não há produtos no carrinho` como na imagem abaixo:
+
+![Checkout sem produtos](./public/naohaprodutos.png)
+
+**[Será validado que é possível o botão finalizar pedido ficar habilitado apenas quando tiver produto maior que zero e rua e numero preenchidos]**
+
+**[Será validado que é possível fazer a compra de um produto e ao finalizar ver a mensagem de sucesso e ser redirecionado para tela de produtos]**
+
+- Será validado que ao fazer a compra com sucesso a mensagem de sucesso "Compra realizada com sucesso!" irá aparecer na tela.
+
+**[Será validado que não é possível acessar o checkout sem estar logado e será redirecionado para tela de login]**
+
+### 7 - Criar Tela de Meus Pedidos
+
+Esta tela possui o nome `Cliente - Meus Pedidos` no protótipo.
+
+- Todos os elementos devem respeitar os atributos descritos no protótipo para a tela de meus pedidos;
+
+- A rota da tela deve ser `/orders`;
+
+- Deve conter uma lista de cards, onde cada card é um pedido. Cada card deve conter as seguintes informações: `número do pedido`, `data de realização` e `valor total do pedido`. Para a data de realização do pedido, mostre apenas o dia e o mês;
+
+- A listagem deve mostrar os pedidos ordenados por id;
+
+- Ao clicar no card, a pessoa deve ser redirecionada para a página **Cliente - Detalhes do Pedido**.
+
+- Ao entrar na tela, se o usuário não estiver logado, deve ser redirecionado para a tela **Login**.
+
+### Tela de Meus Pedidos
+
+- O título do top 'Meus Pedidos' deverá conter a tag `data-testid="top-title"`
+
+- O card do pedido deverá conter a tag `data-testid="0-order-card-container"`
+
+- O número do pedido deverá conter a tag `data-testid="0-order-number"`
+
+- A data do pedido deverá conter a tag `data-testid="0-order-date"`
+
+- O valor do pedido deverá conter a tag `data-testid="0-order-total-value"`
+
+**[OBS: os campos data-testid deverão ser implementado um index para cada produto sempre comecando pelo index 0, para cada um dessas tags veja os exemplo abaixo:]**
+
+Produto 1:
+
+data-testid="0-product-price"
+
+Produto 2:
+
+data-testid="1-product-price"
+
+Produto 3:
+
+data-testid="2-product-price"
+
+Deverá ser alterado para os seguintes data-testid listados abaixo:
+
+data-testid="0-order-number"
+
+data-testid="0-order-date"
+
+data-testid="0-order-total-value"
+
+data-testid="0-order-card-container"
+
+![Meus Pedidos](./public/meuspedidos.png)
+
+**[Será validado que é possível acessar a tela de meus pedidos]**
+
+**[Será validado que contém os atributos descritos no protótipo]**
+
+**[Será validado que é possível ver que o produto tem quantidade, nome, valor total e a data da compra]**
+
+**[Será validado que é possível clicar no card e ser redirecionado para tela do detalhe do produto]**
+
+**[Será validado que não é possível acessar a tela de meus pedidos sem estar logado e será redirecionado para tela de login]**
+
+### 8 - Criar Tela de Detalhes Pedidos
+
+Esta tela possui o nome `Cliente - Detalhes de Pedido` no protótipo.
+
+- Todos os elementos devem respeitar os atributos descritos no protótipo para a tela de detalhes do pedido;
+
+- A rota da página deve ser `/orders/:numero-do-pedido`;
+
+- Mostre o `número do pedido` e a `data de realização`. Para a data de realização do pedido, mostre apenas o dia e o mês;
+
+- Deve ter uma lista dos produtos selecionados com a seguinte estrutura: `quantidade do produto -- nome do produto -- valor total do produto`. Sendo o valor total calculado por **quantidade * preço unitário**;
+
+- Abaixo da lista, mostre o `valor total do pedido`. O valor total do pedido é calculado a partir da **soma de todos os valores totais dos produtos**.
+
+- Ao entrar na tela, se o usuário não estiver logado, deve ser redirecionado para a tela **Login**.
+
+titulo - data-testid="top-title" - Detalhes de Pedido
+numero do pedido - data-testid="order-number" - Pedido 1
+data do pedido - data-testid="order-date" - 03/09
+quantidade do produto - data-testid="0-product-qtd" - 1
+nome do produto - data-testid="0-product-name" - Skol Lata 250ml
+valor do produto - data-testid="0-product-total-value" - R$ 2,20
+valor total da compra - data-testid="order-total-value" - Total: R$ 2,20
+url - http://localhost:3000/orders/1
+
+### Tela de detalhes de pedido
+
+- O título do top 'Detalhes de Pedido' deverá conter a tag `data-testid="top-title"`
+
+- O número do pedido deverá conter a tag `data-testid="order-number"`
+
+- A data do pedido deverá conter a tag `data-testid="order-date"`
+
+- A quantidade do produto deverá conter a tag `data-testid="0-product-qtd"`
+
+- O nome do produto deverá conter a tag `data-testid="0-product-name"`
+
+- O valor total do produto deverá conter a tag `data-testid="0-product-total-value"`
+
+- O valor total da compra deverá conter a tag `data-testid="order-total-value"`
+
+**[OBS: os campos data-testid deverão ser implementado um index para cada produto sempre comecando pelo index 0, para cada um dessas tags veja os exemplo abaixo:]**
+
+Produto 1:
+
+data-testid="0-product-price"
+
+Produto 2:
+
+data-testid="1-product-price"
+
+Produto 3:
+
+data-testid="2-product-price"
+
+Deverá ser alterado para os seguintes data-testid listados abaixo:
+
+data-testid="0-product-qtd"
+
+data-testid="0-product-name"
+
+data-testid="0-product-total-value"
+
+![Detalhes do Pedido](./public/detalhesdopedido.png)
+
+**[Será validado que é possível acessar a tela do detalhe do pedido]**
+
+**[Será validado que contém os atributos descritos no protótipo]**
+
+**[Será validado que é possível ver que tem numero do pedido e a data da compra]**
+
+**[Será validado que é possível ver que o produto tem quantidade, nome e valor total do produto]**
+
+**[Será validado que é possível ver o valor total do pedido]**
+
+**[Será validado que não é possível acessar a tela de meus pedidos sem estar logado e será redirecionado para tela de login]**
+
+## Administrador
+
+### 9 - Criar menu side bar para Administrador
+
+- Todos os elementos devem respeitar os atributos descritos no protótipo para o menu lateral;
+
+- Deve conter três itens: `"Pedidos"`", `"Perfil"`" e "`Sair`";
+
+- Ao clicar no item `"Pedidos"`, a pessoa deve ser redirecionada para a tela **Admin - Home**;
+
+- Ao clicar no item `"Perfil"`, a pessoa deve ser redirecionada para tela **Admin - Perfil**;
+
+- Ao clicar no item `"Sair"`, a pessoa deve ser redirecionada para a tela **Login** e ser deslogada.
+
+### Menu lateral Administrador
+
+- O componente sidebar deverá conter a seguinte classe `class="admin-side-bar-container"`
+
+- O botão 'Meus Pedidos' deverá conter a tag `data-testid="side-menu-item-orders"`
+
+- O botão 'Meu Perfil' deverá conter a tag `data-testid="side-menu-item-profile"`
+
+- O botão 'Sair' deverá conter a tag `data-testid="side-menu-item-logout"`
+
+![SideBar Admin](./public/sidebaradmin.png)
+
+**[Será validado que o sidebar devem ser mostrados, conforme protótipos]**
+
+**[Será validado que ao clicar no menu meus pedidos será redirecionado para tela de meus pedidos']**
+
+**[Será validado que ao clicar no menu meus perfil será redirecionado para tela de meus perfil]**
+
+**[Será validado que ao clicar no menu sair será redirecionado para tela home]**
+
+### 10 - Criar tela de perfil de Administrador
+
+Esta tela possui o nome `Admin - Perfil` no protótipo.
+
+- Todos os elementos devem respeitar os atributos descritos no protótipo para a tela de perfil;
+
+- A rota da página deve ser `/admin/profile`;
+
+- Mostrar o `email` e o `nome` do usuário. Não permita que o usuário edite os dados;
+
+- Ao entrar na tela, se o usuário não estiver logado, deve ser redirecionado para a tela **Login**.
+
+### Tela de perfil Administrador
+
+- O nome deverá conter a seguinte classe `data-testid="profile-name"`
+
+- O email deverá conter a seguinte classe `data-testid="profile-email"`
+
+![Perfil Admin](./public/perfiladmin.png)
+
+**[Será validado que é possível acessar a tela do perfil do administrador]**
+
+**[Será validado que a tela de perfil contém os atributos descritos no protótipo]**
+
+**[Será validado que a tela de perfil contém o email e nome do administrador]**
+
+**[Será validado que não é possível acessar a tela sem estar autenticado e ser redirecionado para tela de login]**
+
+### 11 - Criar tela de pedidos de admin
+
+Esta tela possui o nome `Admin - Pedidos` no protótipo.
+
+- Todos os elementos devem respeitar os atributos descritos no protótipo para a tela de pedidos;
+
+- A rota da página deve ser `/admin/orders`;
+
+- Essa tela deve mostrar todos os pedidos feitos;
+
+- Os pedidos pendentes devem ter o label `Pendentes`, ao passo que os pedidos entregues devem ter o label `Entregue`;
+
+- Os "cards" dos pedidos devem conter as informações:
+
+    - Número do pedido;
+
+    - Endereço para entrega;
+
+    - Valor total do pedido.
+
+- Ao clicar em qualquer parte do card do pedido, a pessoa deve ser redirecionada para a tela `Admin - Detalhe de Pedido`.
+
+### Tela de Pedidos
+
+- O numero do pedido deverá conter a seguinte classe `data-testid="0-order-number"`
+
+- O endereço deverá conter a seguinte classe `data-testid="0-order-address"`
+
+- O valor total do pedido deverá conter a seguinte classe `data-testid="0-order-total-value"`
+
+- O valor total do pedido deverá conter a seguinte classe `data-testid="0-order-status"`
+
+**[OBS: os campos data-testid deverão ser implementado um index para cada produto sempre comecando pelo index 0, para cada um dessas tags veja os exemplo abaixo:]**
+
+Produto 1:
+
+data-testid="0-product-price"
+
+Produto 2:
+
+data-testid="1-product-price"
+
+Produto 3:
+
+data-testid="2-product-price"
+
+Deverá ser alterado para os seguintes data-testid listados abaixo:
+
+data-testid="0-order-number"
+
+data-testid="0-order-address"
+
+data-testid="0-order-total-value"
+
+data-testid="0-order-status"
+
+![Pedidos Admin](./public/pedidosadmin.png)
+
+**[Será validado que é possível acessar a tela do pedidos do administrador]**
+
+**[Será validado que a tela de pedidos contém os atributos descritos no protótipo]**
+
+**[Será validado que os dados do card estão corretos]**
+
+**[Será validado que é possível clicar no card do produto e ser redirecionado para tela de detalhes do produto]**
+
+### 12 - Criar tela de Detalhes de admin
+
+Essa página corresponde às páginas `Admin - Detalhes de Pedido - Pendente` e `Admin - Detalhes de Pedido - Entregue` no protótipo.
+
+- Todos os elementos devem respeitar os atributos descritos no protótipo para a tela de detalhes do pedido;
+
+- A rota da página deve ser `/admin/orders/:id`;
+
+- No cabeçalho, mostre o `número do pedido` e o `status` atual - Pendente ou Entregue;
+
+- Deve ter uma listagem com os produtos do pedido, onde cada linha deve conter:
+
+    - Quantidade;
+
+    - Nome do produto;
+
+    - Valor total do produto.
+
+- O `preço total` do produto é calculado usando **quantidade * preço unitário**;
+
+- Mostre também o `valor total do pedido`. O valor total do pedido é calculado a partir da **soma de todos os valores totais dos produtos**;
+
+- Caso o status do pedido seja **pendente**, um botão para marcar o pedido como entregue deve ser exibido. Caso contrário, não exiba o botão;
+
+- Ao clicar no botão `"Marcar pedido como entregue"`, o status desse pedido deve mudar para `Entregue` e o botão deve desaparecer.
+
+### Tela de Detalhes de Pedido
+
+- O numero do pedido deverá conter a seguinte classe `data-testid="order-number"`
+
+- O status do pedido deverá conter a seguinte classe `data-testid="order-status"`
+
+- A quantidade do produto deverá conter a seguinte classe `data-testid="0-product-qtd"`
+
+- O nome do produto deverá conter a seguinte classe `data-testid="0-product-name"`
+
+- O valor total do produto deverá conter a seguinte classe `data-testid="0-product-total-value"`
+
+- O preço unitário do produto deverá conter a seguinte classe `data-testid="0-order-unit-price"`
+
+- O valor total do pedido deverá conter a seguinte classe `data-testid="order-total-value"`
+
+- O botão 'Marcar como entregue' deverá conter a seguinte classe `data-testid="mark-as-delivered-btn"`
+
+**[OBS: os campos data-testid deverão ser implementado um index para cada produto sempre comecando pelo index 0, para cada um dessas tags veja os exemplo abaixo:]**
+
+Produto 1:
+
+data-testid="0-product-price"
+
+Produto 2:
+
+data-testid="1-product-price"
+
+Produto 3:
+
+data-testid="2-product-price"
+
+Deverá ser alterado para os seguintes data-testid listados abaixo:
+
+data-testid="0-product-qtd"
+
+data-testid="0-product-name"
+
+data-testid="0-product-total-value"
+
+data-testid="0-order-unit-price"
+
+![Detalhes pedidos Admin](./public/detalhespedidosadmin.png)
+
+**[Será validado que é possível acessar a tela do detalhe do pedido do administrador]**
+
+**[Será validado que contém os atributos descritos no protótipo]**
+
+**[Será validado que o pedido contém nome e status do pedido]**
+
+**[Será validado que o pedido contém todos os detalhes do pedido]**
+
+**[Será validado que o pedido com status pendente irá apresentar na tela o botão "Marcar como entregue"]**
+
+**[Será validado que o pedido ao marcar como entregue o status mude para entregue" e o botão nao esteja mais visível]**
+
+Será validado que o status do pedido fique marcado como entregue como na imagem abaixo:
+
+![Entregue](./public/entregue.png)
+
+**[Será validado que o pedido ao marcar como entregue o status mude para entregue" na tela de pedidos admin]**
+
+Será validado que o status do pedido fique marcado como entregue como na imagem abaixo:
+
+![Entregue](./public/pedidoentregue.png)
+
+### Bônus
+
+### 13 - Cobertura de testes unitários
+
+- Escreva testes unitários com cobertura de, no mínimo, 90%, considerando front-end e back-end;
 
 ---
 
