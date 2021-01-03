@@ -13,7 +13,7 @@ const config = {
 let schema;
 
 const simpleConnection = () => {
-  if (schema) return Promise.resolve(schema);
+  // if (schema) return Promise.resolve(schema);
   return mysqlx.getSession(config).catch((err) => {
     console.error(err);
     process.exit(1);

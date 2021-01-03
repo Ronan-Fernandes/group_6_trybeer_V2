@@ -5,7 +5,6 @@ import Header from '../../components/Header';
 const ClientOrders = () => (
   <>
     <Header />
-
     <ClientOrdersContainer />
   </>
 );

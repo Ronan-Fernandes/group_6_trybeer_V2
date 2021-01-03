@@ -17,7 +17,15 @@ const getAllSalesMod = async () => {
       .execute();
     const allSales = await salesDB.fetchAll();
     return allSales.map(
-      ([id, userId, totalPrice, deliveryAddress, deliveryNumber, saleDate, status]) => ({
+      ([
+        id,
+        userId,
+        totalPrice,
+        deliveryAddress,
+        deliveryNumber,
+        saleDate,
+        status,
+      ]) => ({
         id,
         userId,
         total: totalPrice,
@@ -32,7 +40,14 @@ const getAllSalesMod = async () => {
   }
 };
 
-const postFinishSalesMod = async (id, total, address, number, date, status = 'Pendente') => {
+const postFinishSalesMod = async (
+  id,
+  total,
+  address,
+  number,
+  date,
+  status = 'Pendente',
+) => {
   try {
     const db = await connection();
     await db
@@ -69,9 +84,12 @@ const updateStatusMod = async (id, status) => {
   }
 };
 
+
 const getAdminOrderById = async (orderId) => {
+  console.log('getAdminOrderById');
   try {
     const db = await simpleConnection();
+    console.log("inside try", db);
     const query = await db
       .sql(
         `SELECT sale_id, name, quantity, total_price, status, price  FROM sales_products AS sp
@@ -82,16 +100,19 @@ const getAdminOrderById = async (orderId) => {
       )
       .bind(orderId)
       .execute();
-
+    console.log('query', query);
     const result = await query.fetchAll();
-    return result.map(([saleId, name, quantity, totalPrice, status, price]) => ({
-      saleId,
-      name,
-      quantity,
-      totalPrice,
-      status,
-      price,
-    }));
+    console.log('result', result);
+    return result.map(
+      ([saleId, name, quantity, totalPrice, status, price]) => ({
+        saleId,
+        name,
+        quantity,
+        totalPrice,
+        status,
+        price,
+      }),
+    );
   } catch (error) {
     return error;
   }
