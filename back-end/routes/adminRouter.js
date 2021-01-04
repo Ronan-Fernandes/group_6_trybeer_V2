@@ -6,12 +6,13 @@ const adminRouter = Router();
 
 adminRouter
   .get('/', middleware.authJWT, adminController.getProfile)
-  .get('/orders/:id', middleware.authJWT, adminController.getAdminSales)
+  //.get('/orders/:id', middleware.authJWT, adminController.getAdminSales)
+  .get('/orders/:id', adminController.getAdminSales)
   .put(
     '/',
     middleware.authJWT,
     middleware.validateUpdateStatusSales,
-    salesController.updateStatusCont,
+    salesController.updateStatusCont
   );
 
 module.exports = { adminRouter };
