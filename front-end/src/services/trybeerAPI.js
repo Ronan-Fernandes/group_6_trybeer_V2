@@ -46,12 +46,7 @@ class UserService {
 
   /** User signup */
   async userSignup(userData) {
-    const {
-      email,
-      name,
-      password,
-      admin,
-    } = userData;
+    const { email, name, password, admin } = userData;
 
     const body = {
       email,
@@ -80,6 +75,7 @@ class UserService {
 
   /** Post one order */
   async postOrder(payload, token) {
+    console.log('postOrder');
     return this.http.post(
       '/sales',
 
@@ -104,6 +100,18 @@ class UserService {
         Authorization: token,
       },
     });
+  }
+
+  /** Get all Products from one (id) sale */
+
+  async getSalesProducts(token, id) {
+    const result = this.http.get(`/admin/orders/${id}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    console.log('token, id', id, result, token);
+    return result;
   }
 }
 
