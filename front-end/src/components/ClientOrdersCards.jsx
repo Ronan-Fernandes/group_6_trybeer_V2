@@ -24,14 +24,17 @@ const ClientOrdersCards = () => {
   let newDate = '';
   let dateAndMonth = '';
   let totalPrice = 0;
+  let day = 0;
+  let month = 0;
 
   return (
     <>
       {
         getOrderSuccess && orders.map((order, i) => (
           newDate = new Date(order.date),
-          dateAndMonth = `${newDate.getDate()}/${newDate.getMonth() + 1}`,
-
+          day= (("0" + newDate.getDate()).slice(-2)), // Add 0 if day <10
+          month = (("0" + newDate.getMonth() + 1).slice(-2)), // Add 0 if month <10
+          dateAndMonth = `${day}/${month}`,
           totalPrice = order.total.toFixed(2).toString().replace('.', ','),
           (<Link key={order.id}
             to={{

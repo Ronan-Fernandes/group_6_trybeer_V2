@@ -14,11 +14,11 @@ const OrderDetail = (props) => {
   const { session } = useSelector((state) => state.userReducer);
 
   // Fetch all products from one sale at first render
-  // useEffect(() => {
-  //   dispatch(
-  //     getSalesProducts(session.token, props.dataFromOrders.match.params.id),
-  //   );
-  // }, []);
+  useEffect(() => {
+    dispatch(
+      getSalesProducts(session.token, props.dataFromOrders.match.params.id),
+    );
+  }, []);
 
   let newDate = '';
   let dateAndMonth = '';
@@ -30,13 +30,7 @@ const OrderDetail = (props) => {
       <h3 data-testid="order-number">
         Pedido {props.dataFromOrders.match.params.id}
       </h3>
-      <button 
-            // onClick={() => dispatch(getSalesProducts(session.token, props.dataFromOrders.match.params.id))}
-            onClick={() => UserService.getSalesProducts(session.token, props.dataFromOrders.match.params.id)}
-            >
-        click to try
-      </button>
-      {/* {getSalesProductsSuccess && (
+      {getSalesProductsSuccess && (
         <div>
           <h3 data-testid="order-date">
             {props.dataFromOrders.location.state.date}
@@ -55,7 +49,7 @@ const OrderDetail = (props) => {
             R$ {props.dataFromOrders.location.state.totalPrice}
           </h3>
         </div>
-      )} */}
+      )}
     </>
   );
 };
