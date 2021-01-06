@@ -1,4 +1,4 @@
-const { usersModel } = require('../models');
+const { usersModel } = require('../models_antigo');
 const createToken = require('./createToken');
 
 const updateUserServ = async (name, email) => {

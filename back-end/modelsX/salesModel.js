@@ -18,7 +18,15 @@ const getAllSalesMod = async () => {
       .execute();
     const allSales = await salesDB.fetchAll();
     return allSales.map(
-      ([id, userId, totalPrice, deliveryAddress, deliveryNumber, saleDate, status]) => ({
+      ([
+        id,
+        userId,
+        totalPrice,
+        deliveryAddress,
+        deliveryNumber,
+        saleDate,
+        status,
+      ]) => ({
         id,
         userId,
         total: totalPrice,
@@ -26,14 +34,21 @@ const getAllSalesMod = async () => {
         number: deliveryNumber,
         date: saleDate,
         status,
-      }),
+      })
     );
   } catch (error) {
     return error;
   }
 };
 
-const postFinishSalesMod = async (id, total, address, number, date, status = 'Pendente') => {
+const postFinishSalesMod = async (
+  id,
+  total,
+  address,
+  number,
+  date,
+  status = 'Pendente'
+) => {
   try {
     const db = await connection();
     await db
@@ -70,30 +85,46 @@ const updateStatusMod = async (id, status) => {
   }
 };
 
+// const getAdminOrderById = async (id) => {
+//   const session = await simpleConnection();
+//   const result = await session
+//     .sql(
+//       `SELECT * FROM Trybeer.sales_products AS sp
+//     JOIN Trybeer.products AS p ON sp.product_id = p.id
+//     WHERE sp.sale_id = ${id}`
+//     )
+//     .execute()
+//     .then((data) => data.fetchAll());
+//   if (!result.length) return null;
+//   return result;
+// };
+
 const getAdminOrderById = async (orderId) => {
   try {
     const db = await simpleConnection();
     const query = await db
       .sql(
         `SELECT sale_id, name, price, quantity, total_price, sale_date, status FROM sales_products AS sp
-    RIGHT JOIN sales AS s ON s.id = sp.sale_id
-    RIGHT JOIN products AS p ON p.id = sp.product_id
+    INNER JOIN sales AS s ON s.id = sp.sale_id
+    INNER JOIN products AS p ON p.id = sp.product_id
     WHERE sale_id = ?
-    `,
+    `
       )
       .bind(orderId)
       .execute();
 
     const result = await query.fetchAll();
-    return result.map(([sale_id, name, price, quantity, total_price, sale_date, status]) => ({
-      sale_id,
-      name,
-      price,
-      quantity,
-      total_price,
-      sale_date,
-      status,
-    }));
+    return result.map(
+      ([sale_id, name, price, quantity, total_price, sale_date, status]) => ({
+        sale_id,
+        name,
+        price,
+        quantity,
+        total_price,
+        sale_date,
+        status,
+      })
+    );
   } catch (error) {
     return error;
   }

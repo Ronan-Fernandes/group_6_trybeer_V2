@@ -1,4 +1,4 @@
-const { salesModel } = require('../models');
+const { salesModel } = require('../models_antigo');
 
 const allSalesSev = async () => {
   const sales = await salesModel.getAllSalesMod();
@@ -19,7 +19,7 @@ const finishSalesServ = async (id, total, address, number) => {
     totalToInsert,
     address,
     number,
-    date,
+    date
   );
   const sales = await salesModel.getAllSalesMod();
   const newSale = await sales.filter((elem) => elem.userId === id);
@@ -32,10 +32,10 @@ const finishSalesServ = async (id, total, address, number) => {
   return saleResponse;
 };
 
-const updateStatusServ = async (id) => {
-  await salesModel.updateStatusMod(id, 'Entregue');
+const updateStatusServ = async (id, status) => {
+  await salesModel.updateStatusMod(id, status);
 
-  return { message: 'Entregue' };
+  return { message: status };
 };
 
 module.exports = {
