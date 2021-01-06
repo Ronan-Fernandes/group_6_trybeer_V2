@@ -1,7 +1,9 @@
-const { salesModel } = require('../models');
+const { Sale } = require('../models');
 
 const allSalesSev = async () => {
-  const sales = await salesModel.getAllSalesMod();
+  const sales = await Sale.findAll({
+    attributes: { exclude: ['userId'] },
+  });
 
   return sales;
 };
@@ -14,15 +16,17 @@ const finishSalesServ = async (id, total, address, number) => {
     dateNow.getMonth() + 1
   }-${dateNow.getDate()} - ${dateNow.getHours()}:${dateNow.getMinutes()}:${dateNow.getSeconds()}`;
 
-  const checkout = await salesModel.postFinishSalesMod(
+  const checkout = await Sale.create({
     id,
     totalToInsert,
     address,
     number,
     date,
-  );
-  const sales = await salesModel.getAllSalesMod();
-  const newSale = await sales.filter((elem) => elem.userId === id);
+  });
+  const sales = await Sale.findAll({
+    attributes: { exclude: ['userId'] },
+  });
+  const newSale = await sales.filter((elem) => elem.user_id === id);
 
   const saleResponse = {
     ...checkout,
@@ -33,7 +37,12 @@ const finishSalesServ = async (id, total, address, number) => {
 };
 
 const updateStatusServ = async (id, status) => {
-  await salesModel.updateStatusMod(id, status);
+  await Sale.update(
+    {
+      status,
+    },
+    { where: { id } },
+  );
 
   return { message: status };
 };

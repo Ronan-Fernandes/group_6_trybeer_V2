@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const ProductsTable = queryInterface.createTable('products', {
+    const ProductsTable = queryInterface.createTable('Products', {
       id: {
         allowNull: false,
         autoIncrement: true,
