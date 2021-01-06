@@ -1,4 +1,4 @@
-const { usersModel } = require('../models_antigo');
+const { usersModel } = require('../models');
 const createToken = require('./createToken');
 
 const userLoginServ = async (userEmail, userPassword) => {

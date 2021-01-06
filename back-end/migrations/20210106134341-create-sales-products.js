@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const SalesProductsTable = queryInterface.createTable('sales_products', {
@@ -8,23 +6,18 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-      },
-      product_id: { allownull: false, type: Sequelize.INTEGER },
-      quantity: { allownull: false, unique: true, type: Sequelize.STRING },
-      sale_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+        references: { model: 'sales', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-        references: { model: 'sales', key: 'id' },
       },
       product_id: {
+        allownull: false,
         type: Sequelize.INTEGER,
-        allowNull: false,
+        references: { model: 'products', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-        references: { model: 'products', key: 'id' },
       },
+      quantity: { allownull: false, unique: true, type: Sequelize.STRING },
     });
 
     return SalesProductsTable;

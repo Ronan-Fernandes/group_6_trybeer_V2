@@ -1,5 +1,5 @@
 const rescue = require('express-rescue');
-const { salesModel, usersModel } = require('../models_antigo');
+const { salesModel, usersModel } = require('../models');
 
 const getProfile = rescue(async (req, res) => {
   const { email } = req.user;

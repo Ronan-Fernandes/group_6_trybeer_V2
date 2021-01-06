@@ -1,6 +1,6 @@
 const rescue = require('express-rescue');
 const { salesServices } = require('../services');
-const { salesProductsModel } = require('../models_antigo');
+const { salesProductsModel } = require('../models');
 
 const allSales = rescue(async (_req, res) => {
   const sales = await salesServices.allSalesSev();
@@ -15,7 +15,7 @@ const finishSales = rescue(async (req, res) => {
     address,
     number,
     date,
-    status
+    status,
   );
 
   for (let i = 0; i < products.length; i += 1) {
@@ -23,7 +23,7 @@ const finishSales = rescue(async (req, res) => {
     salesProductsModel.postRegisterSalesProductsMod(
       newSale.saleId,
       productId,
-      quantity
+      quantity,
     );
   }
 
