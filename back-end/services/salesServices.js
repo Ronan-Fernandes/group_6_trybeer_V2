@@ -1,7 +1,7 @@
-const { Sale } = require('../models');
+const { sale } = require('../models');
 
 const allSalesSev = async () => {
-  const sales = await Sale.findAll({
+  const sales = await sale.findAll({
     attributes: { exclude: ['userId'] },
   });
 
@@ -16,28 +16,29 @@ const finishSalesServ = async (id, total, address, number) => {
     dateNow.getMonth() + 1
   }-${dateNow.getDate()} - ${dateNow.getHours()}:${dateNow.getMinutes()}:${dateNow.getSeconds()}`;
 
-  const checkout = await Sale.create({
-    id,
-    totalToInsert,
-    address,
-    number,
-    date,
+  const checkout = await sale.create({
+    user_id: id,
+    total_price: totalToInsert,
+    delivery_address: address,
+    delivery_number: number,
+    sale_date: date,
+    status: 'pendente',
   });
-  const sales = await Sale.findAll({
+  const AllSales = await sale.findAll({
     attributes: { exclude: ['userId'] },
   });
-  const newSale = await sales.filter((elem) => elem.user_id === id);
+  const newSale = await AllSales.filter((elem) => elem.user_id === id);
 
   const saleResponse = {
     ...checkout,
     saleId: newSale[newSale.length - 1].id,
   };
 
-  return saleResponse;
+  return saleResponse.dataValues;
 };
 
 const updateStatusServ = async (id, status) => {
-  await Sale.update(
+  await sale.update(
     {
       status,
     },

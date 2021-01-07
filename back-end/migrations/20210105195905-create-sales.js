@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const SalesTable = queryInterface.createTable('Sales', {
+    const SalesTable = queryInterface.createTable('sales', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-        references: { model: 'Users', key: 'id' },
+        references: { model: 'users', key: 'id' },
       },
     });
 
