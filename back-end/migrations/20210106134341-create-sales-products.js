@@ -1,30 +1,29 @@
-'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const SalesProductsTable = queryInterface.createTable('sales_products', {
-      sale_id: {
+    const SalesProductsTable = queryInterface.createTable('salesProducts', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      product_id: { allownull: false, type: Sequelize.INTEGER },
-      quantity: { allownull: false, unique: true, type: Sequelize.STRING },
       sale_id: {
-        type: Sequelize.INTEGER,
         allowNull: false,
+        // autoIncrement: true,
+        // primaryKey: true,
+        type: Sequelize.INTEGER,
+        references: { model: 'sales', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-        references: { model: 'sales', key: 'id' },
       },
       product_id: {
+        allownull: false,
         type: Sequelize.INTEGER,
-        allowNull: false,
+        references: { model: 'products', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-        references: { model: 'products', key: 'id' },
       },
+      quantity: { allownull: false, type: Sequelize.STRING },
     });
 
     return SalesProductsTable;

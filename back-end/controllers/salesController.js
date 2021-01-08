@@ -1,9 +1,11 @@
 const rescue = require('express-rescue');
 const { salesServices } = require('../services');
-const { salesProductsModel } = require('../models_antigo');
+const { sale, salesProduct } = require('../models');
 
 const allSales = rescue(async (_req, res) => {
-  const sales = await salesServices.allSalesSev();
+  const sales = await sale.findAll({
+    attributes: { exclude: ['userId'] },
+  });
   res.status(200).json(sales);
 });
 
@@ -15,28 +17,33 @@ const finishSales = rescue(async (req, res) => {
     address,
     number,
     date,
-    status
+    status,
   );
 
   for (let i = 0; i < products.length; i += 1) {
     const { productId, quantity } = products[i];
-    salesProductsModel.postRegisterSalesProductsMod(
-      newSale.saleId,
-      productId,
-      quantity
-    );
+    salesProduct.create({
+      sale_id: id,
+      product_id: productId,
+      quantity,
+    });
   }
 
   res.status(200).json(newSale);
 });
 
 const updateStatusCont = rescue(async (req, res) => {
-  const { id, status } = req.body;
-  console.log(status);
+  const { id } = req.params;
+  const { status } = req.body;
 
-  const newStatus = await salesServices.updateStatusServ(id, status);
+  await sale.update(
+    {
+      status,
+    },
+    { where: { id } },
+  );
 
-  res.status(200).json(newStatus);
+  res.status(200).json({ status });
 });
 
 module.exports = {

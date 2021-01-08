@@ -56,7 +56,7 @@ function App() {
         {/* <Route path="orders/:id" component={ OrderDetail } /> */}
         <Route
           path="/orders/:id"
-          render={(props) =>
+          render={ (props) =>
             requireAuth() ? <OrderDetail dataFromOrders={props}/> : <Redirect to="/login" />
           }
         />
