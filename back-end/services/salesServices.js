@@ -1,7 +1,9 @@
-const { salesModel } = require('../models');
+const { sale } = require('../models');
 
 const allSalesSev = async () => {
-  const sales = await salesModel.getAllSalesMod();
+  const sales = await sale.findAll({
+    attributes: { exclude: ['userId'] },
+  });
 
   return sales;
 };
@@ -14,28 +16,36 @@ const finishSalesServ = async (id, total, address, number) => {
     dateNow.getMonth() + 1
   }-${dateNow.getDate()} - ${dateNow.getHours()}:${dateNow.getMinutes()}:${dateNow.getSeconds()}`;
 
-  const checkout = await salesModel.postFinishSalesMod(
-    id,
-    totalToInsert,
-    address,
-    number,
-    date,
-  );
-  const sales = await salesModel.getAllSalesMod();
-  const newSale = await sales.filter((elem) => elem.userId === id);
+  const checkout = await sale.create({
+    user_id: id,
+    total_price: totalToInsert,
+    delivery_address: address,
+    delivery_number: number,
+    sale_date: date,
+    status: 'pendente',
+  });
+  const AllSales = await sale.findAll({
+    attributes: { exclude: ['userId'] },
+  });
+  const newSale = await AllSales.filter((elem) => elem.user_id === id);
 
   const saleResponse = {
     ...checkout,
     saleId: newSale[newSale.length - 1].id,
   };
 
-  return saleResponse;
+  return saleResponse.dataValues;
 };
 
-const updateStatusServ = async (id) => {
-  await salesModel.updateStatusMod(id, 'Entregue');
+const updateStatusServ = async (id, status) => {
+  await sale.update(
+    {
+      status,
+    },
+    { where: { id } },
+  );
 
-  return { message: 'Entregue' };
+  return { message: status };
 };
 
 module.exports = {

@@ -1,5 +1,5 @@
 const rescue = require('express-rescue');
-const { salesModel, usersModel } = require('../models');
+const { sale, usersModel } = require('../models');
 
 const getProfile = rescue(async (req, res) => {
   const { email } = req.user;
@@ -12,7 +12,10 @@ const getProfile = rescue(async (req, res) => {
 
 const getAdminSales = rescue(async (req, res) => {
   const { id } = req.params;
-  const sales = await salesModel.getAdminOrderById(id);
+  const sales = await sale.findOne({
+    attributes: { exclude: ['userId'] },
+    where: { id },
+  });
   res.status(200).json(sales);
 });
 
