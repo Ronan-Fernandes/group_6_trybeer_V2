@@ -24,6 +24,7 @@ const finishSalesServ = async (id, total, address, number) => {
     sale_date: date,
     status: 'pendente',
   });
+
   const AllSales = await sale.findAll({
     attributes: { exclude: ['userId'] },
   });
