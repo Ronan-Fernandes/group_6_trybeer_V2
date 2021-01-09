@@ -7,7 +7,6 @@ import Header from '../../components/Header';
 
 const OrderDetail = (props) => {
   const dispatch = useDispatch();
-console.log(props.dataFromOrders.match.params.id);
   const { getSalesProductsSuccess, salesProducts } = useSelector(
     (state) => state.salesProductsReducer,
   );
@@ -22,16 +21,19 @@ console.log(props.dataFromOrders.match.params.id);
 
   let newDate = '';
   let dateAndMonth = '';
+  console.log(getSalesProductsSuccess);
+  if (!getSalesProductsSuccess) return <h2>Carregando...</h2>;
   return (
     <>
       <Header />
       <h3 data-testid="order-number">
         Pedido {props.dataFromOrders.match.params.id}
       </h3>
-      {/* <h3>
-      R$ {salesProducts[0].total_price}
-      </h3> */}
-      {getSalesProductsSuccess && (
+      <h3>
+      {/* {salesProducts[0].total_price} */}
+      </h3> 
+      {/* {getSalesProductsSuccess && (
+
         <div>
           {salesProducts.map((product, i) => (
             <div className="cardContainer" key={product.name}>
@@ -47,7 +49,8 @@ console.log(props.dataFromOrders.match.params.id);
             R$ {salesProducts[0].total_price}
           </h3>
         </div>
-      )}
+        
+      )} */}
     </>
   );
 };

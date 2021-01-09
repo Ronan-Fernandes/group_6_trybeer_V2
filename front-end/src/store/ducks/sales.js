@@ -25,14 +25,15 @@ const salesReducer = (state = initialState, { type, payload }) => {
     case Types.SALES_FETCHING:
       return { ...state, isFetching: payload.status };
     case Types.SALES_FETCHED:
+      console.log(payload);
       return {
         ...state,
         sales: {
           pending: [
-            ...payload.sales.filter((sale) => sale.status === 'Pendente'),
+            ...payload.sales.filter((sale) => sale.status === 'pendente'),
           ],
           delivered: [
-            ...payload.sales.filter((sale) => sale.status === 'Entregue'),
+            ...payload.sales.filter((sale) => sale.status === 'entregue'),
           ],
         },
       };

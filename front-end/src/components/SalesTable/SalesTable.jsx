@@ -69,7 +69,7 @@ const SalesTable = ({ title, sales }) => {
                     Valor Compra:
                     <span
                       data-testid={`${index}-order-total-value`}
-                    >{`R$ ${sale.total
+                    >{`R$ ${sale.total_price
                       .toFixed(2)
                       .toString()
                       .replace('.', ',')}`}</span>
