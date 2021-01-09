@@ -22,7 +22,7 @@ const finishSalesServ = async (id, total, address, number) => {
     delivery_address: address,
     delivery_number: number,
     sale_date: date,
-    status: 'pendente',
+    status: 'Pendente',
   });
 
   const AllSales = await sale.findAll({

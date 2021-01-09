@@ -9,8 +9,8 @@ adminRouter
   // .get('/orders/:id', middleware.authJWT, adminController.getAdminSales)
   .get('/orders/:id', adminController.getAdminSales)
   .put(
-    '/',
-    middleware.authJWT,
+    '/orders/:id',
+    // middleware.authJWT,
     middleware.validateUpdateStatusSales,
     salesController.updateStatusCont,
   );
