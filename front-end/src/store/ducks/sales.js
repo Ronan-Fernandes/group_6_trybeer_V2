@@ -14,8 +14,10 @@ export const Types = {
 
 const initialState = {
   isFetching: false,
+  fetchSalesSuccess: false,
   sales: {
     pending: [],
+    processed: [],
     delivered: [],
   },
 };
@@ -27,9 +29,12 @@ const salesReducer = (state = initialState, { type, payload }) => {
     case Types.SALES_FETCHED:
       return {
         ...state,
-        sales: {
+        sales: {fetchSalesSuccess: true,
           pending: [
             ...payload.sales.filter((sale) => sale.status === 'Pendente'),
+          ],
+          processed: [
+            ...payload.sales.filter((sale) => sale.status === 'Preparando'),
           ],
           delivered: [
             ...payload.sales.filter((sale) => sale.status === 'Entregue'),

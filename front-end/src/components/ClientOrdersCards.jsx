@@ -26,16 +26,18 @@ const ClientOrdersCards = () => {
   let totalPrice = 0;
   let day = 0;
   let month = 0;
+  let dateLength = 0;
 
   return (
     <>
-      {
+        {
         getOrderSuccess && orders.map((order, i) => (
-          newDate = new Date(order.date),
+          dateLength =order.sale_date.length,
+          newDate = new Date(order.sale_date.slice(0, dateLength-10)),
           day= (("0" + newDate.getDate()).slice(-2)), // Add 0 if day <10
           month = (("0" + newDate.getMonth() + 1).slice(-2)), // Add 0 if month <10
           dateAndMonth = `${day}/${month}`,
-          totalPrice = order.total.toFixed(2).toString().replace('.', ','),
+          totalPrice = order.total_price.toFixed(2).toString().replace('.', ','),
           (<Link key={order.id}
             to={{
               pathname: `orders/${order.id}`,
@@ -47,6 +49,7 @@ const ClientOrdersCards = () => {
           >
             <div className='cardContainer' data-testid={`${i}-order-card-container`}>
               <h3 data-testid={`${i}-order-number`} >Pedido {order.id}</h3>
+              <h3>{order.status}</h3>
               <h3 data-testid={`${i}-order-date`}>{
                 dateAndMonth
               }</h3>

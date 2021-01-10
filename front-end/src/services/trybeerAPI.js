@@ -75,7 +75,6 @@ class UserService {
 
   /** Post one order */
   async postOrder(payload, token) {
-    console.log('postOrder');
     return this.http.post(
       '/sales',
 
@@ -112,6 +111,16 @@ class UserService {
     });
     console.log('token, id', id, result, token);
     return result;
+  }
+
+  /** Update  one (id) sale */
+  async updateStatusSale(token, status, id) {
+    console.log(token, status, id);
+    return this.http.put(
+      `/admin/orders/${id}`,
+      { status },
+      { headers: { Authorization: token } },
+    );
   }
 }
 

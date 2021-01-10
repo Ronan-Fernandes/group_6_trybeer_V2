@@ -12,7 +12,7 @@ const CheckoutContainer = () => {
 
   const cart = useSelector((state) => state.cartReducer.cart);
 
-  //Each loading cart is load from localstorage
+  //Each page loading, cart is load from localstorage
   useEffect(() => {
     const localStoreCart = loadFromLocalStorage('cart');
     if (localStoreCart !== null) dispatch(loadInitCart(localStoreCart.cart));
