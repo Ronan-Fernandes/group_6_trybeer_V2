@@ -35,13 +35,14 @@ const OrderDetail = (props) => {
           <h3 data-testid="order-date">
             {props.dataFromOrders.location.state.date}
           </h3>
+<h3> {salesProducts[0].sale.status}</h3>
           {salesProducts.map((product, i) => (
             <div className="cardContainer" key={product.name}>
               <h3 data-testid={`${i}-product-qtd`}> {product.quantity} - </h3>
 
               <h3 data-testid={`${i}-product-name`}> {product.name}</h3>
               <h3 data-testid={`${i}-product-total-value`}>
-                R$ {product.price.toFixed(2).toString().replace('.', ',')}
+                R$ {product.sale.total_price.toFixed(2).toString().replace('.', ',')}
               </h3>
             </div>
           ))}

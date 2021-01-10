@@ -49,6 +49,7 @@ const ClientOrdersCards = () => {
           >
             <div className='cardContainer' data-testid={`${i}-order-card-container`}>
               <h3 data-testid={`${i}-order-number`} >Pedido {order.id}</h3>
+              <h3>{order.status}</h3>
               <h3 data-testid={`${i}-order-date`}>{
                 dateAndMonth
               }</h3>

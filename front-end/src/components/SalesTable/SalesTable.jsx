@@ -31,8 +31,11 @@ const SalesTable = ({ title, sales }) => {
         </thead>
         <tbody>
           {sales.map((sale, index) => {
-            const saleDate = new Date(sale.date);
-
+            const dateLength = sale.sale_date.length;
+            const newDate = new Date(sale.sale_date.slice(0, dateLength - 10));
+            const day = (("0" + newDate.getDate()).slice(-2)); // Add 0 if day <10
+            const month = (("0" + newDate.getMonth() + 1).slice(-2)); // Add 0 if month <10
+            const saleDate = `${day}/${month}`;
             return (
               <>
                 <Sale key={sale.id} onClick={() => handleRedirect(sale.id)}>
@@ -48,9 +51,9 @@ const SalesTable = ({ title, sales }) => {
                     position="left"
                   >{`${saleDate.toLocaleString('pt-BR')}`}</SaleInfo>
                   <SaleInfo size="15%" position="center">
-                    <span data-testid={`${index}-order-status`}>
+                  <h3 data-testid={`${index}-order-status`}>
                       {sale.status}
-                    </span>
+                    </h3>
                     <ExpandButton
                       onClick={() =>
                         setselectedSale({
@@ -76,10 +79,7 @@ const SalesTable = ({ title, sales }) => {
                     Endereço de entrega:
                     <span
                       data-testid={`${index}-order-address`}
-                    >{`${sale.address}, ${sale.number}`}</span>
-                  </td>
-                  <td>
-                    <button>Alterar status</button>
+                    >{`${sale.delivery_address}, ${sale.delivery_number}`}</span>
                   </td>
                 </SaleDetails>
               </>

@@ -16,11 +16,11 @@ const Header = (props) => {
     '/profile': 'Meu perfil',
     '/checkout': 'Finalizar Pedido',
     '/orders': 'Meus Pedidos',
+    '/admin/orders': 'Os Pedidos',
     '/login': 'TryBeer',
     '/products': 'TryBeer',
   };
   const handleClick = () => {
-    //dispatch(changeVisibility()); //async
     setsidebarVisible(!sidebarVisible);
   }
 
@@ -44,7 +44,8 @@ const Header = (props) => {
         </div>
       </div>
       <div className="sidebar">
-        {(sidebarVisible || role === 'administrator') && <SideBar />}
+        {(sidebarVisible || role === 'administrator') && <SideBar />} 
+        {/* {(sidebarVisible ) && <SideBar />} */}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadInitCart } from '../store/ducks/productsCart';
 import { postOrder } from '../store/ducks/orders';
@@ -22,9 +22,9 @@ const CheckoutForm = (props) => {
     number: '',
   });
 
-  function goToProducts() {
-    history.push('/products');
-  }
+  // function goToProducts() {
+  //   history.push('/products');
+  // }
 
 
   const handleClick = () => {
@@ -32,7 +32,7 @@ const CheckoutForm = (props) => {
     dispatch(postOrder(cart, user.id, user.email,
       props.total, address.street, address.number, session.token));
     deleteFromLocalStorage('cart');
-    setTimeout(goToProducts, 3000);
+    // setTimeout(goToProducts, 3000);
   };
 
   return (

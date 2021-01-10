@@ -38,6 +38,7 @@ class SalesService {
   async getSales(token) {
     return this.http.get('/sales', { headers: { Authorization: token } });
   }
+
 }
 
 export default new SalesService();

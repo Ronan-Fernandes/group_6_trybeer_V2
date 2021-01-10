@@ -22,7 +22,7 @@ const finishSales = rescue(async (req, res) => {
   for (let i = 0; i < products.length; i += 1) {
     const { productId, quantity } = products[i];
     salesProduct.create({
-      sale_id: newSale.id, 
+      sale_id: newSale.id,
       product_id: productId,
       quantity,
     });
