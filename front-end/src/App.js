@@ -93,7 +93,11 @@ function App() {
         <Route
           path="/admin/orders/:id"
           render={(matchProps) =>
-            requireAuth() ? <OrderDetailAdmin dataFromOrders={matchProps}/> : <Redirect to="/login" />
+            requireAuth() ? (
+              <OrderDetailAdmin dataFromOrders={matchProps} />
+            ) : (
+              <Redirect to="/login" />
+            )
           }
         />
         <Route

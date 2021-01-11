@@ -5,16 +5,17 @@
       "es2020": true,
       "jest": true
     },
-    "extends": ["plugin:react/recommended", "airbnb"],
+    "extends": ["plugin:react/recommended", "airbnb", "prettier"], 
     "parserOptions": {
       "ecmaFeatures": {
         "jsx": true
       },
       "sourceType": "module"
     },
-    "plugins": ["react", "react-hooks"],
+    "plugins": ["react", "react-hooks","prettier"],
     "rules": {
       "linebreak-style": ["error", "unix"],
+      "prettier/prettier": ["error"],
       "quotes": ["error", "single"],
       "semi": ["error", "always"],
       "class-methods-use-this": ["off"],

@@ -29,6 +29,11 @@ const menus = {
       label: 'Meu Perfil',
       dataTestID: 'side-menu-item-my-profile',
     },
+    {
+      route: '/chat',
+      label: 'Conversar com a loja',
+      dataTestID: 'side-menu-chat',
+    },
   ],
   administrator: [
     {
