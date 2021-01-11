@@ -29,7 +29,8 @@ const salesReducer = (state = initialState, { type, payload }) => {
     case Types.SALES_FETCHED:
       return {
         ...state,
-        sales: {fetchSalesSuccess: true,
+        sales: {
+          fetchSalesSuccess: true,
           pending: [
             ...payload.sales.filter((sale) => sale.status === 'Pendente'),
           ],
