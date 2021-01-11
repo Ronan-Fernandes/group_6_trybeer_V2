@@ -1,77 +1,54 @@
 {
-  "name": "front-end",
-  "version": "0.1.0",
-  "private": true,
+  "name": "trybeer-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "drop": "npx sequelize-cli db:drop $",
+    "seed": "npx sequelize-cli db:seed:all $",
+    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate $",
+    "start": "node index.js",
+    "test": "jest --watchAll",
+    "test-band": "jest --watchAll --runInBand --detectOpenHandles",
+    "test-coverage": "jest --coverage",
+    "debug": "nodemon index.js",
+    "start:watch": "nodemon index.js",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "@hookform/resolvers": "^1.0.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "axios": "^0.19.2",
+    "@mysql/xdevapi": "^8.0.20",
+    "@types/jest": "25.1.4",
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-rescue": "^1.1.26",
     "joi": "^17.3.0",
-    "jquery": "^1.9.1",
-    "jwt-decode": "^3.1.1",
-    "lodash": "^4.17.20",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-hook-form": "^6.11.0",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.1"
-  },
-  "scripts": {
-    "start": "PORT=3000 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test-coverage": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js --ext .jsx"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "index.js",
-      "serviceWorker.js",
-      "./services/renderWithRouter",
-      "./services/history",
-      "App.test.js"
-    ],
-    "coverageReporters": [
-      "json",
-      "lcovonly",
-      "text",
-      "clover"
-    ]
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb": "^18.2.0",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^2.3.0",
-    "mocha": "^7.0.1",
-    "prettier": "^2.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "frisby": "^2.1.3",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0",
     "typescript": ">=2.8.0"
   }
 }
