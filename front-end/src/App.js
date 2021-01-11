@@ -20,6 +20,7 @@ import AdminProfile from './pages/AdminProfile';
 import Orders from './pages/Orders';
 import OrderDetail from './pages/OrderDetail/index';
 import OrderDetailAdmin from './pages/OrderDetailAdmin/index';
+import ChatClient from './pages/ChatCliente/index';
 
 function App() {
   const dispatch = useDispatch();
@@ -67,6 +68,13 @@ function App() {
           path="/orders"
           render={() =>
             requireAuth() ? <ClientOrders /> : <Redirect to="/login" />
+          }
+        />
+        <Route
+          exact
+          path="/chat"
+          render={() =>
+            requireAuth() ? <ChatClient /> : <Redirect to="/login" />
           }
         />
         <Route
