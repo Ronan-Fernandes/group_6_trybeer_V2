@@ -55,11 +55,7 @@ export const hasErrored = (error) => ({
 
 export const getSalesProducts = (token, id) => (dispatch) => {
   UserService.getSalesProducts(token, id)
-  .then((res) => {
-    console.log("Res", res);
-    dispatch(addSalesProducts(res.data));
-
-  })
+    .then((res) => dispatch(addSalesProducts(res.data)))
     .catch((error) => dispatch(hasErrored(error)));
 };
 

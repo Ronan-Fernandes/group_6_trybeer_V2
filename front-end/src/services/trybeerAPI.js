@@ -109,13 +109,11 @@ class UserService {
         Authorization: token,
       },
     });
-    console.log('token, id', id, result, token);
     return result;
   }
 
   /** Update  one (id) sale */
   async updateStatusSale(token, status, id) {
-    console.log(token, status, id);
     return this.http.put(
       `/admin/orders/${id}`,
       { status },
