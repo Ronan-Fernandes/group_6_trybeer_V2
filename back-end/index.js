@@ -1,11 +1,14 @@
 require('dotenv').config();
+const express = require('express');
+const app = express();
 const path = require('path');
 
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+
 const cors = require('cors');
-const express = require('express');
 const route = require('./routes');
 
-const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
@@ -27,4 +30,14 @@ app.use((error, _req, res, _next) => {
   res.status(500).send(message);
 });
 
-app.listen(PORT, () => console.log(`Listening PORT ${PORT}`));
+io.on('connection', (socket) => {
+  console.log('connection', socket.handshake.query.clientId);
+  socket.emit('event_name', {
+    data: 'hello world',
+  });
+});
+
+http.listen(PORT, () => {
+  console.log(`Http Listening PORT ${PORT}`);
+});
+// app.listen(PORT, () => console.log(`Listening PORT ${PORT}`));
