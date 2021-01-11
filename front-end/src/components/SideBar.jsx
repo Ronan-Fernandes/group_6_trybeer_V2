@@ -46,6 +46,11 @@ const menus = {
       label: 'Meu Perfil',
       dataTestID: 'side-menu-item-profile',
     },
+    {
+      route: '/admin/chats',
+      label: 'Conversas',
+      dataTestID: 'side-menu-item-chat',
+    },
   ],
 };
 
