@@ -51,7 +51,7 @@ const SalesTable = ({ title, sales }) => {
                     position="left"
                   >{`${saleDate.toLocaleString('pt-BR')}`}</SaleInfo>
                   <SaleInfo size="15%" position="center">
-                  <h3 data-testid={`${index}-order-status`}>
+                    <h3 data-testid={`${index}-order-status`}>
                       {sale.status}
                     </h3>
                     <ExpandButton
