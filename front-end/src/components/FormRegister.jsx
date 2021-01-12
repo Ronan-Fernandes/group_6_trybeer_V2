@@ -42,8 +42,8 @@ const FormRegister = () => {
             type="text"
             data-testid="signup-name"
             placeholder="Digit seu nome"
-            value={user.name}
-            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
+            value={ user.name }
+            onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
         <label>
@@ -53,8 +53,8 @@ const FormRegister = () => {
             type="email"
             data-testid="signup-email"
             placeholder="Digit seu email"
-            value={user.email}
-            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
+            value={ user.email }
+            onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
         <label>
@@ -64,8 +64,8 @@ const FormRegister = () => {
             type="password"
             data-testid="signup-password"
             placeholder="Digit seu password"
-            value={user.password}
-            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
+            value={ user.password }
+            onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
         <label>
@@ -74,11 +74,11 @@ const FormRegister = () => {
             data-testid="signup-seller"
             name="admin"
             type="checkbox"
-            checked={user.admin}
-            onChange={(event) => setUser({ ...user, [event.target.name]: !user.admin })}
+            checked={ user.admin }
+            onChange={ (event) => setUser({ ...user, [event.target.name]: !user.admin }) }
           />
         </label>
-        <button data-testid="signup-btn" type="button" onClick={handleClick} disabled={inputsValid}>
+        <button data-testid="signup-btn" type="button" onClick={ handleClick } disabled={ inputsValid }>
           Cadastrar
         </button>
       </form>

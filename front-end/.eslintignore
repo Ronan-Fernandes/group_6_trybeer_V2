@@ -1,5 +1,1 @@
-*.test.js
-serviceWorker.js
-setupTests.js
-.gitattributes
-.env
+node_modules

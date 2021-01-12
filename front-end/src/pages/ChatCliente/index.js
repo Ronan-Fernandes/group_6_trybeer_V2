@@ -18,8 +18,8 @@ const ChatClient = () => {
 
   function handleClick(event) {
     const today = new Date();
-    const hours = ('0' + today.getHours()).slice(-2); // Add 0 if hour <10
-    const minutes = ('0' + today.getMinutes()).slice(-2); // Add 0 if min <10
+    const hours = (`0${today.getHours()}`).slice(-2); // Add 0 if hour <10
+    const minutes = (`0${today.getMinutes()}`).slice(-2); // Add 0 if min <10
     const time = `${hours}:${minutes}`;
     setAllMessages([...allMessages, { user: email, text: message, time }]);
     setMessage('');
@@ -47,14 +47,14 @@ const ChatClient = () => {
               type="text"
               data-testid="message-input"
               placeholder="Digit seu mensagem"
-              value={message}
-              onChange={(event) => setMessage(event.target.value)}
+              value={ message }
+              onChange={ (event) => setMessage(event.target.value) }
             />
           </label>
           <button
             data-testid="send-message"
             type="button"
-            onClick={handleClick}
+            onClick={ handleClick }
           >
             Send
           </button>

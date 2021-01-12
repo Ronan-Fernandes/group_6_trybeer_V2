@@ -33,53 +33,57 @@ const SalesTable = ({ title, sales }) => {
           {sales.map((sale, index) => {
             const dateLength = sale.sale_date.length;
             const newDate = new Date(sale.sale_date.slice(0, dateLength - 10));
-            const day = (("0" + newDate.getDate()).slice(-2)); // Add 0 if day <10
-            const month = (("0" + newDate.getMonth() + 1).slice(-2)); // Add 0 if month <10
+            const day = ((`0${newDate.getDate()}`).slice(-2)); // Add 0 if day <10
+            const month = ((`0${newDate.getMonth()}${1}`).slice(-2)); // Add 0 if month <10
             const saleDate = `${day}/${month}`;
             return (
               <>
-                <Sale key={sale.id} onClick={() => handleRedirect(sale.id)}>
+                <Sale key={ sale.id } onClick={ () => handleRedirect(sale.id) }>
                   <SaleInfo
                     size="10%"
                     position="center"
-                    data-testid={`${index}-order-number`}
+                    data-testid={ `${index}-order-number` }
                   >
                     {`Pedido ${sale.id}`}
                   </SaleInfo>
                   <SaleInfo
                     size="75%"
                     position="left"
-                  >{`${saleDate.toLocaleString('pt-BR')}`}</SaleInfo>
+                  >
+                    {`${saleDate.toLocaleString('pt-BR')}`}
+                  </SaleInfo>
                   <SaleInfo size="15%" position="center">
-                    <h3 data-testid={`${index}-order-status`}>
+                    <h3 data-testid={ `${index}-order-status` }>
                       {sale.status}
                     </h3>
                     <ExpandButton
-                      onClick={() =>
-                        setselectedSale({
-                          ...selectedSale,
-                          [sale.id]: !selectedSale[sale.id],
-                        })
-                      }
+                      onClick={ () => setselectedSale({
+                        ...selectedSale,
+                        [sale.id]: !selectedSale[sale.id],
+                      }) }
                     >
                       {selectedSale[sale.id] ? '-' : '+'}
                     </ExpandButton>
-                    <StatusSignal status={sale.status} />
+                    <StatusSignal status={ sale.status } />
                   </SaleInfo>
                 </Sale>
-                <SaleDetails display={selectedSale[sale.id]}>
+                <SaleDetails display={ selectedSale[sale.id] }>
                   <td colSpan="2">
                     Valor Compra:
                     <span
-                      data-testid={`${index}-order-total-value`}
-                    >{`R$ ${sale.total_price
-                      .toFixed(2)
-                      .toString()
-                      .replace('.', ',')}`}</span>
+                      data-testid={ `${index}-order-total-value` }
+                    >
+                      {`R$ ${sale.total_price
+                        .toFixed(2)
+                        .toString()
+                        .replace('.', ',')}`}
+                    </span>
                     Endereço de entrega:
                     <span
-                      data-testid={`${index}-order-address`}
-                    >{`${sale.delivery_address}, ${sale.delivery_number}`}</span>
+                      data-testid={ `${index}-order-address` }
+                    >
+                      {`${sale.delivery_address}, ${sale.delivery_number}`}
+                    </span>
                   </td>
                 </SaleDetails>
               </>

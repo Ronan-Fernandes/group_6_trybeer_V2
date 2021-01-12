@@ -12,7 +12,7 @@ const CheckoutContainer = () => {
 
   const cart = useSelector((state) => state.cartReducer.cart);
 
-  //Each page loading, cart is load from localstorage
+  // Each page loading, cart is load from localstorage
   useEffect(() => {
     const localStoreCart = loadFromLocalStorage('cart');
     if (localStoreCart !== null) dispatch(loadInitCart(localStoreCart.cart));
@@ -22,7 +22,7 @@ const CheckoutContainer = () => {
 
   const totalCart = () => {
     let totalSummed = 0;
-    Object.keys(cart).map(function (key) {
+    Object.keys(cart).map((key) => {
       totalSummed += cart[key].price * cart[key].quantity;
     });
     setTotal(totalSummed);
@@ -41,9 +41,12 @@ const CheckoutContainer = () => {
   return (
     <div>
       <CheckoutCards />
-      <div className="form"></div>
-      <h2 data-testid="order-total-value">R$ {total.toFixed(2).toString().replace('.', ',')}</h2>
-      <CheckoutForm total={total} />
+      <div className="form" />
+      <h2 data-testid="order-total-value">
+        R$
+        {total.toFixed(2).toString().replace('.', ',')}
+      </h2>
+      <CheckoutForm total={ total } />
     </div>
   );
 };

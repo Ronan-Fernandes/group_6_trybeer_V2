@@ -17,8 +17,8 @@ const FormClientProfile = () => {
   const [displayMessage, setDisplayMessage] = useState(false);
 
   function handleClick() {
-    setDisplayMessage(true)
-    dispatch(userNameUpdate(user.name, userData.email)); //async
+    setDisplayMessage(true);
+    dispatch(userNameUpdate(user.name, userData.email)); // async
   }
 
   // Each time user is updated name is checked if are valid
@@ -40,18 +40,18 @@ const FormClientProfile = () => {
           name="email"
           type="text"
           data-testid="profile-email-input"
-          value={userData.email}
+          value={ userData.email }
         />
         <input
           name="name"
           type="text"
           data-testid="profile-name-input"
           placeholder="Digit seu nome"
-          value={user.name}
-          onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
+          value={ user.name }
+          onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
         />
       </form>
-      <button data-testid="profile-save-btn" onClick={handleClick} disabled={inputsValid}>
+      <button data-testid="profile-save-btn" onClick={ handleClick } disabled={ inputsValid }>
         Salvar
       </button>
       {displayMessage && <h1>Atualização concluída com sucesso</h1>}

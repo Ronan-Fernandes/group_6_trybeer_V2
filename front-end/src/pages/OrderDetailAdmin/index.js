@@ -39,46 +39,61 @@ const OrderDetail = (props) => {
     setSaleStatus(status);
   };
 
-  let newDate = '';
-  let dateAndMonth = '';
+  const newDate = '';
+  const dateAndMonth = '';
   const saleId = props.dataFromOrders.match.params.id;
   if (!getSalesProductsSuccess) return <h2>Carregando...</h2>;
   return (
     <>
       <Header />
       <div>
-        <h3 data-testid="order-number">Pedido {saleId}</h3>
+        <h3 data-testid="order-number">
+          Pedido
+          {saleId}
+        </h3>
         <h3>{saleStatus}</h3>
       </div>
       {getSalesProductsSuccess && (
         <div>
           {salesProducts.map((product, i) => (
-            <div className="cardContainer" key={product.id}>
-              <h3 data-testid={`${i}-product-qtd`}> {product.quantity} - </h3>
+            <div className="cardContainer" key={ product.id }>
+              <h3 data-testid={ `${i}-product-qtd` }>
+                {' '}
+                {product.quantity}
+                {' '}
+                -
+                {' '}
+              </h3>
 
-              <h3 data-testid={`${i}-product-name`}> {product.product.name}</h3>
-              <h3 data-testid={`${i}-product-total-value`}>
-                R${' '}
+              <h3 data-testid={ `${i}-product-name` }>
+                {' '}
+                {product.product.name}
+              </h3>
+              <h3 data-testid={ `${i}-product-total-value` }>
+                R$
+                {' '}
                 {product.product.price.toFixed(2).toString().replace('.', ',')}
               </h3>
             </div>
           ))}
           <h3 data-testid="order-total-value">
-            R$ {salesProducts[0].sale.total_price}
+            R$
+            {' '}
+            {salesProducts[0].sale.total_price}
           </h3>
         </div>
       )}
       <button
-        style={{ display: saleStatus === 'Pendente' ? 'block' : 'none' }}
+        style={ { display: saleStatus === 'Pendente' ? 'block' : 'none' } }
         data-testid="mark-as-prepared-btn"
-        onClick={() => handleClick('Preparando')}
+        onClick={ () => handleClick('Preparando') }
       >
         Preparar pedido
       </button>
       <button
-        style={{ display: saleStatus !== 'Entregue' ? 'block' : 'none' }}
+        style={ { display: saleStatus !== 'Entregue' ? 'block' : 'none' } }
         data-testid="mark-as-delivered-btn"
-        onClick={() => handleClick('Entregue')}
+        onClick={ () => handleClick('Entregue') }
       >
         Marcar como entregue
       </button>
