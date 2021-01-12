@@ -52,7 +52,7 @@ const menus = {
   ],
 };
 
-const SideBar = ({ userType }) => {
+const SideBar = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   // Set all local Action/Reducers
