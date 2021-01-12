@@ -46,7 +46,9 @@ class UserService {
 
   /** User signup */
   async userSignup(userData) {
-    const { email, name, password, admin } = userData;
+    const {
+      email, name, password, admin,
+    } = userData;
 
     const body = {
       email,

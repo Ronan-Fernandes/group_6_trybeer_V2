@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory, Redirect, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteFromLocalStorage,
   loadFromLocalStorage,
 } from '../services/localStorage';
-import { useHistory, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/ducks/user';
 import { changeVisibility } from '../store/ducks/sideBarHide';
-
-import { Link } from 'react-router-dom';
 
 import './SideBar.css';
 
@@ -76,13 +74,13 @@ const SideBar = ({ userType }) => {
       <ul>
         {menus[role].map((menu) => (
           <li>
-            <Link to={menu.route} data-testid={menu.dataTestID}>
+            <Link to={ menu.route } data-testid={ menu.dataTestID }>
               {menu.label}
             </Link>
           </li>
         ))}
       </ul>
-      <button data-testid="side-menu-item-logout" onClick={() => handleClick()}>
+      <button data-testid="side-menu-item-logout" onClick={ () => handleClick() }>
         Sair
       </button>
     </div>

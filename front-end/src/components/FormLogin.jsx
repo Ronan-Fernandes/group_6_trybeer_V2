@@ -18,7 +18,7 @@ const FormLogin = () => {
   const [inputsValid, setInputsValid] = useState(true);
 
   function handleClick() {
-    dispatch(userLogin(user.email, user.password)); //async
+    dispatch(userLogin(user.email, user.password)); // async
   }
 
   // Each time user is updated password and email are checked if are valid
@@ -41,8 +41,8 @@ const FormLogin = () => {
             type="email"
             data-testid="email-input"
             placeholder="Digit seu email"
-            value={user.email}
-            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
+            value={ user.email }
+            onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
         <label>
@@ -52,16 +52,16 @@ const FormLogin = () => {
             type="password"
             data-testid="password-input"
             placeholder="Digit seu password"
-            value={user.password}
-            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
+            value={ user.password }
+            onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
-        <button data-testid="signin-btn" type="button" disabled={inputsValid} onClick={handleClick}>
+        <button data-testid="signin-btn" type="button" disabled={ inputsValid } onClick={ handleClick }>
           ENTRAR
         </button>
       </form>
       <div>
-        <button data-testid="no-account-btn" onClick={() => history.push('/register')}>
+        <button data-testid="no-account-btn" onClick={ () => history.push('/register') }>
           {' '}
           Ainda não tenho conta
         </button>
