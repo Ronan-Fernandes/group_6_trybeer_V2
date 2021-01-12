@@ -21,7 +21,7 @@ const ProductsContainer = () => {
 
   const totalCart = () => {
     let totalSummed = zero;
-    Object.keys(cart).map((key) => {
+    Object.keys(cart).forEach((key) => {
       if (cart[key].quantity > zero) {
         totalSummed += cart[key].price * cart[key].quantity;
       }
@@ -54,7 +54,8 @@ const ProductsContainer = () => {
   };
 
   const handelClick = (type, product) => {
-    type === 'plus' ? dispatch(addToCart(product)) : dispatch(removeToCart(product));
+    if (type === 'plus') return dispatch(addToCart(product));
+    return dispatch(removeToCart(product));
   };
 
   // const t = 0;
@@ -65,12 +66,14 @@ const ProductsContainer = () => {
       <div className="cardsContainer">
         {productsFetching
           && productsDB.map(
-            (product, i) => (
-              cart[product.id] !== undefined
-                ? (quantity = cart[product.id].quantity)
-                : (quantity = zero),
-              (price = product.price.toFixed(two).toString().replace('.', ',')),
-              (
+            (product, i) => {
+              if (cart[product.id] !== undefined) {
+                quantity = cart[product.id].quantity;
+              } else {
+                quantity = zero;
+              }
+              price = product.price.toFixed(two).toString().replace('.', ',');
+              return (
                 <div className="productCard" key={ product.name }>
                   <span className="price" data-testid={ `${i}-product-price` }>
                     R$
@@ -106,8 +109,8 @@ const ProductsContainer = () => {
                     </button>
                   </div>
                 </div>
-              )
-            ),
+              );
+            },
           )}
       </div>
       <button

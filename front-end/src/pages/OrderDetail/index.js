@@ -9,6 +9,9 @@ import Header from '../../components/Header';
 const zero = 0;
 
 const OrderDetail = (props) => {
+  const { dataFromOrders: { match, location } } = props;
+  const { params: { id } } = match;
+  const { state: { date, totalPrice } } = location;
   const dispatch = useDispatch();
 
   const { getSalesProductsSuccess, salesProducts } = useSelector(
@@ -19,7 +22,7 @@ const OrderDetail = (props) => {
   // Fetch all products from one sale at first render
   useEffect(() => {
     dispatch(
-      getSalesProducts(session.token, props.dataFromOrders.match.params.id),
+      getSalesProducts(session.token, id),
     );
   }, []);
 
@@ -33,12 +36,12 @@ const OrderDetail = (props) => {
       <h3 data-testid="order-number">
         Pedido
         {' '}
-        {props.dataFromOrders.match.params.id}
+        {id}
       </h3>
       {getSalesProductsSuccess && (
         <div>
           <h3 data-testid="order-date">
-            {props.dataFromOrders.location.state.date}
+            {date}
           </h3>
           <h3>
             {' '}
@@ -68,7 +71,7 @@ const OrderDetail = (props) => {
           <h3 data-testid="order-total-value">
             R$
             {' '}
-            {props.dataFromOrders.location.state.totalPrice}
+            {totalPrice}
           </h3>
         </div>
       )}

@@ -10,6 +10,7 @@ const resStatus = 200;
 const two = 2;
 
 const OrderDetail = (props) => {
+  const { dataFromOrders: { match: { params: { id } } } } = props;
   const dispatch = useDispatch();
   const { getSalesProductsSuccess, salesProducts } = useSelector(
     (state) => state.salesProductsReducer,
@@ -22,7 +23,7 @@ const OrderDetail = (props) => {
   // // Fetch all products from one sale at first render
   useEffect(() => {
     dispatch(
-      getSalesProducts(session.token, props.dataFromOrders.match.params.id),
+      getSalesProducts(session.token, id),
     );
   }, []);
 
@@ -32,13 +33,14 @@ const OrderDetail = (props) => {
     }
   }, [salesProducts]);
 
-  const saleId = props.dataFromOrders.match.params.id;
+  const saleId = id;
 
   // Update the sale (define by saleId) status
   const handleClick = (status) => {
     UserService.updateStatusSale(session.token, status, saleId).then(
       (response) => {
         if (response.status === resStatus) {
+          // gambiarra
         }
       },
     );
