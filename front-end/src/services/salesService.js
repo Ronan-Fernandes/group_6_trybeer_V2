@@ -19,10 +19,9 @@ class SalesService {
   }
 
   handleError(error) {
-    const errorCode500 = 500;
     let errorMsg;
     switch (error.response.status) {
-      case errorCode500:
+      case 500:
         errorMsg = {
           error: { message: 'Error getting sales details.', code: 500 },
         };

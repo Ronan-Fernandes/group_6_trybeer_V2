@@ -1,10 +1,12 @@
-import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, Redirect, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteFromLocalStorage,
+  loadFromLocalStorage,
 } from '../services/localStorage';
 import { logout } from '../store/ducks/user';
+import { changeVisibility } from '../store/ducks/sideBarHide';
 
 import './SideBar.css';
 
@@ -50,11 +52,11 @@ const menus = {
   ],
 };
 
-const SideBar = () => {
+const SideBar = ({ userType }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   // Set all local Action/Reducers
-  // const { isLoggedIn } = useSelector((state) => state.userReducer.session);
+  const { isLoggedIn } = useSelector((state) => state.userReducer.session);
   const { role } = useSelector((state) => state.userReducer.user);
 
   const handleClick = () => {
@@ -71,14 +73,14 @@ const SideBar = () => {
     >
       <ul>
         {menus[role].map((menu) => (
-          <li key={ menu.dataTestID }>
+          <li>
             <Link to={ menu.route } data-testid={ menu.dataTestID }>
               {menu.label}
             </Link>
           </li>
         ))}
       </ul>
-      <button type="button" data-testid="side-menu-item-logout" onClick={ () => handleClick() }>
+      <button data-testid="side-menu-item-logout" onClick={ () => handleClick() }>
         Sair
       </button>
     </div>

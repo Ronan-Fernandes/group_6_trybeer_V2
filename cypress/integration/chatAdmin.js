@@ -16,12 +16,12 @@ describe('Desenvolver funcionalidade de chat na visão de administrador', () => 
     cy.exec('cd back-end && npx sequelize-cli db:create && npx sequelize-cli db:migrate $');
     cy.exec('cd back-end && npx sequelize-cli db:seed:all $');
     cy.task('deleteCollection', 'messages');
-    cy.visit.skip(`${Cypress.config().baseUrl}/login`);
+    cy.visit(`${Cypress.config().baseUrl}/login`);
   });
 
-  it.skip('Será validado que ao clicar no card da conversa poderá ser visualizado as mensagem do cliente', () => {
+  it('Será validado que ao clicar no card da conversa poderá ser visualizado as mensagem do cliente', () => {
     clientSendMessage();
-    cy.visit.skip(`${Cypress.config().baseUrl}/login`);
+    cy.visit(`${Cypress.config().baseUrl}/login`);
     login(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));
     clickButton('[data-testid="side-menu-item-chat"]');
     cy.reload();
@@ -33,9 +33,9 @@ describe('Desenvolver funcionalidade de chat na visão de administrador', () => 
     verifyElementVisible('[data-testid="send-message"]');
   });
 
-  it.skip('Será validado que é possivel enviar mensagem', () => {
+  it('Será validado que é possivel enviar mensagem', () => {
     clientSendMessage();
-    cy.visit.skip(`${Cypress.config().baseUrl}/login`);
+    cy.visit(`${Cypress.config().baseUrl}/login`);
     login(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));
     clickButton('[data-testid="side-menu-item-chat"]');
     cy.reload();
@@ -46,9 +46,9 @@ describe('Desenvolver funcionalidade de chat na visão de administrador', () => 
     verifyElementContainsText('[data-testid="text-message"]', 'Opa caro cliente, será enviado hoje para o correio');
   });
 
-  it.skip('Será validado que ao enviar mensagem o nickname do admin e `Loja`', () => {
+  it('Será validado que ao enviar mensagem o nickname do admin e `Loja`', () => {
     clientSendMessage();
-    cy.visit.skip(`${Cypress.config().baseUrl}/login`);
+    cy.visit(`${Cypress.config().baseUrl}/login`);
     login(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));
     clickButton('[data-testid="side-menu-item-chat"]');
     cy.reload();
@@ -58,9 +58,9 @@ describe('Desenvolver funcionalidade de chat na visão de administrador', () => 
     verifyElementContainsText('[data-testid="nickname"]', 'Loja');
   });
 
-  it.skip('Será validado que ao enviar mensagem e listado a hora do envio da mensagem', () => {
+  it('Será validado que ao enviar mensagem e listado a hora do envio da mensagem', () => {
     clientSendMessage();
-    cy.visit.skip(`${Cypress.config().baseUrl}/login`);
+    cy.visit(`${Cypress.config().baseUrl}/login`);
     login(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));
     clickButton('[data-testid="side-menu-item-chat"]');
     cy.reload();
@@ -70,9 +70,9 @@ describe('Desenvolver funcionalidade de chat na visão de administrador', () => 
     verifyElementContainsText('[data-testid="message-time"]', getHour());
   });
 
-  it.skip('Será validado que é possivel voltar pra tela de `admin/chat` através do botão voltar', () => {
+  it('Será validado que é possivel voltar pra tela de `admin/chat` através do botão voltar', () => {
     clientSendMessage();
-    cy.visit.skip(`${Cypress.config().baseUrl}/login`);
+    cy.visit(`${Cypress.config().baseUrl}/login`);
     login(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));
     clickButton('[data-testid="side-menu-item-chat"]');
     cy.reload();
@@ -82,9 +82,9 @@ describe('Desenvolver funcionalidade de chat na visão de administrador', () => 
     verifyContainsUrl('http://localhost:3000/admin/chats');
   });
 
-  it.skip('Será validado que é possivel enviar mensagem para o cliente e a mensagem poderá ser visualizada pelo cliente', () => {
+  it('Será validado que é possivel enviar mensagem para o cliente e a mensagem poderá ser visualizada pelo cliente', () => {
     clientSendMessage();
-    cy.visit.skip(`${Cypress.config().baseUrl}/login`);
+    cy.visit(`${Cypress.config().baseUrl}/login`);
     login(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));
     clickButton('[data-testid="side-menu-item-chat"]');
     cy.reload();

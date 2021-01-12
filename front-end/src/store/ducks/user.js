@@ -72,12 +72,11 @@ export const userLogin = (email, password) => (dispatch) => {
 };
 
 export const userSignup = (userData) => (dispatch) => {
-  const errorCode200 = 200;
   UserService.userSignup(userData)
     .then((response) => {
       /** Verifica se o recurso foi criado no BD e procede */
       /** Faz login se ok */
-      if (response.status === errorCode200) {
+      if (response.status === 200) {
         dispatch(login(response.data));
       }
     })

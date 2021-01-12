@@ -17,10 +17,6 @@ const SalesTable = ({ title, sales }) => {
   const history = useHistory();
 
   const handleRedirect = (saleId) => history.push(`/admin/orders/${saleId}`);
-  const toSliceValue = -2;
-  const toFixedValue = 2;
-  const toSliceFrom = 0;
-  const toSliceTo = 10;
 
   return (
     <div>
@@ -36,9 +32,9 @@ const SalesTable = ({ title, sales }) => {
         <tbody>
           {sales.map((sale, index) => {
             const dateLength = sale.sale_date.length;
-            const newDate = new Date(sale.sale_date.slice(toSliceFrom, dateLength - toSliceTo));
-            const day = ((`0${newDate.getDate()}`).slice(toSliceValue)); // Add 0 if day <10
-            const month = ((`0${newDate.getMonth()}${1}`).slice(toSliceValue)); // Add 0 if month <10
+            const newDate = new Date(sale.sale_date.slice(0, dateLength - 10));
+            const day = ((`0${newDate.getDate()}`).slice(-2)); // Add 0 if day <10
+            const month = ((`0${newDate.getMonth()}${1}`).slice(-2)); // Add 0 if month <10
             const saleDate = `${day}/${month}`;
             return (
               <>
@@ -78,7 +74,7 @@ const SalesTable = ({ title, sales }) => {
                       data-testid={ `${index}-order-total-value` }
                     >
                       {`R$ ${sale.total_price
-                        .toFixed(toFixedValue)
+                        .toFixed(2)
                         .toString()
                         .replace('.', ',')}`}
                     </span>
