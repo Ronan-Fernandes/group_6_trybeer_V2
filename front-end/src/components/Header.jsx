@@ -6,7 +6,7 @@ import { changeVisibility } from '../store/ducks/sideBarHide';
 import SideBar from './SideBar';
 import './Header.css';
 
-const Header = (props) => {
+const Header = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [sidebarVisible, setsidebarVisible] = useState(false);
@@ -28,7 +28,8 @@ const Header = (props) => {
   );
   const { role } = useSelector((state) => state.userReducer.user);
 
-  const Wrapper = props.wrapper; // Imported Component
+  // const Wrapper = props.wrapper; // Imported Component
+  // wrapper removido pois não estava sendo usado
 
   if (title[location.pathname] !== undefined) headTitle = title[location.pathname];
   return (
