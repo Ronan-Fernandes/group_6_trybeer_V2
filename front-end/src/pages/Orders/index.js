@@ -27,27 +27,27 @@ const Orders = () => {
     <div>
       <Header />
       {sales.pending.length ? (
-        <section style={{ display: 'flex', flexFlow: 'column' }}>
+        <section style={ { display: 'flex', flexFlow: 'column' } }>
           <header>
             <h2>Pendentes</h2>
           </header>
-          <SalesTable sales={sales.pending} />
+          <SalesTable sales={ sales.pending } />
         </section>
       ) : null}
       {sales.processed.length ? (
-        <section style={{ display: 'flex', flexFlow: 'column' }}>
+        <section style={ { display: 'flex', flexFlow: 'column' } }>
           <header>
             <h2>Preparando</h2>
           </header>
-          <SalesTable sales={sales.processed} />
+          <SalesTable sales={ sales.processed } />
         </section>
       ) : null}
       {sales.delivered.length ? (
-        <section style={{ display: 'flex', flexFlow: 'column' }}>
+        <section style={ { display: 'flex', flexFlow: 'column' } }>
           <header>
             <h2>Entregues</h2>
           </header>
-          <SalesTable sales={sales.delivered} />
+          <SalesTable sales={ sales.delivered } />
         </section>
       ) : null}
     </div>
