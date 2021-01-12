@@ -10,6 +10,7 @@ const io = require('socket.io')(http);
 
 const cors = require('cors');
 const route = require('./routes');
+const mongoMessage = require('./services/mongoMessage');
 
 const PORT = process.env.PORT || 3001;
 
@@ -37,9 +38,21 @@ io.on('connection', (socket) => {
   socket.emit('event_name', {
     data: 'hello world',
   });
+
+  socket.on('message', async (payload) => {
+    console.log(payload);
+    await mongoMessage.storeMessage(payload);
+  });
+
+  socket.on('getAllMessages', async () => {
+    const allChats = await mongoMessage.getAllMessages();
+    console.log('allMessages from socket message: ', allChats);
+    socket.emit('SendAllMessages', {
+      allChats,
+    });
+  });
 });
 
 http.listen(PORT, () => {
   console.log(`Http Listening PORT ${PORT}`);
 });
-// app.listen(PORT, () => console.log(`Listening PORT ${PORT}`));

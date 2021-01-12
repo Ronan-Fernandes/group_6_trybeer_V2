@@ -40,11 +40,10 @@ const OrderDetail = (props) => {
     UserService.updateStatusSale(session.token, status, saleId).then(
       (response) => {
         if (response.status === resStatus) {
-          // gambiarra
+          setSaleStatus(status);
         }
       },
     );
-    setSaleStatus(status);
   };
 
   // const newDate = '';
