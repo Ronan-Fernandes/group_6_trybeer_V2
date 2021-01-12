@@ -9,10 +9,14 @@ import './ProductsContainer.css';
 
 const ProductsContainer = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [total, setTotal] = useState(0);
+  const [initialRender, setInitialRender] = useState(true);
+  const cart = useSelector((state) => state.cartReducer.cart);
 
   let quantity = 0;
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cartReducer.cart);
+  const toFixedValue = 2;
+
 
   const totalCart = () => {
     let totalSummed = 0;
@@ -20,12 +24,11 @@ const ProductsContainer = () => {
       if (cart[key].quantity > 0) {
         totalSummed += cart[key].price * cart[key].quantity;
       }
+      return totalSummed;
     });
     setTotal(totalSummed);
   };
 
-  const [total, setTotal] = useState(0);
-  const [initialRender, setInitialRender] = useState(true);
 
   useEffect(() => {
     totalCart();
@@ -53,7 +56,6 @@ const ProductsContainer = () => {
     type === 'plus' ? dispatch(addToCart(product)) : dispatch(removeToCart(product));
   };
 
-  const t = 0;
   let price = 0;
 
   return (
@@ -82,6 +84,7 @@ const ProductsContainer = () => {
                   <h3 data-testid={ `${i}-product-name` }>{product.name}</h3>
                   <div className="quantityContainer">
                     <button
+                      type="button"
                       data-testid={ `${i}-product-minus` }
                       className="productButton"
                       onClick={ () => handelClick('minus', product) }
@@ -92,6 +95,7 @@ const ProductsContainer = () => {
                       {quantity}
                     </span>
                     <button
+                      type="button"
                       data-testid={ `${i}-product-plus` }
                       className="productButton"
                       onClick={ () => handelClick('plus', product) }
@@ -105,6 +109,7 @@ const ProductsContainer = () => {
           )}
       </div>
       <button
+        type="button"
         disabled={ total === 0 }
         data-testid="checkout-bottom-btn"
         onClick={ () => handleGoToCheckOut() }
@@ -114,7 +119,7 @@ const ProductsContainer = () => {
       <h2 data-testid="checkout-bottom-btn-value">
         R$
         {' '}
-        {total.toFixed(2).toString().replace('.', ',')}
+        {total.toFixed(toFixedValue).toString().replace('.', ',')}
       </h2>
     </>
   );

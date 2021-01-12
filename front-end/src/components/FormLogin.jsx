@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { saveToLocalStorage } from '../services/localStorage';
 import { userLogin } from '../store/ducks/user';
 import './FormLogin.css';
 
@@ -9,6 +8,7 @@ const FormLogin = () => {
   // Route to /Register
   const history = useHistory();
   const dispatch = useDispatch();
+  const passwordLengthLimit = 5;
 
   // Set all local Action/Reducers
   const [user, setUser] = useState({
@@ -24,7 +24,7 @@ const FormLogin = () => {
   // Each time user is updated password and email are checked if are valid
   useEffect(() => {
     const regexEmail = /[A-Z0-9]{1,}@[A-Z0-9]{2,}\.[A-Z0-9]{2,}/i;
-    if (user.password.length > 5 && regexEmail.test(user.email)) {
+    if (user.password.length > passwordLengthLimit && regexEmail.test(user.email)) {
       setInputsValid(false);
     } else {
       setInputsValid(true);
@@ -56,12 +56,12 @@ const FormLogin = () => {
             onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
-        <button data-testid="signin-btn" type="button" disabled={ inputsValid } onClick={ handleClick }>
+        <button type="button" data-testid="signin-btn" type="button" disabled={ inputsValid } onClick={ handleClick }>
           ENTRAR
         </button>
       </form>
       <div>
-        <button data-testid="no-account-btn" onClick={ () => history.push('/register') }>
+        <button type="button" data-testid="no-account-btn" onClick={ () => history.push('/register') }>
           {' '}
           Ainda não tenho conta
         </button>

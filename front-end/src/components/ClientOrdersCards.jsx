@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getOrders } from '../store/ducks/orders';
@@ -7,7 +7,7 @@ import './ClientOrdersCards.css';
 
 const ClientOrdersCards = () => {
   const dispatch = useDispatch();
-  const order = useSelector((state) => state.ordersReducer.orders);
+  // const order = useSelector((state) => state.ordersReducer.orders);
   const { session } = useSelector(
     (state) => state.userReducer,
   );

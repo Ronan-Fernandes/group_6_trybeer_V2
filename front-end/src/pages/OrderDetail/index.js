@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSalesProducts } from '../../store/ducks/salesProducts';
-import UserService from '../../services/trybeerAPI';
 
 import Header from '../../components/Header';
 
@@ -12,6 +11,7 @@ const OrderDetail = (props) => {
     (state) => state.salesProductsReducer,
   );
   const { session } = useSelector((state) => state.userReducer);
+  const toFixedValue = 2;
 
   // Fetch all products from one sale at first render
   useEffect(() => {
@@ -19,9 +19,6 @@ const OrderDetail = (props) => {
       getSalesProducts(session.token, props.dataFromOrders.match.params.id),
     );
   }, []);
-
-  const newDate = '';
-  const dateAndMonth = '';
 
   return (
     <>
@@ -58,7 +55,7 @@ const OrderDetail = (props) => {
               <h3 data-testid={ `${i}-product-total-value` }>
                 R$
                 {' '}
-                {product.sale.total_price.toFixed(2).toString().replace('.', ',')}
+                {product.sale.total_price.toFixed(toFixedValue).toString().replace('.', ',')}
               </h3>
             </div>
           ))}

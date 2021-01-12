@@ -72,11 +72,12 @@ export const hasErrored = (error = []) => ({
 /** Actions Creators */
 
 export const getSales = (authToken) => (dispatch) => {
+  const errorCode200 = 200;
   dispatch(salesFetching(true));
 
   SalesService.getSales(authToken)
     .then((response) => {
-      if (response.status === 200) {
+      if (response.status === errorCode200) {
         dispatch(salesFetched(response.data));
         dispatch(salesFetching(false));
       }

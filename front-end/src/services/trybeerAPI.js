@@ -19,9 +19,10 @@ class UserService {
   }
 
   handleError(error) {
+    const errorCode500 = 500;
     let errorMsg;
     switch (error.response.status) {
-      case 500:
+      case errorCode500:
         errorMsg = {
           error: { message: 'E-mail already in database.', code: 500 },
         };

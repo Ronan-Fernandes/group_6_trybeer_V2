@@ -89,11 +89,12 @@ export const postOrder = (cart, id, email, total, address, number, token) => (
 };
 
 export const getOrders = (token) => (dispatch) => {
+  const errorCode200 = 200;
   UserService.getOrders(token)
     .then((response) => {
       /** Verifica se o recurso foi criado no BD e procede */
       /** Faz login se ok */
-      if (response.status === 200) {
+      if (response.status === errorCode200) {
         dispatch(receivedOrder(response.data));
       }
     })
