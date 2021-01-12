@@ -23,9 +23,10 @@ const CheckoutContainer = () => {
   const [total, setTotal] = useState(0);
   const totalCart = () => {
     let totalSummed = 0;
-    Object.keys(cart).map(
-      (key) => totalSummed += cart[key].price * cart[key].quantity,
-    );
+    Object.keys(cart).map((key) => {
+      totalSummed += cart[key].price * cart[key].quantity;
+      return totalSummed;
+    });
     setTotal(totalSummed);
   };
 
