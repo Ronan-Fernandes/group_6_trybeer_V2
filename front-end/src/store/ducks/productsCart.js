@@ -26,14 +26,13 @@ const cartReducer = (
   switch (type) {
     case Types.ADD_TO_CART:
       if (state.cart[id] !== undefined) {
-        const newQuantity = (state.cart[id].quantity += 1);
         return {
           ...state,
           cart: {
             ...state.cart,
             [id]: {
               ...state.cart[id],
-              quantity: newQuantity,
+              quantity: state.cart[id].quantity + 1,
             },
           },
         };
@@ -57,14 +56,13 @@ const cartReducer = (
             cart: omit(state.cart, product.id),
           };
         }
-        const newQuantity = (state.cart[product.id].quantity -= 1); // Possible to use id?
         return {
           ...state,
           cart: {
             ...state.cart,
             [product.id]: {
               ...state.cart[product.id],
-              quantity: newQuantity,
+              quantity: state.cart[product.id].quantity - 1,
             },
           },
         };

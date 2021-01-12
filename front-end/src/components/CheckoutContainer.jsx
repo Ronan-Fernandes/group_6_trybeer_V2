@@ -7,6 +7,9 @@ import { loadInitCart } from '../store/ducks/productsCart';
 import CheckoutCards from './CheckoutCards';
 import CheckoutForm from './CheckoutForm';
 
+const zero = 0;
+const two = 2;
+
 const CheckoutContainer = () => {
   const dispatch = useDispatch();
 
@@ -20,12 +23,13 @@ const CheckoutContainer = () => {
     // dispatch(loadInitCart(localStoreCart.cart));
   }, []);
 
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(zero);
   const totalCart = () => {
-    let totalSummed = 0;
-    Object.keys(cart).map(
-      (key) => totalSummed += cart[key].price * cart[key].quantity,
-    );
+    let totalSummed = zero;
+    Object.keys(cart).map((key) => {
+      totalSummed += cart[key].price * cart[key].quantity;
+      return totalSummed;
+    });
     setTotal(totalSummed);
   };
 
@@ -44,7 +48,7 @@ const CheckoutContainer = () => {
       <div className="form" />
       <h2 data-testid="order-total-value">
         R$
-        {total.toFixed(2).toString().replace('.', ',')}
+        {total.toFixed(two).toString().replace('.', ',')}
       </h2>
       <CheckoutForm total={ total } />
     </div>

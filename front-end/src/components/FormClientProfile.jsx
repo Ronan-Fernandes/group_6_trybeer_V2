@@ -51,7 +51,7 @@ const FormClientProfile = () => {
           onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
         />
       </form>
-      <button data-testid="profile-save-btn" onClick={ handleClick } disabled={ inputsValid }>
+      <button type="button" data-testid="profile-save-btn" onClick={ handleClick } disabled={ inputsValid }>
         Salvar
       </button>
       {displayMessage && <h1>Atualização concluída com sucesso</h1>}

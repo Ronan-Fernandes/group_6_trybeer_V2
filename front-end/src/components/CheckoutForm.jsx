@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
@@ -5,7 +6,8 @@ import { loadInitCart } from '../store/ducks/productsCart';
 import { postOrder } from '../store/ducks/orders';
 import { deleteFromLocalStorage } from '../services/localStorage';
 
-const CheckoutForm = (props) => {
+const CheckoutForm = ({ total }) => {
+  const zero = 0;
   const dispatch = useDispatch();
   // const history = useHistory();
 
@@ -33,7 +35,7 @@ const CheckoutForm = (props) => {
         cart,
         user.id,
         user.email,
-        props.total,
+        total,
         address.street,
         address.number,
         session.token,
@@ -48,7 +50,7 @@ const CheckoutForm = (props) => {
       <div className="form">
         <form>
           <h3>Endereço</h3>
-          <label>
+          <label htmlFor="street">
             Rua:
             <input
               name="street"
@@ -62,7 +64,7 @@ const CheckoutForm = (props) => {
               }) }
             />
           </label>
-          <label>
+          <label htmlFor="number">
             Número da casa:
             <input
               name="number"
@@ -79,10 +81,11 @@ const CheckoutForm = (props) => {
         </form>
       </div>
       <button
+        type="button"
         data-testid="checkout-finish-btn"
         onClick={ handleClick }
         disabled={
-          !props.total > 0
+          !total > zero
           || address.street.length < 1
           || address.number.length < 1
         }
@@ -93,5 +96,9 @@ const CheckoutForm = (props) => {
       {postOrderSuccess && <h2>Compra realizada com sucesso!</h2>}
     </div>
   );
+};
+
+CheckoutForm.propTypes = {
+  total: PropTypes.number.isRequired,
 };
 export default CheckoutForm;

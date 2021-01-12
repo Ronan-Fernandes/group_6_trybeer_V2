@@ -7,24 +7,28 @@ import { getProducts } from '../store/ducks/products';
 
 import './ProductsContainer.css';
 
+const zero = 0;
+const two = 2;
+
 const ProductsContainer = () => {
   const history = useHistory();
 
-  let quantity = 0;
+  let quantity = zero;
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
 
+  const [total, setTotal] = useState(zero);
+
   const totalCart = () => {
-    let totalSummed = 0;
-    Object.keys(cart).map((key) => {
-      if (cart[key].quantity > 0) {
+    let totalSummed = zero;
+    Object.keys(cart).forEach((key) => {
+      if (cart[key].quantity > zero) {
         totalSummed += cart[key].price * cart[key].quantity;
       }
     });
     setTotal(totalSummed);
   };
 
-  const [total, setTotal] = useState(0);
   const [initialRender, setInitialRender] = useState(true);
 
   useEffect(() => {
@@ -50,23 +54,26 @@ const ProductsContainer = () => {
   };
 
   const handelClick = (type, product) => {
-    type === 'plus' ? dispatch(addToCart(product)) : dispatch(removeToCart(product));
+    if (type === 'plus') return dispatch(addToCart(product));
+    return dispatch(removeToCart(product));
   };
 
-  const t = 0;
-  let price = 0;
+  // const t = 0;
+  let price = zero;
 
   return (
     <>
       <div className="cardsContainer">
         {productsFetching
           && productsDB.map(
-            (product, i) => (
-              cart[product.id] !== undefined
-                ? (quantity = cart[product.id].quantity)
-                : (quantity = 0),
-              (price = product.price.toFixed(2).toString().replace('.', ',')),
-              (
+            (product, i) => {
+              if (cart[product.id] !== undefined) {
+                quantity = cart[product.id].quantity;
+              } else {
+                quantity = zero;
+              }
+              price = product.price.toFixed(two).toString().replace('.', ',');
+              return (
                 <div className="productCard" key={ product.name }>
                   <span className="price" data-testid={ `${i}-product-price` }>
                     R$
@@ -82,6 +89,7 @@ const ProductsContainer = () => {
                   <h3 data-testid={ `${i}-product-name` }>{product.name}</h3>
                   <div className="quantityContainer">
                     <button
+                      type="button"
                       data-testid={ `${i}-product-minus` }
                       className="productButton"
                       onClick={ () => handelClick('minus', product) }
@@ -92,6 +100,7 @@ const ProductsContainer = () => {
                       {quantity}
                     </span>
                     <button
+                      type="button"
                       data-testid={ `${i}-product-plus` }
                       className="productButton"
                       onClick={ () => handelClick('plus', product) }
@@ -100,12 +109,13 @@ const ProductsContainer = () => {
                     </button>
                   </div>
                 </div>
-              )
-            ),
+              );
+            },
           )}
       </div>
       <button
-        disabled={ total === 0 }
+        type="button"
+        disabled={ total === zero }
         data-testid="checkout-bottom-btn"
         onClick={ () => handleGoToCheckOut() }
       >
@@ -114,7 +124,7 @@ const ProductsContainer = () => {
       <h2 data-testid="checkout-bottom-btn-value">
         R$
         {' '}
-        {total.toFixed(2).toString().replace('.', ',')}
+        {total.toFixed(two).toString().replace('.', ',')}
       </h2>
     </>
   );

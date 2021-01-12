@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSalesProducts } from '../../store/ducks/salesProducts';
-import UserService from '../../services/trybeerAPI';
+// import UserService from '../../services/trybeerAPI';
 
 import Header from '../../components/Header';
 
+const zero = 0;
+
 const OrderDetail = (props) => {
+  const { dataFromOrders: { match, location } } = props;
+  const { params: { id } } = match;
+  const { state: { date, totalPrice } } = location;
   const dispatch = useDispatch();
 
   const { getSalesProductsSuccess, salesProducts } = useSelector(
@@ -16,12 +22,12 @@ const OrderDetail = (props) => {
   // Fetch all products from one sale at first render
   useEffect(() => {
     dispatch(
-      getSalesProducts(session.token, props.dataFromOrders.match.params.id),
+      getSalesProducts(session.token, id),
     );
   }, []);
 
-  const newDate = '';
-  const dateAndMonth = '';
+  // const newDate = '';
+  // const dateAndMonth = '';
 
   return (
     <>
@@ -30,12 +36,12 @@ const OrderDetail = (props) => {
       <h3 data-testid="order-number">
         Pedido
         {' '}
-        {props.dataFromOrders.match.params.id}
+        {id}
       </h3>
       {getSalesProductsSuccess && (
         <div>
           <h3 data-testid="order-date">
-            {props.dataFromOrders.location.state.date}
+            {date}
           </h3>
           <h3>
             {' '}
@@ -58,19 +64,35 @@ const OrderDetail = (props) => {
               <h3 data-testid={ `${i}-product-total-value` }>
                 R$
                 {' '}
-                {product.sale.total_price.toFixed(2).toString().replace('.', ',')}
+                {product.sale.total_price.toFixed(zero).toString().replace('.', ',')}
               </h3>
             </div>
           ))}
           <h3 data-testid="order-total-value">
             R$
             {' '}
-            {props.dataFromOrders.location.state.totalPrice}
+            {totalPrice}
           </h3>
         </div>
       )}
     </>
   );
+};
+
+OrderDetail.propTypes = {
+  dataFromOrders: PropTypes.shape({
+    location: PropTypes.shape({
+      state: PropTypes.shape({
+        date: PropTypes.string,
+        totalPrice: PropTypes.string,
+      }),
+    }),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
 };
 
 export default OrderDetail;
