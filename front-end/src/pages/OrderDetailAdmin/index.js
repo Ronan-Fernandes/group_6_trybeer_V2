@@ -1,10 +1,13 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSalesProducts } from '../../store/ducks/salesProducts';
 import UserService from '../../services/trybeerAPI';
 
 import Header from '../../components/Header';
+
+const resStatus = 200;
+const two = 2;
 
 const OrderDetail = (props) => {
   const dispatch = useDispatch();
@@ -29,20 +32,21 @@ const OrderDetail = (props) => {
     }
   }, [salesProducts]);
 
+  const saleId = props.dataFromOrders.match.params.id;
+
   // Update the sale (define by saleId) status
   const handleClick = (status) => {
     UserService.updateStatusSale(session.token, status, saleId).then(
       (response) => {
-        if (response.status === 200) {
+        if (response.status === resStatus) {
         }
       },
     );
     setSaleStatus(status);
   };
 
-  const newDate = '';
-  const dateAndMonth = '';
-  const saleId = props.dataFromOrders.match.params.id;
+  // const newDate = '';
+  // const dateAndMonth = '';
   if (!getSalesProductsSuccess) return <h2>Carregando...</h2>;
   return (
     <>
@@ -73,7 +77,10 @@ const OrderDetail = (props) => {
               <h3 data-testid={ `${i}-product-total-value` }>
                 R$
                 {' '}
-                {product.product.price.toFixed(2).toString().replace('.', ',')}
+                {product.product.price
+                  .toFixed(two)
+                  .toString()
+                  .replace('.', ',')}
               </h3>
             </div>
           ))}
@@ -85,6 +92,7 @@ const OrderDetail = (props) => {
         </div>
       )}
       <button
+        type="button"
         style={ { display: saleStatus === 'Pendente' ? 'block' : 'none' } }
         data-testid="mark-as-prepared-btn"
         onClick={ () => handleClick('Preparando') }
@@ -92,6 +100,7 @@ const OrderDetail = (props) => {
         Preparar pedido
       </button>
       <button
+        type="button"
         style={ { display: saleStatus !== 'Entregue' ? 'block' : 'none' } }
         data-testid="mark-as-delivered-btn"
         onClick={ () => handleClick('Entregue') }

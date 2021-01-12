@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import hamburger from '../images/hamburger.png';
-import { changeVisibility } from '../store/ducks/sideBarHide';
+// import { changeVisibility } from '../store/ducks/sideBarHide';
 import SideBar from './SideBar';
 import './Header.css';
 
 const Header = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const location = useLocation();
   const [sidebarVisible, setsidebarVisible] = useState(false);
   let headTitle = 'Detalhes de Pedido';
@@ -23,9 +23,9 @@ const Header = () => {
     setsidebarVisible(!sidebarVisible);
   };
 
-  const sideBarVisible = useSelector(
-    (state) => state.sideBarHideReducer.isVisible,
-  );
+  // const sideBarVisible = useSelector(
+  //   (state) => state.sideBarHideReducer.isVisible,
+  // );
   const { role } = useSelector((state) => state.userReducer.user);
 
   // const Wrapper = props.wrapper; // Imported Component
@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <div>
       <div className="headerContainer">
-        <button data-testid="top-hamburguer" onClick={ () => handleClick() }>
+        <button type="button" data-testid="top-hamburguer" onClick={ () => handleClick() }>
           <img src={ hamburger } alt="test" height="80px" />
         </button>
         <div className="headTitleContainer">

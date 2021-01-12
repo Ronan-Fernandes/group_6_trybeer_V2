@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { postOrder } from '../store/ducks/orders';
 import { deleteFromLocalStorage } from '../services/localStorage';
 
 const CheckoutForm = ({ total }) => {
+  const zero = 0;
   const dispatch = useDispatch();
   // const history = useHistory();
 
@@ -49,7 +50,7 @@ const CheckoutForm = ({ total }) => {
       <div className="form">
         <form>
           <h3>Endereço</h3>
-          <label>
+          <label htmlFor="street">
             Rua:
             <input
               name="street"
@@ -63,7 +64,7 @@ const CheckoutForm = ({ total }) => {
               }) }
             />
           </label>
-          <label>
+          <label htmlFor="number">
             Número da casa:
             <input
               name="number"
@@ -80,10 +81,11 @@ const CheckoutForm = ({ total }) => {
         </form>
       </div>
       <button
+        type="button"
         data-testid="checkout-finish-btn"
         onClick={ handleClick }
         disabled={
-          !total > 0
+          !total > zero
           || address.street.length < 1
           || address.number.length < 1
         }

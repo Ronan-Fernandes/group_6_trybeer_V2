@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import './CheckoutCards.css';
 import { removeProduct } from '../store/ducks/productsCart';
 
+const zero = 0;
+const two = 2;
+
 const CheckoutCards = () => {
   const dispatch = useDispatch();
 
@@ -10,7 +13,9 @@ const CheckoutCards = () => {
 
   return (
     <div>
-      {Object.keys(cart).length === 0 && <h1>Não há produtos no carrinho</h1>}
+      {Object.keys(cart).length === zero && (
+        <h1>Não há produtos no carrinho</h1>
+      )}
       {Object.keys(cart).map((keyName, i) => (
         <div key={ cart[keyName].name } className="card">
           <h3 data-testid={ `${i}-product-qtd-input` }>
@@ -21,14 +26,14 @@ const CheckoutCards = () => {
             R$
             {' '}
             {(cart[keyName].price * cart[keyName].quantity)
-              .toFixed(2)
+              .toFixed(two)
               .toString()
               .replace('.', ',')}
           </h3>
           <h4 data-testid={ `${i}-product-unit-price` }>
             (R$
             {' '}
-            {cart[keyName].price.toFixed(2).toString().replace('.', ',')}
+            {cart[keyName].price.toFixed(two).toString().replace('.', ',')}
             {' '}
             un)
           </h4>
