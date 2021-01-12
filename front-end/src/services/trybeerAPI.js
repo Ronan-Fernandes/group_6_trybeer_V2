@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const fiftyHundred = 500;
+
 class UserService {
   constructor() {
     const url = 'http://localhost:3001';
@@ -21,7 +23,7 @@ class UserService {
   handleError(error) {
     let errorMsg;
     switch (error.response.status) {
-      case 500:
+      case fiftyHundred:
         errorMsg = {
           error: { message: 'E-mail already in database.', code: 500 },
         };

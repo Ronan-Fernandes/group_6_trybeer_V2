@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const fiftyHundred = 500;
+
 class SalesService {
   constructor() {
     const url = 'http://localhost:3001';
@@ -21,7 +23,7 @@ class SalesService {
   handleError(error) {
     let errorMsg;
     switch (error.response.status) {
-      case 500:
+      case fiftyHundred:
         errorMsg = {
           error: { message: 'Error getting sales details.', code: 500 },
         };

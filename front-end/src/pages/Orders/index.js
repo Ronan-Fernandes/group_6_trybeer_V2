@@ -8,7 +8,7 @@ const Orders = () => {
   const { token } = useSelector((state) => state.userReducer.session);
   const { sales, isFetching } = useSelector((state) => state.salesReducer);
   const dispatch = useDispatch();
-  console.log('isFetching', isFetching);
+  // console.log('isFetching', isFetching);
   const [pageLoaded, setPageLoaded] = useState(true);
 
   // To wait until isFetching get the value true

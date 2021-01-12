@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSalesProducts } from '../../store/ducks/salesProducts';
-import UserService from '../../services/trybeerAPI';
+// import UserService from '../../services/trybeerAPI';
 
 import Header from '../../components/Header';
+
+const zero = 0;
 
 const OrderDetail = (props) => {
   const dispatch = useDispatch();
@@ -20,8 +22,8 @@ const OrderDetail = (props) => {
     );
   }, []);
 
-  const newDate = '';
-  const dateAndMonth = '';
+  // const newDate = '';
+  // const dateAndMonth = '';
 
   return (
     <>
@@ -58,7 +60,7 @@ const OrderDetail = (props) => {
               <h3 data-testid={ `${i}-product-total-value` }>
                 R$
                 {' '}
-                {product.sale.total_price.toFixed(2).toString().replace('.', ',')}
+                {product.sale.total_price.toFixed(zero).toString().replace('.', ',')}
               </h3>
             </div>
           ))}

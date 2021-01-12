@@ -71,12 +71,14 @@ export const userLogin = (email, password) => (dispatch) => {
     .catch((error) => dispatch(hasErrored(error)));
 };
 
+const twoHundred = 200;
+
 export const userSignup = (userData) => (dispatch) => {
   UserService.userSignup(userData)
     .then((response) => {
       /** Verifica se o recurso foi criado no BD e procede */
       /** Faz login se ok */
-      if (response.status === 200) {
+      if (response.status === twoHundred) {
         dispatch(login(response.data));
       }
     })
