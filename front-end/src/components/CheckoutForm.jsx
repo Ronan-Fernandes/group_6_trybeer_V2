@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
@@ -93,5 +94,9 @@ const CheckoutForm = (props) => {
       {postOrderSuccess && <h2>Compra realizada com sucesso!</h2>}
     </div>
   );
+};
+
+CheckoutForm.propTypes = {
+  total: PropTypes.number.isRequired,
 };
 export default CheckoutForm;
