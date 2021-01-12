@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -93,6 +94,13 @@ const SalesTable = ({ title, sales }) => {
       </Sales>
     </div>
   );
+};
+
+SalesTable.propTypes = {
+  sales: PropTypes.shape({
+    map: PropTypes.func.isRequired,
+  }).isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default SalesTable;
