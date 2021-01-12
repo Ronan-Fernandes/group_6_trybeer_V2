@@ -6,7 +6,7 @@ import { loadInitCart } from '../store/ducks/productsCart';
 import { postOrder } from '../store/ducks/orders';
 import { deleteFromLocalStorage } from '../services/localStorage';
 
-const CheckoutForm = (props) => {
+const CheckoutForm = ({ total }) => {
   const dispatch = useDispatch();
   // const history = useHistory();
 
@@ -34,7 +34,7 @@ const CheckoutForm = (props) => {
         cart,
         user.id,
         user.email,
-        props.total,
+        total,
         address.street,
         address.number,
         session.token,
@@ -83,7 +83,7 @@ const CheckoutForm = (props) => {
         data-testid="checkout-finish-btn"
         onClick={ handleClick }
         disabled={
-          !props.total > 0
+          !total > 0
           || address.street.length < 1
           || address.number.length < 1
         }
