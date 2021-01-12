@@ -21,6 +21,7 @@ import Orders from './pages/Orders';
 import OrderDetail from './pages/OrderDetail/index';
 import OrderDetailAdmin from './pages/OrderDetailAdmin/index';
 import ChatClient from './pages/ChatCliente/index';
+import ChatAdmin from './pages/ChatAdmin/index';
 
 function App() {
   const dispatch = useDispatch();
@@ -50,59 +51,82 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={ Login } />
-        <Route exact path="/login" component={ Login } />
-        <Route exact path="/register" component={ Register } />
+        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
         <Route
           path="/orders/:id"
-          render={ (props) => (requireAuth() ? (
-            <OrderDetail dataFromOrders={ props } />
-          ) : (
-            <Redirect to="/login" />
-          )) }
+          render={(props) =>
+            requireAuth() ? (
+              <OrderDetail dataFromOrders={props} />
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
         />
         <Route
           exact
           path="/orders"
-          render={ () => (requireAuth() ? <ClientOrders /> : <Redirect to="/login" />) }
+          render={() =>
+            requireAuth() ? <ClientOrders /> : <Redirect to="/login" />
+          }
         />
         <Route
           exact
           path="/chat"
-          render={ () => (requireAuth() ? <ChatClient /> : <Redirect to="/login" />) }
+          render={() =>
+            requireAuth() ? <ChatClient /> : <Redirect to="/login" />
+          }
+        />
+        <Route
+          exact
+          path="/admin/chats"
+          render={() =>
+            requireAuth() ? <ChatAdmin /> : <Redirect to="/login" />
+          }
         />
         <Route
           exact
           path="/products"
-          render={ () => (requireAuth() ? <Products /> : <Redirect to="/login" />) }
+          render={() =>
+            requireAuth() ? <Products /> : <Redirect to="/login" />
+          }
         />
         <Route
           exact
           path="/checkout"
-          render={ () => (requireAuth() ? <Checkout /> : <Redirect to="/login" />) }
+          render={() =>
+            requireAuth() ? <Checkout /> : <Redirect to="/login" />
+          }
         />
         <Route
           exact
           path="/profile"
-          render={ () => (requireAuth() ? <ClientProfile /> : <Redirect to="/login" />) }
+          render={() =>
+            requireAuth() ? <ClientProfile /> : <Redirect to="/login" />
+          }
         />
         <Route
           path="/admin/orders/:id"
-          render={ (matchProps) => (requireAuth() ? (
-            <OrderDetailAdmin dataFromOrders={ matchProps } />
-          ) : (
-            <Redirect to="/login" />
-          )) }
+          render={(matchProps) =>
+            requireAuth() ? (
+              <OrderDetailAdmin dataFromOrders={matchProps} />
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
         />
         <Route
           exact
           path="/admin/orders"
-          render={ () => (requireAuth() ? <Orders /> : <Redirect to="/login" />) }
+          render={() => (requireAuth() ? <Orders /> : <Redirect to="/login" />)}
         />
         <Route
           exact
           path="/admin/profile"
-          render={ () => (requireAuth() ? <AdminProfile /> : <Redirect to="/login" />) }
+          render={() =>
+            requireAuth() ? <AdminProfile /> : <Redirect to="/login" />
+          }
         />
       </Switch>
     </Router>
