@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userSignup } from '../store/ducks/user';
 
+const five = 5;
+
 const FormRegister = () => {
   // Set all local Action/Reducers
   const [user, setUser] = useState({
@@ -20,7 +22,7 @@ const FormRegister = () => {
     const regexEmail = /[A-Z0-9]{1,}@[A-Z0-9]{2,}\.[A-Z0-9]{2,}/i;
     const regexName = /^[a-zA-Z ]{12,}$/;
 
-    if (user.password.length > 5 && regexEmail.test(user.email) && regexName.test(user.name)) {
+    if (user.password.length > five && regexEmail.test(user.email) && regexName.test(user.name)) {
       setInputsValid(false);
     } else {
       setInputsValid(true);
@@ -35,7 +37,7 @@ const FormRegister = () => {
   return (
     <div>
       <form className="formContainer">
-        <label>
+        <label htmlFor="name">
           Nome
           <input
             name="name"
@@ -46,7 +48,7 @@ const FormRegister = () => {
             onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
-        <label>
+        <label htmlFor="email">
           Email
           <input
             name="email"
@@ -57,7 +59,7 @@ const FormRegister = () => {
             onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
-        <label>
+        <label htmlFor="password">
           Password
           <input
             name="password"
@@ -68,7 +70,7 @@ const FormRegister = () => {
             onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
           />
         </label>
-        <label>
+        <label htmlFor="admin">
           Quero Vender
           <input
             data-testid="signup-seller"
