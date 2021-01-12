@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
 
   socket.on('getAllMessages', async () => {
     const allChats = await mongoMessage.getAllMessages();
-    console.log("allMessages from socket message: ", allChats);
+    console.log('allMessages from socket message: ', allChats);
     socket.emit('SendAllMessages', {
       allChats,
     });
