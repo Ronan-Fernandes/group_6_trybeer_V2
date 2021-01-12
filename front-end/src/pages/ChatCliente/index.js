@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+const two = 2;
+
 const ChatClient = () => {
   const { email } = useSelector((state) => state.userReducer.user);
 
@@ -18,8 +20,8 @@ const ChatClient = () => {
 
   function handleClick(event) {
     const today = new Date();
-    const hours = (`0${today.getHours()}`).slice(-2); // Add 0 if hour <10
-    const minutes = (`0${today.getMinutes()}`).slice(-2); // Add 0 if min <10
+    const hours = `0${today.getHours()}`.slice(-two); // Add 0 if hour <10
+    const minutes = `0${today.getMinutes()}`.slice(-two); // Add 0 if min <10
     const time = `${hours}:${minutes}`;
     setAllMessages([...allMessages, { user: email, text: message, time }]);
     setMessage('');
@@ -30,17 +32,17 @@ const ChatClient = () => {
     <>
       <h1>WebChat CLIENT </h1>
       <div>
-        {allMessages.map((message) => (
+        {allMessages.map((messages) => (
           <>
-            <h3 data-testid="nickname">{message.user}</h3>
-            <h2 data-testid="message-time">{message.time}</h2>
-            <h2 data-testid="text-message">{message.text}</h2>
+            <h3 data-testid="nickname">{messages.user}</h3>
+            <h2 data-testid="message-time">{messages.time}</h2>
+            <h2 data-testid="text-message">{messages.text}</h2>
           </>
         ))}
       </div>
       <div className="globalContainer">
         <form className="formContainer">
-          <label>
+          <label htmlFor="message">
             Your message
             <input
               name="message"
