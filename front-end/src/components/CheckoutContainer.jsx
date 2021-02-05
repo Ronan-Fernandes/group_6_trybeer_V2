@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { loadFromLocalStorage } from '../services/localStorage';
 import { loadInitCart } from '../store/ducks/productsCart';
 import CheckoutCards from './CheckoutCards';

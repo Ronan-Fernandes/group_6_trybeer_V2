@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
+import ChatPanel from '../../components/ChatPanel';
 import { useHistory } from 'react-router-dom';
+
 import './index.css';
 
-const ChatAdmin = () => {
+const ChatAdmin = (props) => {
   const history = useHistory();
 
+  const activeList = props.dataFromChatAdmin.match.params.id;
+
   const [chatList, setChatList] = useState([]);
-  const [activeList, setActiveList] = useState('');
+  // const [activeList, setActiveList] = useState('');
   window.socket = window.io('http://localhost:3001', {
     query: {
       clientId: 'Loja',
     },
   });
 
-  // window.socket.on('connection', () => {});
+  window.socket.on('connection', () => {});
 
-  // Fetch all chats at first render
+  // // Fetch all chats at first render
   useEffect(() => {
     window.socket.emit('getAllMessages');
   }, []);
@@ -25,23 +29,16 @@ const ChatAdmin = () => {
     setChatList(payload.allChats);
   });
 
-  const handleRedirect = (userId) => history.push(`/admin/chats/${userId}`);
+  // const handleRedirect = (userId) => setActiveList(userId);
 
   if (chatList.length < 1) return <h2>Nenhuma conversa por aqui</h2>;
   return (
     <>
       <Header />
       <div className="container-adminChat">
-        <div data-testid="containerChat">
-          {chatList.map((chat) => (
-            <div key={chat.userId} onClick={() => handleRedirect(chat.userId)}>
-              <h2 data-testid="profile-name">{chat.userId}</h2>
-              <h2 data-testid="last-message">
-                {chat.messages[chat.messages.length - 1].text}
-              </h2>
-            </div>
-          ))}
-        </div>
+        <button data-testid="back-button" onClick={() => history.push(`/admin/chats`)}> back</button>
+        <h3>Loja</h3>
+         <ChatPanel userId={activeList} chatUser={'Loja'}/>
       </div>
     </>
   );

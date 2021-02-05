@@ -1,0 +1,4 @@
+.container-adminChat {
+  display: flex;
+  flex-direction: row;
+}
