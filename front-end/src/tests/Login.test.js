@@ -76,4 +76,5 @@ test('Test that is it possible to log with valid emailpassword', async () => {
     expect(button).toBeInTheDocument();
     expect(history.location.pathname).toBe('/products');
   });
+  \
 });

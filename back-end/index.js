@@ -27,6 +27,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use((error, _req, res, _next) => {
   const { message, status } = error;
+  console.log(message);
   if (status < 500) {
     return res.status(status).json(message);
   }

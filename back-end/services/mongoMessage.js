@@ -20,7 +20,7 @@ const storeMessage = async (payload, clientEmail) => {
     // const { userId } = payload;
     const db = await connection();
 
-    await db
+    await dbuseSelector
       .collection('messages')
       .updateOne(
         { userId: clientEmail },
