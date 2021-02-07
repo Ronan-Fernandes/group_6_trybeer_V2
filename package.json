@@ -34,7 +34,7 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "cypress": "^6.2.1",
+    "cypress": "^6.4.0",
     "cypress-multi-reporters": "^1.2.3",
     "dotenv": "^8.2.0",
     "eslint-config-prettier": "^7.1.0",

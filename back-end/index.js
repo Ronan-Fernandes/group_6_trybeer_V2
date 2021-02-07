@@ -34,18 +34,21 @@ app.use((error, _req, res, _next) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('connection', socket.handshake.query.clientId);
-  socket.emit('event_name', {
-    data: 'hello world',
+  const room = socket.handshake.query.clientId;
+  // socket.join(room);
+  console.log('connection roomJoined:', room);
+
+  socket.on('message', async (payload, clientEmail) => {
+    console.log('payload', payload, 'clientEmail', clientEmail);
+    await mongoMessage.storeMessage(payload, clientEmail);
+    const allChats = await mongoMessage.getAllMessages(clientEmail);
+    socket.broadcast.emit('SendAllMessages_from_Message', {
+      allChats,
+    });
   });
 
-  socket.on('message', async (payload) => {
-    console.log(payload);
-    await mongoMessage.storeMessage(payload);
-  });
-
-  socket.on('getAllMessages', async () => {
-    const allChats = await mongoMessage.getAllMessages();
+  socket.on('getAllMessages', async (userId) => {
+    const allChats = await mongoMessage.getAllMessages(userId);
     console.log('allMessages from socket message: ', allChats);
     socket.emit('SendAllMessages', {
       allChats,

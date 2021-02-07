@@ -28,10 +28,9 @@ const ChatPanel = (props) => {
         setAllMessages([...messagesHistory]);
       }
       return () => {
-        window.socket.off('SendAllMessages', );
+        window.socket.off('SendAllMessages',);
       };
     });
-
   }, []);
 
 
