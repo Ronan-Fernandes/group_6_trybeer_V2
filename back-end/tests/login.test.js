@@ -15,59 +15,59 @@ describe('Must exist endpoint POST `/login`', () => {
 
   it('Será validado que é possível fazer login com sucesso', async () => {
     await frisby
-      .post(`${url}/login`,
-        {
-          email: 'zebirita@gmail.com',
-          password: '12345678',
-        })
+      .post(`${url}/login`, {
+        email: 'zebirita@gmail.com',
+        password: '12345678',
+      })
       .expect('status', 200)
       .then((response) => {
         const { body } = response;
         const result = JSON.parse(body);
-        expect(result.message).toBe('Email e senha validos');
+        console.log('result :', result.data.role);
+        expect(result.data.role).toBe('client');
       });
   });
 
   it('Será validado que não é possível fazer login sem o campo `email`', async () => {
     await frisby
-      .post(`${url}/login`,
-        {
-          password: '123456',
-        })
-      .expect('status', 400)
+      .post(`${url}/login`, {
+        password: '123456',
+      })
+      .expect('status', 500)
       .then((response) => {
         const { body } = response;
-        const result = JSON.parse(body);
-        expect(result.message).toBe('"email" is required');
+        expect(body).toBe('"email" is required');
       });
   });
 
-  it('Será validado que não é possível fazer login sem o campo `password`', async () => {
+  it('test that it is not possible to login with an empty password', async () => {
     await frisby
-      .post(`${url}/login`,
-        {
-          email: 'user1@gmail.com',
-        })
-      .expect('status', 400)
+      .post(`${url}/login`, {
+        email: 'user1@gmail.com',
+      })
+      .expect('status', 500)
       .then((response) => {
         const { body } = response;
-        const result = JSON.parse(body);
-        expect(result.message).toBe('"password" is required');
+        // const result = JSON.parse(body);
+        console.log('result 3 :', body);
+
+        expect(body).toBe('"password" is required');
       });
   });
 
-  it('Será validado que não é possível fazer login com um usuário que não existe', async () => {
+  it('test that it is not possible to login with a user that does not exist', async () => {
     await frisby
-      .post(`${url}/login`,
-        {
-          email: 'user567894@gmail.com',
-          password: '123456',
-        })
-      .expect('status', 400)
+      .post(`${url}/login`, {
+        email: 'notvalid@gmail.com',
+        password: '123456',
+      })
+      .expect('status', 500)
       .then((response) => {
         const { body } = response;
-        const result = JSON.parse(body);
-        expect(result.message).toBe('Campos inválidos');
+        console.log('result 4:', body);
+
+        // const result = JSON.parse(body);
+        expect(body).toBe('Login ou senha inválido');
       });
   });
 });
