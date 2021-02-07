@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 // import { saveToLocalStorage } from '../services/localStorage';
 import { userLogin } from '../store/ducks/user';
@@ -8,6 +8,8 @@ import './FormLogin.css';
 const five = 5;
 
 const FormLogin = () => {
+  const { errors } = useSelector((state) => state.userReducer);
+
   // Route to /Register
   const history = useHistory();
   const dispatch = useDispatch();
@@ -35,6 +37,7 @@ const FormLogin = () => {
 
   return (
     <div className="globalContainer">
+      { <div> <h2> {errors.message}</h2> </div>}
       <form className="formContainer">
         <label htmlFor="email">
           Email
@@ -43,8 +46,8 @@ const FormLogin = () => {
             type="email"
             data-testid="email-input"
             placeholder="Digit seu email"
-            value={ user.email }
-            onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
+            value={user.email}
+            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
           />
         </label>
         <label htmlFor="password">
@@ -54,15 +57,15 @@ const FormLogin = () => {
             type="password"
             data-testid="password-input"
             placeholder="Digit seu password"
-            value={ user.password }
-            onChange={ (event) => setUser({ ...user, [event.target.name]: event.target.value }) }
+            value={user.password}
+            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
           />
         </label>
         <button
           type="button"
           data-testid="signin-btn"
-          disabled={ inputsValid }
-          onClick={ handleClick }
+          disabled={inputsValid}
+          onClick={handleClick}
         >
           ENTRAR
         </button>
@@ -71,7 +74,7 @@ const FormLogin = () => {
         <button
           type="button"
           data-testid="no-account-btn"
-          onClick={ () => history.push('/register') }
+          onClick={() => history.push('/register')}
         >
           {' '}
           Ainda não tenho conta

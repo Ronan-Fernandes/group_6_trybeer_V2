@@ -21,11 +21,16 @@ class UserService {
   }
 
   handleError(error) {
+    console.log(error.response.data);
     let errorMsg;
     switch (error.response.status) {
       case fiftyHundred:
         errorMsg = {
-          error: { message: 'E-mail already in database.', code: 500 },
+          // error: { message: 'E-mail already in database.', code: 500 },
+          error: {
+            message: error.response.data,
+            code: error.response.status,
+          },
         };
         break;
       default:
@@ -48,9 +53,7 @@ class UserService {
 
   /** User signup */
   async userSignup(userData) {
-    const {
-      email, name, password, admin,
-    } = userData;
+    const { email, name, password, admin } = userData;
 
     const body = {
       email,

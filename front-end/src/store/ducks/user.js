@@ -38,7 +38,7 @@ const userReducer = (state = initialState, { type, payload }) => {
     case Types.LOGOUT:
       return { ...initialState };
     case Types.ERROR:
-      return { ...state, errors: [...state.errors, payload.error] };
+      return { ...state, errors: payload.error };
     default:
       return state;
   }
