@@ -74,39 +74,41 @@ const ProductsContainer = () => {
               }
               price = product.price.toFixed(two).toString().replace('.', ',');
               return (
-                <div className="productCard" key={ product.name }>
-                  <span className="price" data-testid={ `${i}-product-price` }>
-                    R$
-                    {' '}
-                    {price}
-                  </span>
+                <div className="card text-center card-custom px-0 mx-2 mb-3" style={{ width: '18rem' }} key={product.name}>
+                  {/* // <div className="card text-center px-0" style={{ width: '18rem' }} key={product.name}> */}
+                  <h4 className="card-header" data-testid={`${i}-product-name`}>{product.name}</h4>
+
                   <img
-                    data-testid={ `${i}-product-img` }
-                    src={ product.url_image }
+                    className="card-img-top"
+                    data-testid={`${i}-product-img`}
+                    src={product.url_image}
                     alt="test"
-                    height="80px"
                   />
-                  <h3 data-testid={ `${i}-product-name` }>{product.name}</h3>
-                  <div className="quantityContainer">
-                    <button
-                      type="button"
-                      data-testid={ `${i}-product-minus` }
-                      className="productButton"
-                      onClick={ () => handelClick('minus', product) }
-                    >
-                      -
-                    </button>
-                    <span data-testid={ `${i}-product-qtd` } className="quantity">
-                      {quantity}
+                  <div class="card-body px-5">
+                    <span className="price " data-testid={`${i}-product-price`}>R$ {price}
                     </span>
-                    <button
-                      type="button"
-                      data-testid={ `${i}-product-plus` }
-                      className="productButton"
-                      onClick={ () => handelClick('plus', product) }
-                    >
-                      +
-                    </button>
+                    <div className="quantityContainer">
+                      <button
+                        type="button"
+                        data-testid={`${i}-product-minus`}
+                        className="productButton"
+                        onClick={() => handelClick('minus', product)}
+                      >
+                        -
+                          </button>
+                      <span data-testid={`${i}-product-qtd`} className="quantity">
+                        {quantity}
+                      </span>
+                      <button
+                        type="button"
+                        data-testid={`${i}-product-plus`}
+                        className="productButton"
+                        onClick={() => handelClick('plus', product)}
+                      >
+                        +
+                          </button>
+                    </div>
+
                   </div>
                 </div>
               );
@@ -115,9 +117,9 @@ const ProductsContainer = () => {
       </div>
       <button
         type="button"
-        disabled={ total === zero }
+        disabled={total === zero}
         data-testid="checkout-bottom-btn"
-        onClick={ () => handleGoToCheckOut() }
+        onClick={() => handleGoToCheckOut()}
       >
         Ver Carrinho
       </button>

@@ -9,6 +9,7 @@ const five = 5;
 
 const FormLogin = () => {
   const { errors } = useSelector((state) => state.userReducer);
+  const regexEmail = /[A-Z0-9]{1,}@[A-Z0-9]{2,}\.[A-Z0-9]{2,}/i;
 
   // Route to /Register
   const history = useHistory();
@@ -19,7 +20,10 @@ const FormLogin = () => {
     email: '',
     password: '',
   });
-  const [inputsValid, setInputsValid] = useState(true);
+  const [inputsValid, setInputsValid] = useState({
+    email: false,
+    password: false,
+  });
 
   function handleClick() {
     dispatch(userLogin(user.email, user.password)); // async
@@ -27,58 +31,69 @@ const FormLogin = () => {
 
   // Each time user is updated password and email are checked if are valid
   useEffect(() => {
-    const regexEmail = /[A-Z0-9]{1,}@[A-Z0-9]{2,}\.[A-Z0-9]{2,}/i;
-    if (user.password.length > five && regexEmail.test(user.email)) {
-      setInputsValid(false);
-    } else {
-      setInputsValid(true);
-    }
+    const isEmailValid = regexEmail.test(user.email);
+    setInputsValid({ ...inputsValid, email: isEmailValid, password: user.password.length > five })
   }, [user]);
 
   return (
-    <div className="globalContainer">
-      { <div> <h2> {errors.message}</h2> </div>}
-      <form className="formContainer">
-        <label htmlFor="email">
-          Email
-          <input
-            name="email"
-            type="email"
-            data-testid="email-input"
-            placeholder="Digit seu email"
-            value={user.email}
-            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
-          />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input
-            name="password"
-            type="password"
-            data-testid="password-input"
-            placeholder="Digit seu password"
-            value={user.password}
-            onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
-          />
-        </label>
-        <button
-          type="button"
-          data-testid="signin-btn"
-          disabled={inputsValid}
-          onClick={handleClick}
-        >
-          ENTRAR
+    <div className="login-container">
+      <div className="simple-login-container">
+        <h2>Login</h2>
+        {<h2> {errors.message}</h2>}
+        <div className="row">
+          <div className="col-md-12 form-group">
+            <input
+              className="form-control"
+              name="email"
+              type="email"
+              data-testid="email-input"
+              placeholder="Digit seu email"
+              value={user.email}
+              onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
+            />
+            {!inputsValid.email && <small id="emailHelp" class="form-text text-muted">Please enter a valid email address.</small>}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12 form-group">
+            <input
+              className="form-control"
+              name="password"
+              type="password"
+              data-testid="password-input"
+              placeholder="Digit seu password"
+              value={user.password}
+              onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
+            />
+            {!inputsValid.password && <small id="emailHelp" class="form-text text-muted">Please enter a valid email address.</small>}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12 form-group">
+            <button
+              className="btn btn-block btn-login"
+              type="button"
+              data-testid="signin-btn"
+              // disabled={inputsValid.email && inputsValid.password}
+              onClick={handleClick}
+            >
+              ENTRAR
         </button>
-      </form>
-      <div>
-        <button
-          type="button"
-          data-testid="no-account-btn"
-          onClick={() => history.push('/register')}
-        >
-          {' '}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12 form-group">
+            <button
+              className="btn btn-block btn-register"
+              type="button"
+              data-testid="no-account-btn"
+              onClick={() => history.push('/register')}
+            >
+              {' '}
           Ainda não tenho conta
         </button>
+          </div>
+        </div>
       </div>
     </div>
   );

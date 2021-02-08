@@ -62,7 +62,7 @@ test('Test that button "Ainda não tenho conta"  send to register page', async (
   }, 1500);
 });
 
-test('Test that is it possible to log with valid emailpassword', async () => {
+test('Test that is it possible to log with valid email/password', async () => {
   const { history } = renderWithRouter(<Login />);
   const emailInput = screen.getByTestId('email-input');
   const passwordInput = screen.getByTestId('password-input');

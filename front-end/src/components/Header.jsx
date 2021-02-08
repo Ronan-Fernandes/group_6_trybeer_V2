@@ -23,13 +23,7 @@ const Header = () => {
     setsidebarVisible(!sidebarVisible);
   };
 
-  // const sideBarVisible = useSelector(
-  //   (state) => state.sideBarHideReducer.isVisible,
-  // );
   const { role } = useSelector((state) => state.userReducer.user);
-
-  // const Wrapper = props.wrapper; // Imported Component
-  // wrapper removido pois não estava sendo usado
 
   if (title[location.pathname] !== undefined) headTitle = title[location.pathname];
   return (
@@ -44,7 +38,6 @@ const Header = () => {
       </div>
       <div className="sidebar">
         {(sidebarVisible || role === 'administrator') && <SideBar />}
-        {/* {(sidebarVisible ) && <SideBar />} */}
       </div>
     </div>
   );

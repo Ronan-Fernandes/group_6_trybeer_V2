@@ -76,13 +76,13 @@ const SideBar = () => {
       <ul>
         {menus[role].map((menu) => (
           <li key={ menu.dataTestID + one }>
-            <Link to={ menu.route } data-testid={ menu.dataTestID }>
+            <Link to={ menu.route } data-testid={ menu.dataTestID } className="text-white">
               {menu.label}
             </Link>
           </li>
         ))}
       </ul>
-      <button type="button" data-testid="side-menu-item-logout" onClick={ () => handleClick() }>
+      <button className="btn btn-block btn-exit mt-3" type="button" data-testid="side-menu-item-logout" onClick={ () => handleClick() }>
         Sair
       </button>
     </div>

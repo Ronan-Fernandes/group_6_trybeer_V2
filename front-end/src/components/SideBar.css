@@ -1,14 +1,11 @@
 .side-menu-container,
 .admin-side-bar-container {
-  background-color: black;
+  background-color: #189ab4;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* justify-content: start; */
-
   padding: 15px;
-  height: calc(100vh - 122px);
 }
 ul {
   display: flex;
@@ -25,7 +22,17 @@ li {
   text-align: center;
 }
 
-a {
-  color: white;
-  text-decoration: none;
+.side-menu-container .btn-exit {
+  background-color: #05445e;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .side-menu-container,
+  .admin-side-bar-container {
+    /* height: max-content; */
+    height: 100%;
+    justify-content: flex-start;
+    /* height: calc(100vh - 122px); */
+  }
 }
