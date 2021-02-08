@@ -69,8 +69,8 @@ const SideBar = () => {
 
   return (
     <div
-      className={
-        role === 'client' ? 'side-menu-container' : 'admin-side-bar-container'
+      className= {
+        role === 'client' ? 'side-menu-container sidebar_container' : 'admin-side-bar-container sidebar_container'
       }
     >
       <ul>

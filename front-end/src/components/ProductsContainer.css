@@ -6,7 +6,7 @@
 }
 
 .card {
- padding: 0px;
+  padding: 0px;
 }
 
 .card img {
@@ -44,4 +44,11 @@
 
 .price {
   font-size: 1.5em;
+}
+
+.btn-cart {
+  background-color: #fff;
+  color: #189ab4;
+  border: #189ab4 solid 1px;
+  border-radius: 5px;
 }

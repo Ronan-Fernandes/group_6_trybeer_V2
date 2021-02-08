@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import hamburger from '../images/hamburger.png';
-// import { changeVisibility } from '../store/ducks/sideBarHide';
+import { changeVisibility } from '../store/ducks/sideBarHide';
 import SideBar from './SideBar';
 import './Header.css';
 
 const Header = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const location = useLocation();
-  const [sidebarVisible, setsidebarVisible] = useState(false);
+  // const [sidebarVisible, setsidebarVisible] = useState(false);
   let headTitle = 'Detalhes de Pedido';
   const title = {
     '/profile': 'Meu perfil',
@@ -20,8 +20,12 @@ const Header = () => {
     '/products': 'TryBeer',
   };
   const handleClick = () => {
-    setsidebarVisible(!sidebarVisible);
+    dispatch(changeVisibility(!isVisible));
   };
+
+  const isVisible = useSelector(
+    (state) => state.sideBarHideReducer.isVisible,
+  );
 
   const { role } = useSelector((state) => state.userReducer.user);
 
@@ -29,15 +33,12 @@ const Header = () => {
   return (
     <div>
       <div className="headerContainer">
-        <button type="button" data-testid="top-hamburguer" onClick={ () => handleClick() }>
-          <img src={ hamburger } alt="test" height="80px" />
+        <button type="button" data-testid="top-hamburguer" onClick={() => handleClick()}>
+          <img src={hamburger} alt="test" height="80px" />
         </button>
         <div className="headTitleContainer">
           <h1 data-testid="top-title">{headTitle}</h1>
         </div>
-      </div>
-      <div className="sidebar">
-        {(sidebarVisible || role === 'administrator') && <SideBar />}
       </div>
     </div>
   );

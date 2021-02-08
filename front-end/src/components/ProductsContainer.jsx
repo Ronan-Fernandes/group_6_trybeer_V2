@@ -62,7 +62,24 @@ const ProductsContainer = () => {
   let price = zero;
 
   return (
-    <>
+    <div className="container">
+      <div className="container row justify-content-md-center my-4">
+        <button
+          className="btn-cart mr-2 px-3"
+          type="button"
+          disabled={total === zero}
+          data-testid="checkout-bottom-btn"
+          onClick={() => handleGoToCheckOut()}
+        >
+          Ver Carrinho
+        </button>
+        <h2 data-testid="checkout-bottom-btn-value">
+          R$
+        {' '}
+          {total.toFixed(two).toString().replace('.', ',')}
+        </h2>
+      </div>
+
       <div className="cardsContainer">
         {productsFetching
           && productsDB.map(
@@ -75,9 +92,7 @@ const ProductsContainer = () => {
               price = product.price.toFixed(two).toString().replace('.', ',');
               return (
                 <div className="card text-center card-custom px-0 mx-2 mb-3" style={{ width: '18rem' }} key={product.name}>
-                  {/* // <div className="card text-center px-0" style={{ width: '18rem' }} key={product.name}> */}
-                  <h4 className="card-header" data-testid={`${i}-product-name`}>{product.name}</h4>
-
+                  <span className="card-header" data-testid={`${i}-product-name`}>{product.name}</span>
                   <img
                     className="card-img-top"
                     data-testid={`${i}-product-img`}
@@ -115,20 +130,7 @@ const ProductsContainer = () => {
             },
           )}
       </div>
-      <button
-        type="button"
-        disabled={total === zero}
-        data-testid="checkout-bottom-btn"
-        onClick={() => handleGoToCheckOut()}
-      >
-        Ver Carrinho
-      </button>
-      <h2 data-testid="checkout-bottom-btn-value">
-        R$
-        {' '}
-        {total.toFixed(two).toString().replace('.', ',')}
-      </h2>
-    </>
+    </div>
   );
 };
 

@@ -27,12 +27,21 @@ li {
   color: #fff;
 }
 
+.admin-side-bar-container .btn-exit {
+  background-color: #05445e;
+  color: #fff;
+}
+
 @media screen and (min-width: 768px) {
-  .side-menu-container,
-  .admin-side-bar-container {
-    /* height: max-content; */
-    height: 100%;
+  .side-menu-container {
+    height: auto;
     justify-content: flex-start;
-    /* height: calc(100vh - 122px); */
+    min-height: 100vh;
+  }
+
+  .admin-side-bar-container {
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
   }
 }
