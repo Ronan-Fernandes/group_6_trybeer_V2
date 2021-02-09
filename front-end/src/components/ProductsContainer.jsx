@@ -93,12 +93,14 @@ const ProductsContainer = () => {
               return (
                 <div className="card text-center card-custom px-0 mx-2 mb-3" style={{ width: '18rem' }} key={product.name}>
                   <span className="card-header" data-testid={`${i}-product-name`}>{product.name}</span>
-                  <img
-                    className="card-img-top"
-                    data-testid={`${i}-product-img`}
-                    src={product.url_image}
-                    alt="test"
-                  />
+                  <div>
+                    <img
+                      className="card-img-top"
+                      data-testid={`${i}-product-img`}
+                      src={product.url_image}
+                      alt={product.name}
+                    />
+                  </div>
                   <div class="card-body px-5">
                     <span className="price " data-testid={`${i}-product-price`}>R$ {price}
                     </span>

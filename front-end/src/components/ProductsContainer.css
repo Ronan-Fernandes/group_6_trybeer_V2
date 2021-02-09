@@ -10,7 +10,11 @@
 }
 
 .card img {
-  height: 240px;
+  /* height: 240px;
+  width: auto; */
+  width: auto;
+  /* height: auto; */
+  max-height: 240px;
 }
 
 .productCard {
