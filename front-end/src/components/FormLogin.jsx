@@ -51,7 +51,7 @@ const FormLogin = () => {
               value={user.email}
               onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
             />
-            {!inputsValid.email && <small id="emailHelp" class="form-text text-muted">Please enter a valid email address.</small>}
+            {!inputsValid.email && <small id="emailHelp" className="form-text text-danger">Please enter a valid email address.</small>}
           </div>
         </div>
         <div className="row">
@@ -65,7 +65,7 @@ const FormLogin = () => {
               value={user.password}
               onChange={(event) => setUser({ ...user, [event.target.name]: event.target.value })}
             />
-            {!inputsValid.password && <small id="emailHelp" class="form-text text-muted">Please enter a valid email address.</small>}
+            {!inputsValid.password && <small id="emailHelp" className="form-text text-danger">Please enter a valid email address.</small>}
           </div>
         </div>
         <div className="row">
@@ -74,7 +74,7 @@ const FormLogin = () => {
               className="btn btn-block btn-login"
               type="button"
               data-testid="signin-btn"
-              // disabled={inputsValid.email && inputsValid.password}
+              disabled={!inputsValid.email || !inputsValid.password}
               onClick={handleClick}
             >
               ENTRAR

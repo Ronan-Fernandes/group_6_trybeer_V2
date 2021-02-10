@@ -1,4 +1,4 @@
-.container-adminChat {
-  display: flex;
-  flex-direction: row;
+.btn-back {
+  background-color: #189ab4 !important;
+  color: white !important;
 }

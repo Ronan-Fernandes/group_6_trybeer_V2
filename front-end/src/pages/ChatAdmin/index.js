@@ -14,8 +14,6 @@ const ChatAdmin = () => {
     },
   });
 
-  // window.socket.on('connection', () => {});
-
   // Fetch all chats at first render
   useEffect(() => {
     window.socket.emit('getAllMessages');

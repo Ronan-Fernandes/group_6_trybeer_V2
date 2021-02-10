@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import ChatPanel from '../../components/ChatPanel';
 import Header from '../../components/Header';
 import SideBar from '../../components/SideBar';
+import "./style.css"
 
 const ChatClient = () => {
   const { email } = useSelector((state) => state.userReducer.user);

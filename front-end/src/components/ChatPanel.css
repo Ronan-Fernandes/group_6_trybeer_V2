@@ -1,5 +1,27 @@
+.container_chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+  /* background-color: red; */
+  /* height: 100vh; */
+  height: calc(100vh - 250px);
+}
+
 .chatMessage_card {
   display: flex;
+  border: 1px solid white;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chatMessage_card_text {
+  display: flex;
+  border: 1px solid white;
+  background-color: #189ab4;
+  border-radius: 10px;
+  color: white;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
 }

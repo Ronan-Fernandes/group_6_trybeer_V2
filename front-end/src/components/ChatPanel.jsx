@@ -52,31 +52,39 @@ const ChatPanel = (props) => {
   }
 
   return (
-    <>
-      <h1>WebChat CLIENT </h1>
-      <div>
+    <div className="container container_chat">
+      <div className="" >
         {allMessages.map((chat, index) => (
-          <div key={index} className="chatMessage_card">
-            <h3 data-testid="nickname">{chat.nickname}</h3>
-            <h2 data-testid="message-time">{chat.time}</h2>
-            <h2 data-testid="text-message">{chat.text}</h2>
+          <div key={index} className="chatMessage_card my-5">
+            <div className="row justify-content-start mb-2">
+              <span className="mr-2" data-testid="nickname">{chat.nickname}</span>
+              <span data-testid="message-time">{chat.time}</span>
+            </div>
+            <div className="chatMessage_card_text">
+              <span className="p-3" data-testid="text-message">{chat.text}</span>
+
+            </div>
           </div>
         ))}
       </div>
-      <div className="globalContainer">
-        <form className="formContainer">
-          <label htmlFor="message">
+
+      <div className="container globalContainer ">
+        <form className="form-inline">
+          <label className="sr-only" for="inlineFormInputMsg" htmlFor="message">
             Your message
-            <input
-              name="message"
-              type="text"
-              data-testid="message-input"
-              placeholder="Digit seu mensagem"
-              value={message}
-              onChange={(event) => setMessage(event.target.value)}
-            />
-          </label>
+              </label>
+          <input
+            className="form-control mb-2 mr-sm-2"
+            for="inlineFormInputMsg"
+            name="message"
+            type="text"
+            data-testid="message-input"
+            placeholder="Digit seu mensagem"
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
+          />
           <button
+            className="btn btn-primary mb-2"
             data-testid="send-message"
             type="button"
             onClick={handleClick}
@@ -85,7 +93,7 @@ const ChatPanel = (props) => {
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

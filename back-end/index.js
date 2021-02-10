@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
     console.log('payload', payload, 'clientEmail', clientEmail);
     await mongoMessage.storeMessage(payload, clientEmail);
     const allChats = await mongoMessage.getAllMessages(clientEmail);
-    socket.broadcast.emit('SendAllMessages_from_Message', {
+    socket.broadcast.emit('SendAllMessages', {
       allChats,
     });
   });

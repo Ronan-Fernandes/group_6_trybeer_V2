@@ -13,8 +13,10 @@ import Login from '../pages/Login/Login';
 
 test('Check if Elements are present in the Login page', () => {
   const { getByText } = renderWithRouter(<Login />);
-  const Email = getByText('Email');
-  const password = getByText('Password');
+  // const Email = getByText('Email');
+  const Email = screen.getByTestId('email-input');
+  // const password = getByText('Password');
+  const password = screen.getByTestId('password-input');
   const ENTRAR = getByText('ENTRAR');
 
   expect(Email).toBeInTheDocument();
@@ -76,5 +78,5 @@ test('Test that is it possible to log with valid email/password', async () => {
     expect(button).toBeInTheDocument();
     expect(history.location.pathname).toBe('/products');
   });
-  \
+  
 });

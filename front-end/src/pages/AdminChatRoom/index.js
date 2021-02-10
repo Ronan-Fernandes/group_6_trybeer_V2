@@ -11,7 +11,6 @@ const ChatAdmin = (props) => {
   const activeList = props.dataFromChatAdmin.match.params.id;
 
   const [chatList, setChatList] = useState([]);
-  // const [activeList, setActiveList] = useState('');
   window.socket = window.io('http://localhost:3001', {
     query: {
       clientId: 'Loja',
@@ -35,10 +34,16 @@ const ChatAdmin = (props) => {
   return (
     <>
       <Header />
-      <div className="container-adminChat">
-        <button data-testid="back-button" onClick={() => history.push(`/admin/chats`)}> back</button>
-        <h3>Loja</h3>
+      <div className="container">
+      <div className="row" >
+      <div className="col" >
+
+        <button className="btn btn-back m-3" data-testid="back-button" onClick={() => history.push(`/admin/chats`)}> back</button>
+        <div className="col" >
          <ChatPanel userId={activeList} chatUser={'Loja'}/>
+         </div>
+         </div>
+        </div>
       </div>
     </>
   );
