@@ -6,7 +6,6 @@ import SideBar from '../../components/SideBar';
 import Header from '../../components/Header';
 import './style.css';
 
-
 const zero = 0;
 
 const OrderDetail = (props) => {
@@ -38,30 +37,41 @@ const OrderDetail = (props) => {
       <Header />
       <div className="main-container ">
         {isVisible && <SideBar />}
-        <div className="">
-
-        <h3 data-testid="order-number">Pedido {id}</h3>
-        {getSalesProductsSuccess && (
-          <div>
-            <h3 data-testid="order-date">{date}</h3>
-            <h3> {salesProducts[0].sale.status}</h3>
-            {salesProducts.map((product, i) => (
-              <div className="cardContainer" key={product.name}>
-                <h3 data-testid={`${i}-product-qtd`}> {product.quantity} - </h3>
-
-                <h3 data-testid={`${i}-product-name`}> {product.name}</h3>
-                <h3 data-testid={`${i}-product-total-value`}>
-                  R${' '}
-                  {product.sale.total_price
-                    .toFixed(zero)
-                    .toString()
-                    .replace('.', ',')}
-                </h3>
+        <div className="container">
+          <h2 className="text-center my-3" data-testid="order-number">
+            Pedido {id}
+          </h2>
+          {getSalesProductsSuccess && (
+            <div>
+              <div className="row justify-content-around my-3 ">
+                <h3 data-testid="order-date">{date}</h3>
+                <h3> {salesProducts[0].sale.status}</h3>
               </div>
-            ))}
-            <h3 data-testid="order-total-value">R$ {totalPrice}</h3>
-          </div>
-        )}
+              {salesProducts.map((product, i) => (
+                <div className="cardContainer_orders-details my-3 p-2" key={product.name}>
+                  <div className="row justify-content-around">
+                    <h3 data-testid={`${i}-product-qtd`}>
+                      {`(X ${product.quantity})`}
+                    </h3>
+                    <h3 data-testid={`${i}-product-name`}>
+                      {product.product.name}
+                    </h3>
+                  </div>
+                  <h3 className="text-right" data-testid={`${i}-product-total-value`}>
+                    R${' '}
+                    {product.sale.total_price
+                      .toFixed(zero)
+                      .toString()
+                      .replace('.', ',')}
+                  </h3>
+                </div>
+              ))}
+              <div className="container my-4 d-flex justify-content-end">
+                <h3>Total: </h3>
+                <h3 data-testid="order-total-value">R$ {totalPrice}</h3>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

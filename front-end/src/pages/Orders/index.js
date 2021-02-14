@@ -12,7 +12,6 @@ const Orders = () => {
   const isVisible = useSelector((state) => state.sideBarHideReducer.isVisible);
 
   const dispatch = useDispatch();
-  // console.log('isFetching', isFetching);
   const [pageLoaded, setPageLoaded] = useState(true);
 
   // To wait until isFetching get the value true
