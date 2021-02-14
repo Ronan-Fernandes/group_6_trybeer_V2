@@ -12,8 +12,6 @@ const ChatPanel = (props) => {
   const [allMessages, setAllMessages] = useState([]);
   const sliceMinus2 = -2;
 
-  // window.socket.on('connection', () => { });
-
   useEffect(() => {
     window.socket = window.io('http://localhost:3001', {
       query: {
@@ -68,13 +66,13 @@ const ChatPanel = (props) => {
         ))}
       </div>
 
-      <div className="container globalContainer ">
-        <form className="form-inline">
+      <div className="container fixed-bottom sendMessage-container ">
+        <form className="form-inline p-3">
           <label className="sr-only" for="inlineFormInputMsg" htmlFor="message">
             Your message
               </label>
           <input
-            className="form-control mb-2 mr-sm-2"
+            className="form-control  mr-sm-2"
             for="inlineFormInputMsg"
             name="message"
             type="text"
@@ -84,7 +82,8 @@ const ChatPanel = (props) => {
             onChange={(event) => setMessage(event.target.value)}
           />
           <button
-            className="btn btn-primary mb-2"
+            // className="btn btn-primary "
+            className="btn btn_send"
             data-testid="send-message"
             type="button"
             onClick={handleClick}

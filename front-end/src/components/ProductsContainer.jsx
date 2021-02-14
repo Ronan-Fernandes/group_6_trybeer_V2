@@ -91,7 +91,7 @@ const ProductsContainer = () => {
               }
               price = product.price.toFixed(two).toString().replace('.', ',');
               return (
-                <div className="card text-center card-custom px-0 mx-2 mb-3" style={{ width: '18rem' }} key={product.name}>
+                <div className="card_products text-center card p-0 mx-2 mb-3" style={{ width: '18rem' }} key={product.name}>
                   <span className="card-header" data-testid={`${i}-product-name`}>{product.name}</span>
                   <div>
                     <img

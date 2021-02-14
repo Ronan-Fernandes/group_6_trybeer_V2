@@ -1,10 +1,12 @@
+.sendMessage-container {
+  background-color: #189ab4;
+  opacity: 0.9;
+}
+
 .container_chat {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: flex-end; */
-  /* background-color: red; */
-  /* height: 100vh; */
   height: calc(100vh - 250px);
 }
 
@@ -24,4 +26,13 @@
   color: white;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.btn_send {
+  color: white !important;
+}
+
+.btn_send:hover {
+  font-weight: bold;
+  color: black !important;
 }

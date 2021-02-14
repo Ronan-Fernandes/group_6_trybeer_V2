@@ -32,7 +32,7 @@ const ClientOrdersCards = () => {
   let dateLength = zero;
 
   return (
-    <div>
+    <div className="container">
       {
         getOrderSuccess && orders.map((order, i) => {
           dateLength = order.sale_date.length;
@@ -42,6 +42,8 @@ const ClientOrdersCards = () => {
           dateAndMonth = `${day}/${month}`;
           totalPrice = order.total_price.toFixed(two).toString().replace('.', ',');
           return (
+            <div className="cardContainer p-3 my-5">
+
             <Link
               key={ order.id }
               to={ {
@@ -52,7 +54,8 @@ const ClientOrdersCards = () => {
                 },
               } }
             >
-              <div className="cardContainer" data-testid={ `${i}-order-card-container` }>
+              <div className="" data-testid={ `${i}-order-card-container` }>
+              <div className="row">
                 <h3 data-testid={ `${i}-order-number` }>
                   Pedido
                   {order.id}
@@ -68,7 +71,9 @@ const ClientOrdersCards = () => {
                   {totalPrice}
                 </h3>
               </div>
+            </div>
             </Link>
+            </div>
           );
         })
       }

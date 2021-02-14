@@ -9,7 +9,6 @@ import { deleteFromLocalStorage } from '../services/localStorage';
 const CheckoutForm = ({ total }) => {
   const zero = 0;
   const dispatch = useDispatch();
-  // const history = useHistory();
 
   const cart = useSelector((state) => state.cartReducer.cart);
 
@@ -23,10 +22,6 @@ const CheckoutForm = ({ total }) => {
     street: '',
     number: '',
   });
-
-  // function goToProducts() {
-  //   history.push('/products');
-  // }
 
   const handleClick = () => {
     dispatch(loadInitCart({}));
@@ -42,48 +37,51 @@ const CheckoutForm = ({ total }) => {
       ),
     );
     deleteFromLocalStorage('cart');
-    // setTimeout(goToProducts, 3000);
   };
 
   return (
-    <div>
-      <div className="form">
-        <form>
-          <h3>Endereço</h3>
-          <label htmlFor="street">
+    <div className="container">
+          <h3 className="mb-3">Endereço</h3>
+        <form className="form-inline">
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label-lg" htmlFor="street">
             Rua:
+            </label>
             <input
+            className="form-control mb-2 mr-sm-2" 
               name="street"
               type="text"
               data-testid="checkout-street-input"
               placeholder="Digit seu rua"
-              value={ address.street }
-              onChange={ (event) => setAddress({
+              value={address.street}
+              onChange={(event) => setAddress({
                 ...address,
                 [event.target.name]: event.target.value,
-              }) }
+              })}
             />
-          </label>
-          <label htmlFor="number">
+          </div>
+          <label class="col-sm-3 col-form-label-lg" htmlFor="number">
             Número da casa:
+            </label>
             <input
+            className="form-control mb-2 mr-sm-2" 
+
               name="number"
               type="number"
               data-testid="checkout-house-number-input"
-              placeholder="Digit seu rua"
-              value={ address.number }
-              onChange={ (event) => setAddress({
+              placeholder="Digit o numero de sua casa"
+              value={address.number}
+              onChange={(event) => setAddress({
                 ...address,
                 [event.target.name]: event.target.value,
-              }) }
+              })}
             />
-          </label>
         </form>
-      </div>
       <button
+      className="btn btn-primary mt-3"
         type="button"
         data-testid="checkout-finish-btn"
-        onClick={ handleClick }
+        onClick={handleClick}
         disabled={
           !total > zero
           || address.street.length < 1

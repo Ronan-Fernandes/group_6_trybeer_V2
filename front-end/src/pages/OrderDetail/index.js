@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSalesProducts } from '../../store/ducks/salesProducts';
 import SideBar from '../../components/SideBar';
-// import UserService from '../../services/trybeerAPI';
 import Header from '../../components/Header';
+import './style.css';
+
 
 const zero = 0;
 
@@ -32,14 +33,13 @@ const OrderDetail = (props) => {
     dispatch(getSalesProducts(session.token, id));
   }, []);
 
-  // const newDate = '';
-  // const dateAndMonth = '';
-
   return (
     <>
       <Header />
       <div className="main-container ">
         {isVisible && <SideBar />}
+        <div className="">
+
         <h3 data-testid="order-number">Pedido {id}</h3>
         {getSalesProductsSuccess && (
           <div>
@@ -62,6 +62,7 @@ const OrderDetail = (props) => {
             <h3 data-testid="order-total-value">R$ {totalPrice}</h3>
           </div>
         )}
+        </div>
       </div>
     </>
   );

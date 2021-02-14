@@ -17,8 +17,6 @@ const CheckoutContainer = () => {
   useEffect(() => {
     const localStoreCart = loadFromLocalStorage('cart');
     if (localStoreCart !== null) dispatch(loadInitCart(localStoreCart.cart));
-
-    // dispatch(loadInitCart(localStoreCart.cart));
   }, []);
 
   const [total, setTotal] = useState(zero);
@@ -31,25 +29,25 @@ const CheckoutContainer = () => {
     setTotal(totalSummed);
   };
 
-  // const [_address, setAddress] = useState({
-  //   street: '',
-  //   number: '',
-  // });
-
   useEffect(() => {
     totalCart();
   }, [cart]);
 
   return (
-    <div>
+    <div className="container">
       <CheckoutCards />
-      <div className="form" />
-      <h2 data-testid="order-total-value">
-        R$
+      <div className="container my-3 pb-4">
+        <div className="container row justify-content-end">
+          <h2 className="mr-3">Valor total: </h2>
+          <h2 data-testid="order-total-value">
+            R$
         {total.toFixed(two).toString().replace('.', ',')}
-      </h2>
-      <CheckoutForm total={ total } />
+          </h2>
+        </div>
+        <CheckoutForm total={total} />
+      </div>
     </div>
   );
 };
+
 export default CheckoutContainer;
