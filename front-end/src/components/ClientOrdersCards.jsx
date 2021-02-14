@@ -44,35 +44,35 @@ const ClientOrdersCards = () => {
           return (
             <div className="cardContainer p-3 my-5">
 
-            <Link
-              key={ order.id }
-              to={ {
-                pathname: `orders/${order.id}`,
-                state: { // passing props para o child
-                  date: dateAndMonth,
-                  totalPrice,
-                },
-              } }
-            >
-              <div className="" data-testid={ `${i}-order-card-container` }>
-              <div className="row">
-                <h3 data-testid={ `${i}-order-number` }>
-                  Pedido
-                  {order.id}
-                </h3>
-                <h3>{order.status}</h3>
-                <h3 data-testid={ `${i}-order-date` }>
-                  {
-                  dateAndMonth
-                }
-                </h3>
-                <h3 data-testid={ `${i}-order-total-value` }>
-                  R$
+              <Link
+                key={order.id}
+                to={{
+                  pathname: `orders/${order.id}`,
+                  state: { // passing props para o child
+                    date: dateAndMonth,
+                    totalPrice,
+                  },
+                }}
+              >
+                <div className="" data-testid={`${i}-order-card-container`}>
+                  <div className="row justify-content-around">
+                    <h3 data-testid={`${i}-order-number`}>
+                      {`Pedido: ${order.id}`}
+                    </h3>
+                  </div>
+                  <div className="row justify-content-between">
+                    <h3>{order.status}</h3>
+
+                    <h3 data-testid={`${i}-order-date`}>
+                      {dateAndMonth}
+                    </h3>
+                    <h3 data-testid={`${i}-order-total-value`}>
+                      R$
                   {totalPrice}
-                </h3>
-              </div>
-            </div>
-            </Link>
+                    </h3>
+                  </div>
+                </div>
+              </Link>
             </div>
           );
         })
