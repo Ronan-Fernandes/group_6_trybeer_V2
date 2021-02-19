@@ -33,7 +33,7 @@ const Orders = () => {
         <div className="container ">
           {sales.pending.length ? (
             <section style={{ display: 'flex', flexFlow: 'column' }}>
-              <header>
+              <header className="mt-3">
                 <h2>Pendentes</h2>
               </header>
               <SalesTable sales={sales.pending} />
@@ -49,7 +49,7 @@ const Orders = () => {
           ) : null}
           {sales.delivered.length ? (
             <section style={{ display: 'flex', flexFlow: 'column' }}>
-              <header>
+              <header className="mt-3">
                 <h2>Entregues</h2>
               </header>
               <SalesTable sales={sales.delivered} />
