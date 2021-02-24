@@ -6,7 +6,6 @@ const ChatPanel = (props) => {
   const { email } = useSelector((state) => state.userReducer.user);
   const { userId, chatUser } = props;
 
-
   // Set all local Action/Reducers
   const [message, setMessage] = useState([]);
   const [allMessages, setAllMessages] = useState([]);
@@ -31,9 +30,6 @@ const ChatPanel = (props) => {
     });
   }, []);
 
-
-
-
   function handleClick(event) {
     event.preventDefault();
     const today = new Date();
@@ -50,17 +46,20 @@ const ChatPanel = (props) => {
   }
 
   return (
-    <div className="container container_chat">
+    <div className=" container_chat">
       <div className="" >
         {allMessages.map((chat, index) => (
-          <div key={index} className="chatMessage_card my-5">
+          <div key={index}
+            className="chatMessage_card my-5" >
             <div className="row justify-content-start mb-2">
               <span className="mr-2" data-testid="nickname">{chat.nickname}</span>
               <span data-testid="message-time">{chat.time}</span>
             </div>
-            <div className="chatMessage_card_text">
+            <div
+              className={
+                chat.nickname === 'Loja' ? 'adminMessage chatMessage_card_text' : 'clientMessage chatMessage_card_text'
+              } >
               <span className="p-3" data-testid="text-message">{chat.text}</span>
-
             </div>
           </div>
         ))}

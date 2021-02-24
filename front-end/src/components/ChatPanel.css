@@ -1,29 +1,38 @@
+.adminMessage {
+  background-color: rgb(10, 172, 10);
+  color: black;
+}
+
+.clientMessage {
+  background-color: #189ab4;
+  color: white;
+}
+
 .sendMessage-container {
   background-color: #189ab4;
   opacity: 0.9;
 }
 
 .container_chat {
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: calc(100vh - 250px);
+  justify-content: space-between;
 }
 
 .chatMessage_card {
-  display: flex;
-  border: 1px solid white;
   border-radius: 10px;
+  border: 1px solid white;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .chatMessage_card_text {
-  display: flex;
-  border: 1px solid white;
-  background-color: #189ab4;
   border-radius: 10px;
-  color: white;
+  border: 1px solid white;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -33,6 +42,20 @@
 }
 
 .btn_send:hover {
-  font-weight: bold;
   color: black !important;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .container_chat {
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 250px);
+    justify-content: space-between;
+  }
+
+  .chatMessage_card {
+    min-width: 600px;
+  }
 }

@@ -10,7 +10,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   // const [sidebarVisible, setsidebarVisible] = useState(false);
-  let headTitle = 'Detalhes de Pedido';
+  let headTitle = 'Chat';
   const title = {
     '/profile': 'Meu perfil',
     '/checkout': 'Finalizar Pedido',
@@ -18,6 +18,9 @@ const Header = () => {
     '/admin/orders': 'Os Pedidos',
     '/login': 'TryBeer',
     '/products': 'TryBeer',
+    '/chat': 'Chat',
+    '/admin/chats': 'Chat',
+
   };
   const handleClick = () => {
     dispatch(changeVisibility(!isVisible));
@@ -33,8 +36,8 @@ const Header = () => {
   return (
     <div>
       <div className="headerContainer">
-        <button type="button" data-testid="top-hamburguer" onClick={() => handleClick()}>
-          <img src={hamburger} alt="test" height="80px" />
+        <button className="hamburger_btn"type="button" data-testid="top-hamburguer" onClick={() => handleClick()}>
+          <img className="hamburger_img m-2" src={hamburger} alt="test" height="50px" />
         </button>
         <div className="headTitleContainer">
           <h1 data-testid="top-title">{headTitle}</h1>

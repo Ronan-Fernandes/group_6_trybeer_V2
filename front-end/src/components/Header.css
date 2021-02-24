@@ -5,6 +5,16 @@
   display: flex;
 }
 
+.hamburger_btn {
+  background-color: #189ab4;
+  border: none;
+}
+
+.hamburger_img {
+/* border: black solid 1px; */
+/* background-color: grey; */
+}
+
 .headTitleContainer {
   display: flex;
   flex-grow: 4;
